@@ -12,77 +12,88 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно загрузки"
-        android:layout_marginTop="0sp"/>
+        android:layout_marginTop="0sp"
+        android:onClick="GoToLoadingActivity"/>
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно входа"
-        android:layout_marginTop="50sp"/>
+        android:layout_marginTop="50sp"
+        android:onClick="GoToSignInActivity"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно регистрации"
-        android:layout_marginTop="100sp"/>
+        android:layout_marginTop="100sp"
+        android:onClick="GoToRegistrationActivity"/>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно подтверждения"
-        android:layout_marginTop="150sp"/>
+        android:layout_marginTop="150sp"
+        android:onClick="GoToConfirmationActivity"/>
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно уведомлений"
-        android:layout_marginTop="200sp"/>
+        android:layout_marginTop="200sp"
+        android:onClick="GoToNotificationActivity"/>
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно восстановления пароля"
-        android:layout_marginTop="250sp"/>
+        android:layout_marginTop="250sp"
+        android:onClick="GoToPasswordRecoveryActivity"/>
 
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно создания нового пароля"
-        android:layout_marginTop="300sp"/>
+        android:layout_marginTop="300sp"
+        android:onClick="GoToPasswordChangeActivity"/>
 
     <Button
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно изменения профиля"
-        android:layout_marginTop="350sp"/>
+        android:layout_marginTop="350sp"
+        android:onClick="GoToChangeWindowActivity"/>
 
     <Button
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно меню"
-        android:layout_marginTop="400sp"/>
+        android:layout_marginTop="400sp"
+        android:onClick="GoToMenuActivity"/>
 
     <Button
         android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно главного экрана"
-        android:layout_marginTop="450sp"/>
+        android:layout_marginTop="450sp"
+        android:onClick="GoToMainActivity"/>
 
     <Button
         android:id="@+id/button10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Окно графиков"
-        android:layout_marginTop="500sp"/>
+        android:layout_marginTop="500sp"
+        android:onClick="GoToChartsActivity"/>
 
     <Button
         android:id="@+id/button11"
