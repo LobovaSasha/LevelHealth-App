@@ -5,4 +5,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sign_background"
-    tools:context=".MainActivity" />
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="98dp"
+        android:ems="10"
+        android:text="Регистрация" />
+
+    <EditText
+        android:id="@+id/NameBDreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="98dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Имя" />
+    <EditText
+        android:id="@+id/SurnameBDreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/NameBDreg"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="98dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Фамилия" />
+    <EditText
+        android:id="@+id/BirthBDreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/SurnameBDreg"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="98dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Дата рождения" />
+    <EditText
+        android:id="@+id/EmailBDreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BirthBDreg"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="98dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="E-mail" />
+
+    <EditText
+        android:id="@+id/PasswordBDreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EmailBDreg"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="98dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="Пароль" />
+    <EditText
+        android:id="@+id/TypeBDreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PasswordBDreg"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="98dp"
+        android:ems="10"
+        android:text="Введите букву: p - пациент, d - врач, t - тех.поддерджка" />
+    <Button
+        android:id="@+id/SaveBDreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TypeBDreg"
+        android:layout_marginEnd="115dp"
+        android:layout_marginStart="115dp"
+        android:ems="10"
+        android:text="Сохранить"
+        android:onClick="onClickSaveBD"/>
+
+</RelativeLayout>

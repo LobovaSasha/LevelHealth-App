@@ -5,4 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sign_background"
-    tools:context=".MainActivity" />
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="98dp"
+        android:ems="10"
+        android:text="Вход" />
+
+    <EditText
+        android:id="@+id/EmailBDent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="98dp"
+        android:ems="10"
+        android:text="E-mail" />
+
+    <EditText
+        android:id="@+id/PasswordBDent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EmailBDent"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="98dp"
+        android:ems="10"
+        android:text="Пароль"
+        />
+    <Button
+        android:id="@+id/EnterBDent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PasswordBDent"
+        android:layout_marginEnd="115dp"
+        android:layout_marginStart="115dp"
+        android:ems="10"
+        android:text="Войти"
+        android:onClick="onClickEnterBD"/>
+
+</RelativeLayout>
