@@ -1,26 +1,19 @@
 {
   "project_info": {
     "project_number": "256323980486",
+    "firebase_url": "https://levelhealth-pd2022-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "levelhealth-pd2022",
     "storage_bucket": "levelhealth-pd2022.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:256323980486:android:fe435623722f0106525bc7",
+        "mobilesdk_app_id": "1:256323980486:android:c58b6337f956f219525bc7",
         "android_client_info": {
           "package_name": "com.example.levelhealth"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "256323980486-5jtvokkjh6pq75kekd4pl6uj3nusber5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.levelhealth",
-            "certificate_hash": "6cff9f4750c9938a310cabb2f8ddc302ff812a15"
-          }
-        },
         {
           "client_id": "256323980486-68ijl30pu6lf10pljnm56guqiap104eo.apps.googleusercontent.com",
           "client_type": 3
