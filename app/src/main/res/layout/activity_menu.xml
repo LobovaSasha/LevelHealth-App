@@ -4,5 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sign_background"
-    tools:context=".MainActivity" />
+    android:background="#FFF4FFFB"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="15dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="GoToMainActivity"/>
+
+    <View
+        android:id="@+id/UserFrame"
+        android:layout_width="347sp"
+        android:layout_height="184sp"
+        android:layout_marginLeft="32sp"
+        android:layout_marginTop="138sp"
+        android:background="#E6F4F4"
+        android:fadingEdge="vertical" />
+
+    <ImageView
+        android:id="@+id/UserAvatar"
+        android:layout_width="64sp"
+        android:layout_height="64sp"
+        android:layout_marginLeft="78.5sp"
+        android:layout_marginTop="174sp"
+        android:src="@drawable/user_avatar" />
+
+    <TextView
+        android:id="@+id/NameSurname"
+        android:textColor="@color/text_color_1"
+        android:layout_width="111sp"
+        android:layout_height="19sp"
+        android:layout_marginLeft="193.5sp"
+        android:layout_marginTop="176.5sp"
+        android:text="Имя Фамилия" />
+
+    <TextView
+        android:id="@+id/DateOfBirth"
+        android:layout_width="51sp"
+        android:layout_height="15sp"
+        android:layout_marginLeft="193.5sp"
+        android:layout_marginTop="200.5sp"
+        android:text="дд.мм.гггг"
+        android:textColor="@color/input_field" />
+
+    <TextView
+        android:id="@+id/Mail"
+        android:layout_width="109sp"
+        android:layout_height="15sp"
+        android:layout_marginLeft="193.5sp"
+        android:layout_marginTop="220.5sp"
+        android:textColor="@color/text_color_1"
+        android:text="pochta@gmail.com" />
+
+    <Button
+        android:id="@+id/ChangeDataButton"
+        android:layout_width="106sp"
+        android:layout_height="15sp"
+        android:layout_marginLeft="75.5sp"
+        android:layout_marginTop="285sp"
+        android:textColor="@color/text_color_1"
+        android:text="Изменить данные"
+        android:onClick="GoToChangeWindowActivity"/>
+
+    <Button
+        android:id="@+id/ExitButton"
+        android:layout_width="38sp"
+        android:layout_height="15sp"
+        android:layout_marginLeft="261.5sp"
+        android:layout_marginTop="285sp"
+        android:text="Выйти"
+        android:onClick="Exit"/>
+
+    <Button
+        android:id="@+id/ReportsButton"
+        android:layout_width="390sp"
+        android:layout_height="46sp"
+        android:layout_marginLeft="11sp"
+        android:layout_marginTop="386sp"
+        android:text="Отчеты"
+        android:textColorHint="#F3FEFA" />
+
+    <Button
+        android:id="@+id/SettingsButton"
+        android:layout_width="390sp"
+        android:layout_height="46sp"
+        android:layout_marginLeft="11sp"
+        android:layout_marginTop="459sp"
+        android:text="Настройки" />
+
+</RelativeLayout>
