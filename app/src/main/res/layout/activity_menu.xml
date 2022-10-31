@@ -12,11 +12,9 @@
         android:id="@+id/BackButton"
         android:layout_width="24sp"
         android:layout_height="24sp"
-        android:layout_marginLeft="50px"
-        android:layout_marginTop="50px"
-        android:layout_marginRight="50px"
-        android:layout_marginBottom="50px"
-        android:src="@drawable/back_arrow" />
+        android:layout_marginLeft="32sp"
+        android:layout_marginTop="50sp"
+        android:background="@drawable/back_arrow" />
 
     <View
         android:id="@+id/UserFrame"
@@ -76,21 +74,23 @@
         android:layout_marginTop="285sp"
         android:text="Выйти" />
 
-    <Button
+    <ImageButton
         android:id="@+id/ReportsButton"
         android:layout_width="390sp"
         android:layout_height="46sp"
         android:layout_marginLeft="11sp"
         android:layout_marginTop="386sp"
         android:text="Отчеты"
+        android:background="@drawable/reports_button"
         android:textColorHint="#F3FEFA" />
 
-    <Button
+    <ImageButton
         android:id="@+id/SettingsButton"
         android:layout_width="390sp"
         android:layout_height="46sp"
         android:layout_marginLeft="11sp"
         android:layout_marginTop="459sp"
+        android:background="@drawable/settings_button"
         android:text="Настройки" />
 
 </RelativeLayout>
