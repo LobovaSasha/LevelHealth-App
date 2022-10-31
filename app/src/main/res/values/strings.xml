@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LevelHealth</string>
+    <string name="registration">Регистрация</string>
+    <string name="confirm_email">Подтвердить почту</string>
+    <string name="new_pass">Введите новый пароль</string>
+    <string name="reset_pass">Сбросить пароль</string>
 </resources>
