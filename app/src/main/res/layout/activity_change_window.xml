@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="40dp"
@@ -112,7 +112,7 @@
         android:textStyle="bold"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
 
     <Switch
         android:id="@+id/smoking"
@@ -125,7 +125,8 @@
         android:track="@drawable/switch_track"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
         android:id="@+id/textView2"
@@ -148,7 +149,8 @@
 
         android:track="@drawable/switch_track"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
         android:id="@+id/textView3"
