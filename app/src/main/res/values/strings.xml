@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">LevelHealth</string>
+    <string name="Hello">Добро пожаловать!</string>
+    <string name="registration">Регистрация</string>
+    <string name="confirm_number">Подтвердить номер телефона</string>
+    <string name="enter">Войти</string>
+    <string name="recovery">Восстановление пароля</string>
+    <string name="sendCode">Отправить код</string>
+    <string name="confirmation">Подтверждение</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="sendSMSAgain">Отправить СМС еще раз</string>
+
 </resources>

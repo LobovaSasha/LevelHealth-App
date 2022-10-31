@@ -5,4 +5,145 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sign_background"
-    tools:context=".MainActivity" />
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/main_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/sign_background" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="149dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="361dp"
+
+        android:paddingTop="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:textColor="@color/stroke_text2"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:text="@string/sendSMSAgain" />
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="148dp"
+        android:layout_height="36dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="397dp"
+        android:layout_weight="1"
+        android:paddingTop="8px"
+
+        android:background="@drawable/style_button_stroke_text"
+        android:fontFamily="@font/inter_semibolt"
+        android:text="@string/confirm"
+        android:textColor="@color/stroke_text"
+        android:textSize="12sp"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/Confirmation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="176dp"
+        android:text="@string/confirmation"
+        android:textSize="24sp"
+        tools:text="@string/confirmation"
+        android:fontFamily="@font/inter_semibolt"
+        android:textColor="@color/text_color_2"/>
+
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="83dp"
+        android:layout_marginTop="270dp"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:fontFamily="@font/inter_semibolt"
+        android:inputType="number"
+        android:maxLength="4"
+        android:paddingLeft="10dp"
+        android:textColor="@color/black_new"
+        android:textSize="23sp"
+
+        />
+
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextNumber1"-->
+<!--        android:layout_width="32dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_marginLeft="275dp"-->
+<!--        android:layout_marginTop="261dp"-->
+<!--        android:textSize="19sp"-->
+<!--        android:layout_centerHorizontal="true"-->
+
+<!--        android:textColor="@color/black_new"-->
+<!--        android:inputType="number"-->
+<!--        android:ems="10"-->
+<!--        />-->
+
+    <LinearLayout
+        android:layout_width="32dp"
+        android:layout_height="2dp"
+        android:background="@color/stroke_text"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="301dp"
+        android:layout_marginLeft="83dp"
+        android:visibility="visible">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="32dp"
+        android:layout_height="2dp"
+        android:background="@color/stroke_text"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="301dp"
+        android:layout_marginLeft="147dp"
+        android:visibility="visible">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="32dp"
+        android:layout_height="2dp"
+        android:background="@color/stroke_text"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="301dp"
+        android:layout_marginLeft="211dp"
+        android:visibility="visible">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="32dp"
+        android:layout_height="2dp"
+        android:background="@color/stroke_text"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="301dp"
+        android:layout_marginLeft="273dp"
+        android:visibility="visible">
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

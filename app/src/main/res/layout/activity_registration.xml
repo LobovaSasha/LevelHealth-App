@@ -5,4 +5,131 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sign_background"
-    tools:context=".MainActivity" />
+    tools:context=".MainActivity">
+
+
+
+    <ImageView
+        android:id="@+id/main_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background" />
+
+
+    <Button
+        android:id="@+id/button_confirm_number"
+        android:layout_width="321dp"
+        android:layout_height="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="630dp"
+        android:layout_weight="1"
+        android:background="@drawable/style_button_stroke_text"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:text="@string/confirm_number"
+        android:textColor="@color/stroke_text"
+        android:textSize="12sp"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/Hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="176dp"
+        android:text="@string/registration"
+        android:textStyle="bold"
+        android:textSize="29sp"
+        tools:text="@string/registration" />
+
+    <EditText
+        android:id="@+id/Number"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="430dp"
+        android:text="+7 *** *** ** **"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/field"
+        android:textColor="@color/black_new"
+        android:textSize="12sp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="495dp"
+        android:text="Пароль"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/field"
+        android:textColor="@color/black_new"
+        android:textSize="12sp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/Surname"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="240dp"
+        android:text="Фамилия"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/field"
+        android:textColor="@color/black_new"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="305dp"
+        android:text="Имя"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/field"
+        android:textColor="@color/black_new"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/Birthday"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="365dp"
+        android:text="ДД.ММ.ГГГГ"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/field"
+        android:textColor="@color/black_new"
+        android:textSize="12sp"
+        android:ems="10"
+        android:inputType="date" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="550dp"
+        android:paddingTop="15dp"
+        android:buttonTint="@color/stroke_text"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:text="Я даю согласие на хранение и обработку персональных данных" />
+
+
+</RelativeLayout>
