@@ -4,5 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/calendar_background"
-    tools:context=".MainActivity" />
+    android:background="@drawable/calendar_background" >
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="347sp"
+        android:layout_height="308sp"
+        android:background="#FFFFFF"
+        android:layout_marginStart="32sp"
+        android:layout_marginTop="207sp" />
+
+    <ImageButton
+        android:id="@+id/BackButtonCalendar"
+        android:layout_width="24sp"
+        android:layout_height="24sp"
+        android:background="@drawable/back_button"
+        android:layout_marginStart="32sp"
+        android:layout_marginTop="50sp" />
+
+    <ImageButton
+        android:id="@+id/MenuButtonCalendar"
+        android:layout_width="24sp"
+        android:layout_height="24sp"
+        android:background="@drawable/menu_button"
+        android:layout_marginStart="355sp"
+        android:layout_marginTop="50sp" />
+
+</RelativeLayout>
