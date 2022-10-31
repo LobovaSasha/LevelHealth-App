@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">LevelHealth</string>
-    <string name="title_activity_password_change">PasswordChangeActivity</string>
+    <string name="Hello">Добро пожаловать!</string>
+    <string name="registration">Регистрация</string>
+    <string name="confirm_number">Подтвердить номер телефона</string>
+    <string name="enter">Войти</string>
+    <string name="recovery">Восстановление пароля</string>
+    <string name="sendCode">Отправить код</string>
+    <string name="confirmation">Подтверждение</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="sendSMSAgain">Отправить СМС еще раз</string>
+    <string name="notification_header">Включите уведомления</string>
+    <string name="notification_descr">С помощью уведомлений, вы можете получить важную информацию</string>
+    <string name="notification_pills">Приём лекарств</string>
+    <string name="notification_pills_descr">В 12:00 не забудьте выпить ХХХХ</string>
+    <string name="notification_add">Внесение показателей</string>
+    <string name="notification_add_descr">Как вы себя чувтсвовали сегодня? </string>
+    <string name="notification_on_btn">Включить уведомления</string>
+    <string name="notification_not_btn">Не сейчас</string>
+    <string name="notification_img_descr">app logo</string>
 </resources>

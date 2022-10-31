@@ -15,7 +15,8 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="98dp"
         android:ems="10"
-        android:text="Вход" />
+        android:text="Вход"
+        android:textColor="@color/text_color_2"/>
 
     <EditText
         android:id="@+id/EmailBDent"
@@ -25,7 +26,9 @@
         android:layout_marginEnd="98dp"
         android:layout_marginStart="98dp"
         android:ems="10"
-        android:text="E-mail" />
+        android:hint="E-mail"
+        android:textColorHint="@color/input_field"
+        android:textColor="@color/text_color_1"/>
 
     <EditText
         android:id="@+id/PasswordBDent"
@@ -35,7 +38,9 @@
         android:layout_marginEnd="98dp"
         android:layout_marginStart="98dp"
         android:ems="10"
-        android:text="Пароль"
+        android:hint="Пароль"
+        android:textColorHint="@color/input_field"
+        android:textColor="@color/text_color_1"
         />
     <Button
         android:id="@+id/EnterBDent"
@@ -47,5 +52,20 @@
         android:ems="10"
         android:text="Войти"
         android:onClick="onClickEnterBD"/>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="105dp"
+        android:background="@drawable/style_button_stroke_text"
+        android:onClick="GoToRegistrationActivity"
+        android:paddingHorizontal="30dp"
+        android:text="Регистрация"
+        android:textColor="#018C8B"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </RelativeLayout>

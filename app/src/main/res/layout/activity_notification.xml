@@ -5,4 +5,114 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sign_background"
-    tools:context=".MainActivity" />
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semibolt"
+        android:text="@string/notification_header"
+        android:textColor="@color/text_color_2"
+        android:textSize="24sp"
+        android:layout_marginTop="200sp"
+        android:layout_marginStart="43sp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="285sp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="43sp"
+        android:layout_marginTop="242sp"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/notification_descr"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        app:srcCompat="@drawable/logo"
+        android:layout_marginTop="330sp"
+        android:layout_marginStart="44sp"
+        android:contentDescription="@string/notification_img_descr"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="107sp"
+        android:layout_marginTop="333sp"
+        android:fontFamily="@font/inter_semibolt"
+        android:text="@string/notification_pills"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/notification_pills_descr"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginStart="107sp"
+        android:layout_marginTop="350sp"
+        />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        app:srcCompat="@drawable/logo"
+        android:layout_marginTop="402sp"
+        android:layout_marginStart="44sp"
+        android:contentDescription="@string/notification_img_descr"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="107sp"
+        android:layout_marginTop="405sp"
+        android:fontFamily="@font/inter_semibolt"
+        android:text="@string/notification_add"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="107sp"
+        android:layout_marginTop="422sp"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/notification_add_descr"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="300sp"
+        android:layout_height="40sp"
+        android:layout_marginStart="57sp"
+        android:layout_marginTop="641sp"
+        android:text="@string/notification_on_btn"
+        android:textColor="@color/clickable_text"
+        android:textSize="16sp"
+        android:background="@drawable/style_button_stroke_text"
+        />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="190sp"
+        android:layout_height="40sp"
+        android:layout_marginStart="111sp"
+        android:layout_marginTop="715sp"
+        android:text="@string/notification_not_btn"
+        android:textColor="@color/clickable_text"
+        android:textSize="16sp"
+        android:background="@drawable/style_button_stroke_text"
+        />
+</RelativeLayout>

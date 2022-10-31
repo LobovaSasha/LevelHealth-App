@@ -8,15 +8,16 @@
     tools:context=".MainActivity">
 
 
-    <ImageButton
-        android:id="@+id/BackButton"
-        android:layout_width="24sp"
-        android:layout_height="24sp"
-        android:layout_marginLeft="50px"
-        android:layout_marginTop="50px"
-        android:layout_marginRight="50px"
-        android:layout_marginBottom="50px"
-        android:src="@drawable/back_arrow" />
+    <Button
+        android:id="@+id/back"
+        android:layout_width="15dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="GoToMainActivity"/>
 
     <View
         android:id="@+id/UserFrame"
@@ -37,6 +38,7 @@
 
     <TextView
         android:id="@+id/NameSurname"
+        android:textColor="@color/text_color_1"
         android:layout_width="111sp"
         android:layout_height="19sp"
         android:layout_marginLeft="193.5sp"
@@ -49,8 +51,8 @@
         android:layout_height="15sp"
         android:layout_marginLeft="193.5sp"
         android:layout_marginTop="200.5sp"
-        android:text="дд.мм.гг"
-        android:textColor="#8D8D8D" />
+        android:text="дд.мм.гггг"
+        android:textColor="@color/input_field" />
 
     <TextView
         android:id="@+id/Mail"
@@ -58,6 +60,7 @@
         android:layout_height="15sp"
         android:layout_marginLeft="193.5sp"
         android:layout_marginTop="220.5sp"
+        android:textColor="@color/text_color_1"
         android:text="pochta@gmail.com" />
 
     <Button
@@ -66,7 +69,9 @@
         android:layout_height="15sp"
         android:layout_marginLeft="75.5sp"
         android:layout_marginTop="285sp"
-        android:text="Изменить данные" />
+        android:textColor="@color/text_color_1"
+        android:text="Изменить данные"
+        android:onClick="GoToChangeWindowActivity"/>
 
     <Button
         android:id="@+id/ExitButton"
@@ -74,7 +79,8 @@
         android:layout_height="15sp"
         android:layout_marginLeft="261.5sp"
         android:layout_marginTop="285sp"
-        android:text="Выйти" />
+        android:text="Выйти"
+        android:onClick="Exit"/>
 
     <Button
         android:id="@+id/ReportsButton"
