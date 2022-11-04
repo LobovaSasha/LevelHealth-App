@@ -60,7 +60,7 @@ tools:context=".MainActivity">
         android:textColor="@color/text_color_1"
         android:textSize="12sp"
         android:ems="10"
-        android:inputType="number" />
+        />
 
     <EditText
         android:id="@+id/PasswordBDreg"

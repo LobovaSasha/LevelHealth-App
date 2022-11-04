@@ -1,28 +1,69 @@
 package com.example.levelhealth;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.BadParcelableException;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private RecyclerView daysRecycler;
+    private DayAdapter dayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
+
+        // Создание вручную списка дней, в дальнейшем через бд
+        List<Day> dayList = new ArrayList<>();
+
+        String[] weekDays = new String[]{"Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"};
+        for (int i = 0; i < 15; i++) {
+            System.out.println(weekDays[i % 7]);
+            dayList.add(new Day(i+1, weekDays[i % 7], String.valueOf(i+1)));
+
+        }
+
+        setDaysRecycler(dayList);
+
+//        dayList.add(new Day(1, "Пн", "24"));
+//        dayList.add(new Day(2, "Вт", "25"));
+//        dayList.add(new Day(3, "Ср", "26"));
+//        dayList.add(new Day(4, "Чт", "27"));
+//        dayList.add(new Day(1, "Пт", "28"));
+//        dayList.add(new Day(1, "Сб", "29"));
+//        dayList.add(new Day(1, "Вс", "30"));
+//        dayList.add(new Day(1, "Пн", "31"));
+//        dayList.add(new Day(2, "Вт", "1"));
+//        dayList.add(new Day(3, "Ср", "2"));
+//        dayList.add(new Day(4, "Чт", "3"));
+//        dayList.add(new Day(1, "Пт", "4"));
+//        dayList.add(new Day(1, "Сб", "5"));
+//        dayList.add(new Day(1, "Вс", "6"));
+
+
+    }
+
+    private void setDaysRecycler(List<Day> dayList) {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+
+        daysRecycler = findViewById(R.id.daysRecycler);
+        daysRecycler.setLayoutManager(layoutManager);
+
+        dayAdapter = new DayAdapter(this, dayList);
+        daysRecycler.setAdapter(dayAdapter);
     }
 
     @Override
