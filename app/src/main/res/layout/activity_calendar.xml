@@ -17,7 +17,7 @@
 
     <ImageButton
         android:id="@+id/BackButtonCalendar"
-        android:onClick="GoToMainPage"
+        android:onClick="GoToMainActivity"
         android:layout_width="24sp"
         android:layout_height="24sp"
         android:background="@drawable/back_button"
@@ -26,7 +26,7 @@
 
     <ImageButton
         android:id="@+id/MenuButtonCalendar"
-        android:onClick="GoToMenuPage"
+        android:onClick="GoToMenuActivity"
         android:layout_width="24sp"
         android:layout_height="24sp"
         android:background="@drawable/menu_button"
