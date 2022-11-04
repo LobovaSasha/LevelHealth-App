@@ -38,21 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         setDaysRecycler(dayList);
 
-//        dayList.add(new Day(1, "Пн", "24"));
-//        dayList.add(new Day(2, "Вт", "25"));
-//        dayList.add(new Day(3, "Ср", "26"));
-//        dayList.add(new Day(4, "Чт", "27"));
-//        dayList.add(new Day(1, "Пт", "28"));
-//        dayList.add(new Day(1, "Сб", "29"));
-//        dayList.add(new Day(1, "Вс", "30"));
-//        dayList.add(new Day(1, "Пн", "31"));
-//        dayList.add(new Day(2, "Вт", "1"));
-//        dayList.add(new Day(3, "Ср", "2"));
-//        dayList.add(new Day(4, "Чт", "3"));
-//        dayList.add(new Day(1, "Пт", "4"));
-//        dayList.add(new Day(1, "Сб", "5"));
-//        dayList.add(new Day(1, "Вс", "6"));
-
 
     }
 
@@ -71,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser cUser = mAuth.getCurrentUser();
         if(cUser==null) {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, SignInActivity.class);
             startActivity(intent);
         }
     }
