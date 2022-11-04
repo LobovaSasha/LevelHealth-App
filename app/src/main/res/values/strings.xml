@@ -19,4 +19,6 @@
     <string name="notification_not_btn">Не сейчас</string>
     <string name="notification_today">Сегодня</string>
     <string name="notification_img_descr">app logo</string>
+    <string name="mood_today">Настроение</string>
+    <string name="sleep_today">Сон</string>
 </resources>
