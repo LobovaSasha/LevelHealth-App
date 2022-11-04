@@ -8,7 +8,7 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:background="@color/white"
+        android:background="@drawable/calendarstyle"
         android:layout_width="347sp"
         android:layout_height="308sp"
         android:layout_marginStart="32sp"
