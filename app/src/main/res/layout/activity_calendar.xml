@@ -8,14 +8,16 @@
 
     <CalendarView
         android:id="@+id/calendarView"
+        android:background="@color/white"
         android:layout_width="347sp"
         android:layout_height="308sp"
-        android:background="#FFFFFF"
         android:layout_marginStart="32sp"
-        android:layout_marginTop="207sp" />
+        android:layout_marginTop="207sp"
+        android:elevation="10sp" />
 
     <ImageButton
         android:id="@+id/BackButtonCalendar"
+        android:onClick="GoToMainPage"
         android:layout_width="24sp"
         android:layout_height="24sp"
         android:background="@drawable/back_button"
@@ -24,6 +26,7 @@
 
     <ImageButton
         android:id="@+id/MenuButtonCalendar"
+        android:onClick="GoToMenuPage"
         android:layout_width="24sp"
         android:layout_height="24sp"
         android:background="@drawable/menu_button"
