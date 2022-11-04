@@ -10,6 +10,7 @@
 
     <ImageButton
         android:id="@+id/BackButton"
+        android:onClick="GoToMainActivity"
         android:layout_width="24sp"
         android:layout_height="24sp"
         android:layout_marginLeft="32sp"
@@ -99,6 +100,7 @@
 
     <ImageButton
         android:id="@+id/ReportsButton"
+        android:onClick="GoToMainActivity"
         android:layout_width="390sp"
         android:layout_height="46sp"
         android:layout_marginLeft="11sp"
