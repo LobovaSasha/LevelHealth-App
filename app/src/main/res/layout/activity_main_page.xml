@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/buttonMenu"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="25dp"
+        android:clipToOutline="true"
+        android:background="@drawable/menu_icon" />
+
+    <Button
+        android:id="@+id/buttonCalendar"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="25dp"
+        android:clipToOutline="true"
+        android:background="@drawable/calendar" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:text="@string/notification_today"
+        android:fontFamily="@font/inter_semibolt"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_width="90dp"
+        android:layout_height="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="162dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="59dp"
+        android:gravity="center_horizontal|top" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/daysRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="34dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:text="@string/mood_today"
+        android:fontFamily="@font/inter_semibolt"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_width="109dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="290dp"
+        android:gravity="center_horizontal|top" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/some_id"
+        android:layout_width="347dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="336.5dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/some_id"
+        android:elevation="25dp">
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/textView11"
+            android:layout_width="291dp"
+            android:layout_height="51dp"
+            android:background="@drawable/frame_124">
+            <Button
+                android:id="@+id/ellipse_14"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="1.5dp"
+                android:background="@drawable/ellipse_14" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/textView10"
+        android:text="@string/sleep_today"
+        android:fontFamily="@font/inter_semibolt"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_width="35dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="459dp"
+        android:gravity="center_horizontal|top" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/frame_124"
+        android:layout_width="347dp"
+        android:layout_height="82dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="505dp"
+        android:background="@drawable/some_id"
+        android:elevation="25dp"
+        />
+
+
+
+</RelativeLayout>
