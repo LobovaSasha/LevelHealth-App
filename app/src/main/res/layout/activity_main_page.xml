@@ -71,27 +71,39 @@
         android:id="@+id/some_id"
         android:layout_width="347dp"
         android:layout_height="83dp"
-        android:layout_marginTop="336.5dp"
-        android:layout_marginLeft="32dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:background="@drawable/some_id"
         android:elevation="25dp">
-        <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/textView11"
-            android:layout_width="291dp"
+        <Button
+            android:id="@+id/group_123"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="17.5dp"
+            android:background="@drawable/group_123" />
+        <Button
+            android:id="@+id/group_122"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="109dp"
+            android:layout_marginTop="17.5dp"
+            android:background="@drawable/group_122" />
+        <Button
+            android:id="@+id/group_121"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="17.5dp"
+            android:background="@drawable/group_121" />
+        <Button
+            android:id="@+id/group_120"
+            android:layout_width="48dp"
             android:layout_height="51dp"
-            android:background="@drawable/frame_124">
-            <Button
-                android:id="@+id/ellipse_14"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="1.5dp"
-                android:background="@drawable/ellipse_14" />
-        </RelativeLayout>
+            android:layout_marginLeft="271dp"
+            android:layout_marginTop="17.5dp"
+            android:background="@drawable/group_120" />
     </RelativeLayout>
-
 
 
     <TextView
