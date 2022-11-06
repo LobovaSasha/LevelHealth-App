@@ -101,7 +101,7 @@
         android:text="@string/notification_on_btn"
         android:textColor="@color/clickable_text"
         android:textSize="16sp"
-        android:background="@drawable/style_button_stroke_text"
+        android:background="@drawable/borderButton"
         />
 
     <Button
@@ -113,6 +113,6 @@
         android:text="@string/notification_not_btn"
         android:textColor="@color/clickable_text"
         android:textSize="16sp"
-        android:background="@drawable/style_button_stroke_text"
+        android:background="@drawable/borderButton"
         />
 </RelativeLayout>
