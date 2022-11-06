@@ -2,10 +2,12 @@ package com.example.levelhealth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -140,5 +142,10 @@ public class GraphicsActivity extends AppCompatActivity {
         yAxis.setAxisMinimum(1);
         yAxis.setAxisMaximum(5);
         yAxis.setGranularity(1f);
+    }
+
+    public void GoToMainActivity(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

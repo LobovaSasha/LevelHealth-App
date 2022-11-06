@@ -69,28 +69,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ChangeWindowActivity.class);
         startActivity(intent);
     }
-    public void GoToChartsActivity(View view) {
-        Intent intent = new Intent(this, ChartsActivity.class);
-        startActivity(intent);
-    }
-    public void GoToLoadingActivity(View view) {
-        Intent intent = new Intent(this, LoadingActivity.class);
-        startActivity(intent);
-    }
     public void GoToMenuActivity(View view) {
         Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
-    }
-    public void GoToNotificationActivity(View view) {
-        Intent intent = new Intent(this, NotificationActivity.class);
-        startActivity(intent);
-    }
-    public void GoToPasswordChangeActivity(View view) {
-        Intent intent = new Intent(this, PasswordChangeActivity.class);
-        startActivity(intent);
-    }
-    public void GoToPasswordRecoveryActivity(View view) {
-        Intent intent = new Intent(this, PasswordRecoveryActivity.class);
         startActivity(intent);
     }
     public void GoToRegistrationActivity(View view) {
@@ -105,9 +85,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    public void Exit(View view) {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(this, SignInActivity.class);
+    public void GoToGraphicsActivity(View view) {
+        Intent intent = new Intent(this, GraphicsActivity.class);
         startActivity(intent);
     }
 }
