@@ -22,4 +22,7 @@
     <string name="notification_on_btn">Включить уведомления</string>
     <string name="notification_not_btn">Не сейчас</string>
     <string name="notification_img_descr">app logo</string>
+    <string name="confirm_email">Подтвердить почту</string>
+    <string name="new_pass">Введите новый пароль</string>
+    <string name="reset_pass">Сбросить пароль</string>
 </resources>
