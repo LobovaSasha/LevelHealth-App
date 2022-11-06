@@ -3,6 +3,7 @@ package com.example.levelhealth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,11 +31,14 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         init();
+        Intent intent = new Intent(this, GraphicsActivity.class);
+        startActivity(intent);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        assert mAuth != null;
         FirebaseUser cUser = mAuth.getCurrentUser();
         if(cUser != null && cUser.isEmailVerified()){
             Intent intent = new Intent(this, MainActivity.class);
@@ -66,8 +70,10 @@ public class SignInActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
-                    } else
+                    } else {
                         Toast.makeText(getApplicationContext(), "Вход не произведен, подтвердите email и проверьте данные", Toast.LENGTH_SHORT).show();
+                        Log.d("USER", user!=null ? user.getEmail():"user == null");
+                    }
                 }
             });
         }

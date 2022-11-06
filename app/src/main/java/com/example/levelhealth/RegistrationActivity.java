@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -56,6 +57,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         sendEmailVer();
                         FirebaseUser user = mAuth.getCurrentUser();
+                        Log.d("CURRENT_USER", user!=null ? user.getEmail() : "user = null");
                         Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                         startActivity(intent);
                     } else
