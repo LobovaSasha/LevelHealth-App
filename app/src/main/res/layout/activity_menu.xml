@@ -23,7 +23,7 @@
         android:layout_height="184sp"
         android:layout_marginLeft="32sp"
         android:layout_marginTop="138sp"
-        android:background="@drawable/UserProfileFrame"
+        android:background="@drawable/user_profile_frame"
         android:fadingEdge="vertical" />
 
     <ImageView
@@ -75,7 +75,7 @@
         android:layout_height="11sp"
         android:layout_marginLeft="75.5sp"
         android:layout_marginTop="285sp"
-        android:background="@drawable/ChangeDataButton"
+        android:background="@drawable/change_data_button"
         android:onClick="GoToChangeWindowActivity" />
         <!--android:fontFamily="@font/inter_regular"
         android:text="Изменить данные"
@@ -89,7 +89,7 @@
         android:layout_height="9sp"
         android:layout_marginLeft="261.5sp"
         android:layout_marginTop="285sp"
-        android:background="@drawable/ExitButton"
+        android:background="@drawable/exit_button"
         android:onClick="GoToSignInActivity" />
         <!--android:background="@android:color/transparent"
         android:fontFamily="@font/inter_semibolt"
