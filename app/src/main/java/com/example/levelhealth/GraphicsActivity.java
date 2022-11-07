@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -27,12 +28,16 @@ import java.util.List;
 public class GraphicsActivity extends AppCompatActivity {
 
     LineChart sleep, mood;
+    Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphics);
         init();
+        back.setOnClickListener(v -> {
+            onBackPressed();
+        });
 
         buildGraphicSleep();
         buildGraphicMood();
@@ -43,6 +48,7 @@ public class GraphicsActivity extends AppCompatActivity {
     public void init() {
         sleep = findViewById(R.id.sleep);
         mood = findViewById(R.id.mood);
+        back = findViewById(R.id.back);
     }
 
     public void buildGraphicHeadHeart() {
