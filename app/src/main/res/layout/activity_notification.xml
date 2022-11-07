@@ -97,11 +97,12 @@
         android:layout_width="300sp"
         android:layout_height="40sp"
         android:layout_marginStart="57sp"
-        android:layout_marginTop="641sp"
+        android:layout_marginTop="633sp"
         android:text="@string/notification_on_btn"
         android:textColor="@color/clickable_text"
         android:textSize="16sp"
         android:background="@drawable/style_button_stroke_text"
+        android:onClick="GoToNotificationSettings"
         />
 
     <Button
@@ -109,10 +110,10 @@
         android:layout_width="190sp"
         android:layout_height="40sp"
         android:layout_marginStart="111sp"
-        android:layout_marginTop="715sp"
+        android:layout_marginTop="710sp"
+        android:background="@drawable/style_button_stroke_text"
+        android:onClick="GoToMainActivity"
         android:text="@string/notification_not_btn"
         android:textColor="@color/clickable_text"
-        android:textSize="16sp"
-        android:background="@drawable/style_button_stroke_text"
-        />
+        android:textSize="16sp" />
 </RelativeLayout>
