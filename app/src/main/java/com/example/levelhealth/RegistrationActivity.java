@@ -58,7 +58,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         sendEmailVer();
                         FirebaseUser user = mAuth.getCurrentUser();
                         Log.d("CURRENT_USER", user!=null ? user.getEmail() : "user = null");
-                        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
                         startActivity(intent);
                     } else
                         Toast.makeText(getApplicationContext(), "Регистрация не удалась, проверьте данные и попробуйте еще раз", Toast.LENGTH_SHORT).show();

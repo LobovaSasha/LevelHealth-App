@@ -11,7 +11,7 @@
         android:background="@drawable/calendarstyle"
         android:layout_width="347sp"
         android:layout_height="308sp"
-        android:layout_marginStart="32sp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="207sp"
         android:elevation="10sp" />
 
@@ -22,7 +22,7 @@
         android:layout_height="24sp"
         android:background="@drawable/back_button"
         android:layout_marginStart="32sp"
-        android:layout_marginTop="50sp" />
+        android:layout_marginTop="25sp" />
 
     <ImageButton
         android:id="@+id/MenuButtonCalendar"
@@ -31,6 +31,7 @@
         android:layout_height="24sp"
         android:background="@drawable/menu_button"
         android:layout_marginStart="355sp"
-        android:layout_marginTop="50sp" />
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="25dp" />
 
 </RelativeLayout>

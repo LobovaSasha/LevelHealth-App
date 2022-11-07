@@ -225,25 +225,44 @@
           android:layout_marginTop="459dp"
           android:gravity="center_horizontal|top" />
 
-      <RelativeLayout
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          android:id="@+id/frame_124"
-          android:layout_width="347dp"
-          android:layout_height="82dp"
-          android:layout_centerHorizontal="true"
-          android:layout_alignParentTop="true"
-          android:layout_marginTop="505dp"
-          android:background="@drawable/some_id"
-          android:elevation="25dp"
-          />
-
-      <Button
-        android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Окно графиков"
-        android:layout_marginTop="750sp"
-        android:onClick="GoToGraphicsActivity"/>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/some_id2"
+        android:layout_width="347dp"
+        android:layout_height="83dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/some_id"
+        android:elevation="25dp"
+        android:layout_marginTop="505dp">
+        <Button
+            android:id="@+id/sleep6"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="17.5dp"
+            android:background="@drawable/sleep_less_six" />
+        <Button
+            android:id="@+id/sleep67"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="109dp"
+            android:layout_marginTop="17.5dp"
+            android:background="@drawable/sleep_six_seven" />
+        <Button
+            android:id="@+id/sleep78"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="17.5dp"
+            android:background="@drawable/sleep_seven_eight" />
+        <Button
+            android:id="@+id/sleep8"
+            android:layout_width="48dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="271dp"
+            android:layout_marginTop="17.5dp"
+            android:background="@drawable/sleep_more_eight" />
+    </RelativeLayout>
 
 
 

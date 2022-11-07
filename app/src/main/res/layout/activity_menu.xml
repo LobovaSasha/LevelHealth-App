@@ -90,7 +90,7 @@
         android:layout_marginLeft="261.5sp"
         android:layout_marginTop="285sp"
         android:background="@drawable/exit_button"
-        android:onClick="GoToSignInActivity" />
+        android:onClick="Exit" />
         <!--android:background="@android:color/transparent"
         android:fontFamily="@font/inter_semibolt"
         android:text="Выйти"
@@ -100,7 +100,7 @@
 
     <ImageButton
         android:id="@+id/ReportsButton"
-        android:onClick="GoToMainActivity"
+        android:onClick="GoToGraphicsActivity"
         android:layout_width="390sp"
         android:layout_height="46sp"
         android:layout_marginLeft="11sp"

@@ -75,9 +75,10 @@ public class GraphicsActivity extends AppCompatActivity {
         List<String> dayTexts = Arrays.asList("пн", "вт", "ср", "чт", "пт", "сб", "вс");
         String curDate = new SimpleDateFormat("E").format(new Date());
         int idx = dayTexts.indexOf(curDate);
+        int n = 23;
         for (int i=0; i<7; i++) {
             days[6-i].setText(dayTexts.get((idx+7-i)%7));
-            hlvls[6-i].setText(""+(int)(Math.random()*10));
+            hlvls[6-i].setText(""+(n-i));
         }
         days[6].setText(curDate);
 

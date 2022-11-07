@@ -45,4 +45,9 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void GoToGraphicsActivity(View view) {
+        Intent intent = new Intent(this, GraphicsActivity.class);
+        startActivity(intent);
+    }
 }
