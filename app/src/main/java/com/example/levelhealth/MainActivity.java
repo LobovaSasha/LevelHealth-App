@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser cUser = mAuth.getCurrentUser();
-        if(cUser==null) {
-            Intent intent = new Intent(this, SignInActivity.class);
-            startActivity(intent);
-        }
+//        FirebaseUser cUser = mAuth.getCurrentUser();
+//        if(cUser==null) {
+//            Intent intent = new Intent(this, SignInActivity.class);
+//            startActivity(intent);
+//        }
     }
 
     public void GoToCalendarActivity(View view) {

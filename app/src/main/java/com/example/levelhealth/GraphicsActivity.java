@@ -85,8 +85,6 @@ public class GraphicsActivity extends AppCompatActivity {
         }
         days[6].setText(curDate);
 
-
-
     }
 
     public void buildGraphicSleep() {
@@ -114,13 +112,21 @@ public class GraphicsActivity extends AppCompatActivity {
         LineData lineData = new LineData(dataSet);
         mood.setData(lineData);
         customizeGraphicsSleepMood(dataSet, mood);
+
+        String[] moods = {">:(", ":( ", ":|", ":З", "=)"};
+        mood.getAxisLeft().setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return value>=1 && value<=5 ? ""+moods[(int)value-1] : "";
+            }
+        });
     }
 
     public void customizeGraphicsSleepMood(LineDataSet dataSet, LineChart lineChart) {
         String[] days = {"пн.", "вт.", "ср.", "чт.", "пт.", "сб.", "вс."};
         lineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(days)); // навесить дни вместо чисел на оси X
 
-        dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        dataSet.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
         dataSet.setDrawValues(false); // удалить подписи на точках
         dataSet.disableDashedLine();
         dataSet.setColor(Color.rgb(113, 194, 195));
