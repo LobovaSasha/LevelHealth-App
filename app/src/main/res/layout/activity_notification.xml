@@ -112,7 +112,7 @@
         android:layout_marginStart="111sp"
         android:layout_marginTop="710sp"
         android:background="@drawable/style_button_stroke_text"
-        android:onClick="GoToMainActivity"
+        android:onClick="GoToSignInActivity"
         android:text="@string/notification_not_btn"
         android:textColor="@color/clickable_text"
         android:textSize="16sp" />

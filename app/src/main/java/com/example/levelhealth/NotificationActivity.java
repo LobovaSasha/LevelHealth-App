@@ -31,8 +31,8 @@ public class NotificationActivity extends AppCompatActivity {
         }
     }
 
-    public void GoToMainActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void GoToSignInActivity(View view) {
+        Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
     }
 

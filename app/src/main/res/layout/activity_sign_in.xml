@@ -31,7 +31,8 @@
         android:textColor="@color/stroke_text"
         android:textSize="14sp"
         android:visibility="visible"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        android:onClick="GoToRegistrationActivity"/>
 
     <TextView
         android:id="@+id/Hello"
@@ -45,28 +46,27 @@
         tools:text="@string/Hello" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/EmailBDent"
         android:layout_width="347dp"
         android:layout_height="56dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="277dp"
-        android:text="E-mail"
+        android:hint="E-mail"
         android:paddingTop="24dp"
         android:paddingBottom="20dp"
         android:paddingLeft="18dp"
         android:background="@drawable/edit_number_style"
         android:textColor="@color/black_new"
         android:textSize="12sp"
-        android:ems="10"
-        android:inputType="number" />
+        android:ems="10" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/PasswordBDent"
         android:layout_width="347dp"
         android:layout_height="56dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="357dp"
-        android:text="Пароль"
+        android:hint="Пароль"
         android:paddingTop="24dp"
         android:paddingBottom="20dp"
         android:paddingLeft="18dp"
@@ -86,7 +86,8 @@
         android:background="@drawable/style_button_stroke_text"
         android:textColor="@color/stroke_text"
         android:textSize="16sp"
-        android:text="@string/enter" />
+        android:text="@string/enter"
+        android:onClick="onClickEnterBD"/>
 
     <Button
         android:id="@+id/button"
