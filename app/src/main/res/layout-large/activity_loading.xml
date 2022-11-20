@@ -10,21 +10,21 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="188sp"
-        android:layout_marginTop="350dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="300dp"
         android:contentDescription="@string/app_name"
         app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="57sp"
-        android:layout_marginTop="780dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="860dp"
         android:fontFamily="@font/open_sans_light"
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textFontWeight="300"
-        android:textSize="42sp" />
+        android:textSize="70sp" />
 </RelativeLayout>
