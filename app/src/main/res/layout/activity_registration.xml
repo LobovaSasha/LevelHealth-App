@@ -1,47 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@drawable/sign_background"
-tools:context=".MainActivity">
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sign_background"
+    tools:context=".MainActivity">
 
 
     <ImageView
         android:id="@+id/main_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/sign_background" />
-
+        android:src="@drawable/sign_background"
+        tools:layout_editor_absoluteX="-45dp"
+        tools:layout_editor_absoluteY="-213dp" />
 
     <Button
         android:id="@+id/button_confirm_number"
-        android:layout_width="321dp"
+        android:layout_width="235dp"
         android:layout_height="35dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="630dp"
+        android:layout_marginTop="44dp"
         android:layout_weight="1"
         android:background="@drawable/style_button_stroke_text"
+        android:onClick="onClickSaveBD"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
-        android:text="@string/confirm_number"
+        android:text="@string/confirm_email"
         android:textColorHint="@color/stroke_text"
+        android:fontFamily="@font/inter_semibolt"
+        android:textColor="@color/button_color_1"
         android:textSize="12sp"
         android:visibility="visible"
-        tools:visibility="visible"
-        android:onClick="onClickSaveBD"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/Hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="196dp"
         android:text="@string/registration"
-        android:textStyle="bold"
         android:textSize="29sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/registration" />
 
     <EditText
@@ -49,98 +58,117 @@ tools:context=".MainActivity">
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="430dp"
-        android:hint="example@email.com"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingLeft="15dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
-        android:textColorHint="@color/black_new"
-        android:textColor="@color/text_color_1"
-        android:textSize="12sp"
         android:ems="10"
-        android:inputType="number" />
+        android:hint="example@email.com"
+        android:inputType="number"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textColor="@color/text_color_1"
+        android:textColorHint="@color/black_new"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Hello" />
 
     <EditText
         android:id="@+id/PasswordBDreg"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="495dp"
-        android:hint="Пароль"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingLeft="15dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
-        android:textColorHint="@color/black_new"
-        android:textColor="@color/text_color_1"
-        android:textSize="12sp"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:hint="Пароль"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textColor="@color/text_color_1"
+        android:textColorHint="@color/black_new"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmailBDreg" />
 
     <EditText
         android:id="@+id/SurnameBDreg"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="240dp"
-        android:hint="Фамилия"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingLeft="15dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
-        android:textColorHint="@color/black_new"
+        android:hint="Фамилия"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
-        android:textSize="12sp" />
+        android:textColorHint="@color/black_new"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/main_background"
+        app:layout_constraintTop_toBottomOf="@+id/PasswordBDreg" />
 
     <EditText
         android:id="@+id/NameBDreg"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="305dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_number_style"
+        android:elevation="5dp"
         android:hint="Имя"
+        android:paddingLeft="15dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:elevation="5dp"
-        android:paddingLeft="15dp"
-        android:background="@drawable/edit_number_style"
-        android:textColorHint="@color/black_new"
         android:textColor="@color/text_color_1"
-        android:textSize="12sp" />
+        android:textColorHint="@color/black_new"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SurnameBDreg" />
 
     <EditText
         android:id="@+id/BirthBDreg"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="365dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_number_style"
+        android:elevation="5dp"
+        android:ems="10"
         android:hint="ДД.ММ.ГГГГ"
+        android:inputType="date"
+        android:paddingLeft="15dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:paddingLeft="15dp"
-        android:background="@drawable/edit_number_style"
-        android:textColorHint="@color/black_new"
         android:textColor="@color/text_color_1"
-        android:elevation="5dp"
+        android:textColorHint="@color/black_new"
         android:textSize="12sp"
-        android:ems="10"
-        android:inputType="date" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NameBDreg" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="550dp"
-        android:paddingTop="15dp"
+        android:layout_marginTop="18dp"
         android:buttonTint="@color/stroke_text"
-        android:paddingBottom="15dp"
         android:paddingLeft="15dp"
-        android:text="Я даю согласие на хранение и обработку персональных данных" />
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="Я даю согласие на хранение и обработку персональных данных"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BirthBDreg" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
