@@ -3,6 +3,8 @@
     <string name="Hello">Добро пожаловать!</string>
     <string name="registration">Регистрация</string>
     <string name="confirm_number">Подтвердить номер телефона</string>
+    <string name="confirm_email">Подтвердить почту</string>
+
     <string name="enter">Войти</string>
     <string name="recovery">Восстановление пароля</string>
     <string name="sendCode">Отправить код</string>
