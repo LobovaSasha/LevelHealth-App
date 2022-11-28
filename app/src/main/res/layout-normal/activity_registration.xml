@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/sign_background"
-    tools:context=".MainActivity">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/sign_background"
+tools:context=".MainActivity">
 
 
     <ImageView
@@ -44,9 +44,9 @@
         android:layout_height="wrap_content"
 
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="20dp"
         android:text="@string/registration"
-        android:textSize="29sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,10 +55,10 @@
 
     <EditText
         android:id="@+id/EmailBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
         android:ems="10"
@@ -69,17 +69,17 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Hello" />
 
     <EditText
         android:id="@+id/PasswordBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
         android:ems="10"
@@ -90,17 +90,17 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmailBDreg" />
 
     <EditText
         android:id="@+id/SurnameBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
         android:hint="Фамилия"
@@ -109,17 +109,17 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/main_background"
         app:layout_constraintTop_toBottomOf="@+id/PasswordBDreg" />
 
     <EditText
         android:id="@+id/NameBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
         android:hint="Имя"
@@ -128,17 +128,17 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SurnameBDreg" />
 
     <EditText
         android:id="@+id/BirthBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
         android:ems="10"
@@ -149,14 +149,14 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NameBDreg" />
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="320dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
@@ -165,7 +165,7 @@
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:text="Я даю согласие на хранение и обработку персональных данных"
-        android:textSize="12sp"
+        android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BirthBDreg" />

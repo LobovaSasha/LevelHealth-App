@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/sign_background"
-    tools:context=".MainActivity">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/sign_background"
+tools:context=".MainActivity">
 
 
     <ImageView
@@ -18,8 +18,8 @@
 
     <Button
         android:id="@+id/button_confirm_number"
-        android:layout_width="235dp"
-        android:layout_height="35dp"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
         android:layout_weight="1"
@@ -31,7 +31,7 @@
         android:textColorHint="@color/stroke_text"
         android:fontFamily="@font/inter_semibolt"
         android:textColor="@color/button_color_1"
-        android:textSize="12sp"
+        android:textSize="18sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="196dp"
         android:text="@string/registration"
-        android:textSize="29sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,8 +55,8 @@
 
     <EditText
         android:id="@+id/EmailBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="450dp"
+        android:layout_height="65dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
         android:background="@drawable/edit_number_style"
@@ -69,15 +69,15 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Hello" />
 
     <EditText
         android:id="@+id/PasswordBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="450dp"
+        android:layout_height="65dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/edit_number_style"
@@ -90,15 +90,15 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmailBDreg" />
 
     <EditText
         android:id="@+id/SurnameBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="450dp"
+        android:layout_height="65dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/edit_number_style"
@@ -109,15 +109,15 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/main_background"
         app:layout_constraintTop_toBottomOf="@+id/PasswordBDreg" />
 
     <EditText
         android:id="@+id/NameBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="450dp"
+        android:layout_height="65dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/edit_number_style"
@@ -128,15 +128,15 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SurnameBDreg" />
 
     <EditText
         android:id="@+id/BirthBDreg"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="450dp"
+        android:layout_height="65dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/edit_number_style"
@@ -149,14 +149,14 @@
         android:paddingBottom="15dp"
         android:textColor="@color/text_color_1"
         android:textColorHint="@color/black_new"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NameBDreg" />
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="320dp"
+        android:layout_width="450dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
@@ -165,7 +165,7 @@
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:text="Я даю согласие на хранение и обработку персональных данных"
-        android:textSize="12sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BirthBDreg" />
