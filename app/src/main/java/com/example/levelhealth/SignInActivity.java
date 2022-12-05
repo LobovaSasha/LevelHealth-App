@@ -22,6 +22,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Objects;
+
 public class SignInActivity extends AppCompatActivity {
     private EditText EmailBDent, PasswordBDent;
     private FirebaseAuth mAuth;
@@ -31,8 +35,16 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         init();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+//        DBHandler<Condition> db = new DBHandler<>("Condition", Condition.class);
+//        db.add(new Condition(
+//                "сб",
+//                3,
+//                5,
+//                4,
+//                1
+//        ));
+
     }
 
     @Override
@@ -66,13 +78,15 @@ public class SignInActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     FirebaseUser user = mAuth.getCurrentUser();
-                    if (task.isSuccessful() && user.isEmailVerified()) {
+                    if (task.isSuccessful()) {//&& user.isEmailVerified()) {
                         Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Вход не произведен, подтвердите email и проверьте данные", Toast.LENGTH_SHORT).show();
                         Log.d("USER", user!=null ? user.getEmail():"user == null");
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
                     }
                 }
             });

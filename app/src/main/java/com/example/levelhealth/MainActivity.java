@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void GoToChartsActivity(View view) {
         Intent intent = new Intent(this, GraphicsActivity.class);
+        intent.putExtra("user_id", 1);
         startActivity(intent);
     }
     public void GoToLoadingActivity(View view) {
