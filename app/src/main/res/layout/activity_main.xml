@@ -187,28 +187,32 @@
               android:layout_height="48dp"
               android:layout_marginLeft="28dp"
               android:layout_marginTop="17.5dp"
-              android:background="@drawable/group_123" />
+              android:background="@drawable/group_123"
+              android:onClick="onFirstSmile"/>
           <Button
               android:id="@+id/group_122"
               android:layout_width="48dp"
               android:layout_height="48dp"
               android:layout_marginLeft="109dp"
               android:layout_marginTop="17.5dp"
-              android:background="@drawable/group_122" />
+              android:background="@drawable/group_122"
+              android:onClick="onSecondSmile" />
           <Button
               android:id="@+id/group_121"
               android:layout_width="48dp"
               android:layout_height="48dp"
               android:layout_marginLeft="190dp"
               android:layout_marginTop="17.5dp"
-              android:background="@drawable/group_121" />
+              android:background="@drawable/group_121"
+              android:onClick="onThirdSmile" />
           <Button
               android:id="@+id/group_120"
               android:layout_width="48dp"
               android:layout_height="51dp"
               android:layout_marginLeft="271dp"
               android:layout_marginTop="17.5dp"
-              android:background="@drawable/group_120" />
+              android:background="@drawable/group_120"
+              android:onClick="onForthSmile" />
       </RelativeLayout>
 
 
@@ -264,6 +268,14 @@
             android:background="@drawable/sleep_more_eight" />
     </RelativeLayout>
 
+    <Button
+        android:id="@+id/button3"
+        android:onClick="SaveDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="700dp"
+        android:text="Сохранить" />
 
 
-  </RelativeLayout>
+</RelativeLayout>

@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class RegistrationActivity extends AppCompatActivity {
-    private EditText NameBDreg, SurnameBDreg, BirthBDreg, EmailBDreg, PasswordBDreg, TypeBDreg;
+    private EditText NameBDreg, SurnameBDreg, BirthBDreg, EmailBDreg, PasswordBDreg;
     private DatabaseReference mDataBase;
     private FirebaseAuth mAuth;
     private String USER_KEY = "User";
@@ -53,14 +53,11 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public void onClickSaveBD(View view) {
         String id = mDataBase.getKey();
-        String username = NameBDreg.getText().toString();
-        String usersurname = SurnameBDreg.getText().toString();
+        String user_name = NameBDreg.getText().toString();
+        String user_surname = SurnameBDreg.getText().toString();
         String email = EmailBDreg.getText().toString();
         String password = PasswordBDreg.getText().toString();
-
-        String birth = "Пока не заполнено";
-        String doc = "Пока не заполнено";
-        String gender = "Пока не заполнено";
+        String birth = BirthBDreg.getText().toString();
         if(!TextUtils.isEmpty(EmailBDreg.getText().toString()) && !TextUtils.isEmpty(PasswordBDreg.getText().toString()) && checkBox.isChecked()) {
             mAuth.createUserWithEmailAndPassword(EmailBDreg.getText().toString(), PasswordBDreg.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -69,12 +66,13 @@ public class RegistrationActivity extends AppCompatActivity {
                         sendEmailVer();
                         FirebaseUser cUser = mAuth.getCurrentUser();
                         idtable = cUser.getUid();
-                        saveBD(id, idtable, username, usersurname, email, birth);
+                        saveBD(id, idtable, user_name, user_surname, email, birth);
                     } else
                         Toast.makeText(getApplicationContext(), "Регистрация не удалась, проверьте данные и попробуйте еще раз", Toast.LENGTH_SHORT).show();
                 }
             });
-
+            Intent intent = new Intent(this, RegistrationActivity.class);
+            startActivity(intent);
         }
         else Toast.makeText(this, "Заполните пустые поля", Toast.LENGTH_SHORT).show();
 
