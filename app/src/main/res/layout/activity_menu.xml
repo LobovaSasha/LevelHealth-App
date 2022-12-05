@@ -36,9 +36,9 @@
 
     <TextView
         android:id="@+id/NameSurname"
-        android:layout_width="111sp"
-        android:layout_height="19sp"
-        android:layout_marginLeft="193.5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="185.5sp"
         android:layout_marginTop="176.5sp"
         android:fontFamily="@font/inter_semibolt"
         android:text="Имя Фамилия"
@@ -48,9 +48,9 @@
 
     <TextView
         android:id="@+id/DateOfBirth"
-        android:layout_width="51sp"
-        android:layout_height="15sp"
-        android:layout_marginLeft="193.5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="185.5sp"
         android:layout_marginTop="200.5sp"
         android:fontFamily="@font/inter_regular"
         android:text="дд.мм.гг"
@@ -59,9 +59,9 @@
 
     <TextView
         android:id="@+id/Mail"
-        android:layout_width="109sp"
-        android:layout_height="15sp"
-        android:layout_marginLeft="193.5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="185.5sp"
         android:layout_marginTop="220.5sp"
         android:fontFamily="@font/inter_regular"
         android:text="pochta@gmail.com"
