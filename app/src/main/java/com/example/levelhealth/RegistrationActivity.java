@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,14 +17,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class RegistrationActivity extends AppCompatActivity {
-    private EditText NameBDreg, SurnameBDreg, BirthBDreg, EmailBDreg, PasswordBDreg, TypeBDreg;
+    private EditText NameBDreg, SurnameBDreg, BirthBDreg, EmailBDreg, PasswordBDreg;
     private DatabaseReference mDataBase;
     private FirebaseAuth mAuth;
     private String USER_KEY = "User";
+    private String idtable;
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,39 +46,62 @@ public class RegistrationActivity extends AppCompatActivity {
         BirthBDreg = findViewById(R.id.BirthBDreg);
         EmailBDreg = findViewById(R.id.EmailBDreg);
         PasswordBDreg = findViewById(R.id.PasswordBDreg);
+        checkBox = findViewById(R.id.checkBox);
         mDataBase = FirebaseDatabase.getInstance().getReference(USER_KEY);
         mAuth = FirebaseAuth.getInstance();
     }
 
     public void onClickSaveBD(View view) {
         String id = mDataBase.getKey();
-        String username = NameBDreg.getText().toString();
-        String surname = SurnameBDreg.getText().toString();
-        String birth = BirthBDreg.getText().toString();
+        String user_name = NameBDreg.getText().toString();
+        String user_surname = SurnameBDreg.getText().toString();
         String email = EmailBDreg.getText().toString();
         String password = PasswordBDreg.getText().toString();
-        String type = "p";
-        if(!TextUtils.isEmpty(EmailBDreg.getText().toString()) && !TextUtils.isEmpty(PasswordBDreg.getText().toString())) {
+        String birth = BirthBDreg.getText().toString();
+        if(!TextUtils.isEmpty(EmailBDreg.getText().toString()) && !TextUtils.isEmpty(PasswordBDreg.getText().toString()) && checkBox.isChecked()) {
             mAuth.createUserWithEmailAndPassword(EmailBDreg.getText().toString(), PasswordBDreg.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         sendEmailVer();
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        Log.d("CURRENT_USER", user!=null ? user.getEmail() : "user = null");
-                        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
-                        startActivity(intent);
+                        FirebaseUser cUser = mAuth.getCurrentUser();
+                        idtable = cUser.getUid();
+                        saveBD(id, idtable, user_name, user_surname, email, birth);
                     } else
                         Toast.makeText(getApplicationContext(), "Регистрация не удалась, проверьте данные и попробуйте еще раз", Toast.LENGTH_SHORT).show();
                 }
             });
+            Intent intent = new Intent(this, RegistrationActivity.class);
+            startActivity(intent);
         }
         else Toast.makeText(this, "Заполните пустые поля", Toast.LENGTH_SHORT).show();
-        UserBD newUser = new UserBD(id, username, surname, birth, email, type);
-        if(!TextUtils.isEmpty(username) && !TextUtils.isEmpty(surname) && !TextUtils.isEmpty(birth) &&
-                !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(type)) {
-            mDataBase.push().setValue(newUser);
-        }
+
+    }
+
+    private void saveBD(String id, String idtable, String username, String usersurname, String email, String birth){
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(!(snapshot.child("User").child(idtable).exists())){
+                    HashMap<String, Object> userDataMap = new HashMap<>();
+                    userDataMap.put("id", id);
+                    userDataMap.put("idtable", idtable);
+                    userDataMap.put("Name", username);
+                    userDataMap.put("Surname", usersurname);
+                    userDataMap.put("Email", email);
+                    userDataMap.put("Birth", birth);
+
+                    RootRef.child("User").child(idtable).updateChildren(userDataMap);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(RegistrationActivity.this, "E-mail" + email +"зарегистрирован", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sendEmailVer(){

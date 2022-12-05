@@ -8,16 +8,14 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/back"
-        android:layout_width="15dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="GoToMainActivity"/>
+    <ImageButton
+        android:id="@+id/BackButton"
+        android:onClick="GoToMainActivity"
+        android:layout_width="24sp"
+        android:layout_height="24sp"
+        android:layout_marginLeft="32sp"
+        android:layout_marginTop="50sp"
+        android:background="@drawable/back_arrow" />
 
     <View
         android:id="@+id/UserFrame"
@@ -25,7 +23,7 @@
         android:layout_height="184sp"
         android:layout_marginLeft="32sp"
         android:layout_marginTop="138sp"
-        android:background="#E6F4F4"
+        android:background="@drawable/user_profile_frame"
         android:fadingEdge="vertical" />
 
     <ImageView
@@ -38,65 +36,87 @@
 
     <TextView
         android:id="@+id/NameSurname"
-        android:textColor="@color/text_color_1"
-        android:layout_width="111sp"
-        android:layout_height="19sp"
-        android:layout_marginLeft="193.5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="185.5sp"
         android:layout_marginTop="176.5sp"
-        android:text="Имя Фамилия" />
+        android:fontFamily="@font/inter_semibolt"
+        android:text="Имя Фамилия"
+        android:textColor="@color/text_color_1"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/DateOfBirth"
-        android:layout_width="51sp"
-        android:layout_height="15sp"
-        android:layout_marginLeft="193.5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="185.5sp"
         android:layout_marginTop="200.5sp"
-        android:text="дд.мм.гггг"
-        android:textColor="@color/input_field" />
+        android:fontFamily="@font/inter_regular"
+        android:text="дд.мм.гг"
+        android:textColor="#8D8D8D"
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/Mail"
-        android:layout_width="109sp"
-        android:layout_height="15sp"
-        android:layout_marginLeft="193.5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="185.5sp"
         android:layout_marginTop="220.5sp"
+        android:fontFamily="@font/inter_regular"
+        android:text="pochta@gmail.com"
         android:textColor="@color/text_color_1"
-        android:text="pochta@gmail.com" />
+        android:textSize="11sp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/ChangeDataButton"
-        android:layout_width="106sp"
-        android:layout_height="15sp"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="105sp"
+        android:layout_height="11sp"
         android:layout_marginLeft="75.5sp"
         android:layout_marginTop="285sp"
-        android:textColor="@color/text_color_1"
+        android:background="@drawable/change_data_button"
+        android:onClick="GoToChangeWindowActivity" />
+        <!--android:fontFamily="@font/inter_regular"
         android:text="Изменить данные"
-        android:onClick="GoToChangeWindowActivity"/>
+        android:textColor="@color/input_field"
+        android:textSize="12sp"-->
 
-    <Button
+
+    <ImageButton
         android:id="@+id/ExitButton"
-        android:layout_width="38sp"
-        android:layout_height="15sp"
+        android:layout_width="36sp"
+        android:layout_height="9sp"
         android:layout_marginLeft="261.5sp"
         android:layout_marginTop="285sp"
+        android:background="@drawable/exit_button"
+        android:onClick="Exit" />
+        <!--android:background="@android:color/transparent"
+        android:fontFamily="@font/inter_semibolt"
         android:text="Выйти"
-        android:onClick="Exit"/>
+        android:textColor="@color/input_field"
+        android:textSize="12sp" -->
 
-    <Button
+
+    <ImageButton
         android:id="@+id/ReportsButton"
+        android:onClick="GoToGraphicsActivity"
         android:layout_width="390sp"
         android:layout_height="46sp"
         android:layout_marginLeft="11sp"
         android:layout_marginTop="386sp"
         android:text="Отчеты"
+        android:background="@drawable/reports_button"
         android:textColorHint="#F3FEFA" />
 
-    <Button
+    <ImageButton
         android:id="@+id/SettingsButton"
         android:layout_width="390sp"
         android:layout_height="46sp"
         android:layout_marginLeft="11sp"
         android:layout_marginTop="459sp"
+        android:background="@drawable/settings_button"
         android:text="Настройки" />
+
 
 </RelativeLayout>
