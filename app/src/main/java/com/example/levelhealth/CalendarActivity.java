@@ -24,14 +24,14 @@ public class CalendarActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         CalendarView calendarView = findViewById(R.id.calendarView);
-        TextView date = findViewById(R.id.textView12);
-        date.setVisibility(View.INVISIBLE);
+//        TextView date = findViewById(R.id.textView12);
+//        date.setVisibility(View.INVISIBLE);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
             @Override
             public void onSelectedDayChange(CalendarView view, int year,
                                             int month, int dayOfMonth) {
-                TextView date = findViewById(R.id.textView12);
+//                TextView date = findViewById(R.id.textView12);
                 int mYear = year;
                 int mMonth = month;
                 int mDay = dayOfMonth;
@@ -39,8 +39,8 @@ public class CalendarActivity extends AppCompatActivity {
                         .append("-").append(mMonth + 1)
                         .append("-").append(mYear)
                         .append(" ").toString();
-                date.setText(selectedDate);
-                date.setVisibility(View.VISIBLE);
+//                date.setText(selectedDate);
+//                date.setVisibility(View.VISIBLE);
             }
         });
     }
