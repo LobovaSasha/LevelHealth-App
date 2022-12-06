@@ -1,38 +1,26 @@
 package com.example.levelhealth;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private RecyclerView daysRecycler;
+    private DayAdapter dayAdapter;
     private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13;
     private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10, iv11, iv12, iv13;
     private Integer smile_res = -1, sleep_res = -1, headache_res = -1;
@@ -42,6 +30,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
+
+        // Создание вручную списка дней, в дальнейшем через бд
+        List<Day> dayList = new ArrayList<>();
+
+        String[] weekDays = new String[]{"Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"};
+        for (int i = 0; i < 15; i++) {
+            System.out.println(weekDays[i % 7]);
+            dayList.add(new Day(i+1, weekDays[i % 7], String.valueOf(i+1)));
+
+        }
+
+        setDaysRecycler(dayList);
+        //
 
         iv1 = (ImageView) findViewById(R.id.image_view_smile1);
         iv2 = (ImageView) findViewById(R.id.image_view_smile2);
@@ -223,6 +224,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    // вернула метод и классы day и dayAdapter
+    private void setDaysRecycler(List<Day> dayList) {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+
+        daysRecycler = findViewById(R.id.daysRecycler);
+        daysRecycler.setLayoutManager(layoutManager);
+
+        dayAdapter = new DayAdapter(this, dayList);
+        daysRecycler.setAdapter(dayAdapter);
     }
 
 
