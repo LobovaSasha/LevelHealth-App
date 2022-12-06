@@ -5,15 +5,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13;
     private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10, iv11, iv12, iv13;
     private Integer smile_res = -1, sleep_res = -1, headache_res = -1;
+    private DatabaseReference mDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 iv3.setImageResource(R.drawable.smile0_2);
                 iv4.setImageResource(R.drawable.smile0_3);
                 smile_res = 0;
+                saveDB();
             }
         });
 
@@ -95,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 iv3.setImageResource(R.drawable.smile0_2);
                 iv4.setImageResource(R.drawable.smile0_3);
                 smile_res = 1;
+                saveDB();
             }
         });
 
@@ -106,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 iv3.setImageResource(R.drawable.smile1_2);
                 iv4.setImageResource(R.drawable.smile0_3);
                 smile_res = 2;
+                saveDB();
             }
         });
 
@@ -117,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 iv3.setImageResource(R.drawable.smile0_2);
                 iv4.setImageResource(R.drawable.smile1_3);
                 smile_res = 3;
+                saveDB();
             }
         });
 
@@ -128,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 iv7.setImageResource(R.drawable.sleep0_2);
                 iv8.setImageResource(R.drawable.sleep0_3);
                 sleep_res = 0;
+                saveDB();
             }
         });
 
@@ -139,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 iv7.setImageResource(R.drawable.sleep0_2);
                 iv8.setImageResource(R.drawable.sleep0_3);
                 sleep_res = 1;
+                saveDB();
             }
         });
 
@@ -150,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 iv7.setImageResource(R.drawable.sleep1_2);
                 iv8.setImageResource(R.drawable.sleep0_3);
                 sleep_res = 2;
+                saveDB();
             }
         });
 
@@ -161,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 iv7.setImageResource(R.drawable.sleep0_2);
                 iv8.setImageResource(R.drawable.sleep1_3);
                 sleep_res = 3;
+                saveDB();
             }
         });
 
@@ -173,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 iv12.setImageResource(R.drawable.headache0_4);
                 iv13.setImageResource(R.drawable.headache0_5);
                 headache_res = 1;
+                saveDB();
             }
         });
 
@@ -185,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
                 iv12.setImageResource(R.drawable.headache0_4);
                 iv13.setImageResource(R.drawable.headache0_5);
                 headache_res = 2;
+                saveDB();
             }
         });
 
@@ -197,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
                 iv12.setImageResource(R.drawable.headache0_4);
                 iv13.setImageResource(R.drawable.headache0_5);
                 headache_res = 3;
+                saveDB();
             }
         });
 
@@ -209,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
                 iv12.setImageResource(R.drawable.headache1_4);
                 iv13.setImageResource(R.drawable.headache0_5);
                 headache_res = 4;
+                saveDB();
             }
         });
 
@@ -221,8 +246,11 @@ public class MainActivity extends AppCompatActivity {
                 iv12.setImageResource(R.drawable.headache0_4);
                 iv13.setImageResource(R.drawable.headache1_5);
                 headache_res = 5;
+                saveDB();
             }
         });
+
+
 
     }
 
@@ -250,87 +278,85 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init(){
-        /*NameBDreg = findViewById(R.id.NameBDreg);
-        SurnameBDreg = findViewById(R.id.SurnameBDreg);
-        BirthBDreg = findViewById(R.id.BirthBDreg);
-        EmailBDreg = findViewById(R.id.EmailBDreg);
-        PasswordBDreg = findViewById(R.id.PasswordBDreg);
-        checkBox = findViewById(R.id.checkBox);
-        mDataBase = FirebaseDatabase.getInstance().getReference(USER_KEY);
-        mAuth = FirebaseAuth.getInstance();*/
-    }
-
-    public void SaveDB(View view) {
-        /*String id = mDataBase.getKey();
-        String user_name = NameBDreg.getText().toString();
-        String user_surname = SurnameBDreg.getText().toString();
-        String email = EmailBDreg.getText().toString();
-        String password = PasswordBDreg.getText().toString();
-        String birth = BirthBDreg.getText().toString();
-        if(!TextUtils.isEmpty(EmailBDreg.getText().toString()) && !TextUtils.isEmpty(PasswordBDreg.getText().toString()) && checkBox.isChecked()) {
-            mAuth.createUserWithEmailAndPassword(EmailBDreg.getText().toString(), PasswordBDreg.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        sendEmailVer();
-                        FirebaseUser cUser = mAuth.getCurrentUser();
-                        idtable = cUser.getUid();
-                        saveBD(id, idtable, user_name, user_surname, email, birth);
-                    } else
-                        Toast.makeText(getApplicationContext(), "Регистрация не удалась, проверьте данные и попробуйте еще раз", Toast.LENGTH_SHORT).show();
-                }
-            });
-            Intent intent = new Intent(this, RegistrationActivity.class);
-            startActivity(intent);
-        }
-        else Toast.makeText(this, "Заполните пустые поля", Toast.LENGTH_SHORT).show();*/
-    }
-
-    private void saveBD(String id, String idtable, String username, String usersurname, String email, String birth){
-        /*final DatabaseReference RootRef;
+        mDataBase = FirebaseDatabase.getInstance().getReference("Condition");
+        mAuth = FirebaseAuth.getInstance();
+        final DatabaseReference RootRef;
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String date = formatter.format(calendar.getTime());
+        FirebaseUser cUser = mAuth.getCurrentUser();
+        String idtable = cUser.getUid();
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!(snapshot.child("User").child(idtable).exists())){
-                    HashMap<String, Object> userDataMap = new HashMap<>();
-                    userDataMap.put("id", id);
-                    userDataMap.put("idtable", idtable);
-                    userDataMap.put("Name", username);
-                    userDataMap.put("Surname", usersurname);
-                    userDataMap.put("Email", email);
-                    userDataMap.put("Birth", birth);
-
-                    RootRef.child("User").child(idtable).updateChildren(userDataMap);
+                if(snapshot.child("Condition").child(idtable).child(date).exists()){
+                    String mood = snapshot.child("Condition").child(idtable).child(date).child("Mood").getValue().toString();
+                    String sleep = snapshot.child("Condition").child(idtable).child(date).child("SleepTime").getValue().toString();
+                    String headache = snapshot.child("Condition").child(idtable).child(date).child("Headache").getValue().toString();
+                    if (mood.equals("0")) {
+                        iv1.setImageResource(R.drawable.smile1_0);
+                    } else if (mood.equals("1")) {
+                        iv2.setImageResource(R.drawable.smile1_1);
+                    } else if (mood.equals("2")) {
+                        iv3.setImageResource(R.drawable.smile1_2);
+                    } else if (mood.equals("3")) {
+                        iv4.setImageResource(R.drawable.smile1_3);
+                    }
+                    if (sleep.equals("0")) {
+                        iv5.setImageResource(R.drawable.sleep1_0);
+                    } else if (sleep.equals("1")) {
+                        iv6.setImageResource(R.drawable.sleep1_1);
+                    } else if (sleep.equals("2")) {
+                        iv7.setImageResource(R.drawable.sleep1_2);
+                    } else if (sleep.equals("3")) {
+                        iv8.setImageResource(R.drawable.sleep1_3);
+                    }
+                    if (headache.equals("1")) {
+                        iv9.setImageResource(R.drawable.headache1_1);
+                    } else if (headache.equals("2")) {
+                        iv10.setImageResource(R.drawable.headache1_2);
+                    } else if (headache.equals("3")) {
+                        iv11.setImageResource(R.drawable.headache1_3);
+                    } else if (headache.equals("4")) {
+                        iv12.setImageResource(R.drawable.headache1_4);
+                    } else if (headache.equals("5")) {
+                        iv13.setImageResource(R.drawable.headache1_5);
+                    }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, "E-mail" + email +"зарегистрирован", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Ошибка", Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
     }
 
-    public void onFirstSmile(View view) {
-        /*group_120 = findViewById(R.id.group_120);
-        group_121 = findViewById(R.id.group_121);
-        group_122 = findViewById(R.id.group_122);
-        group_123 = findViewById(R.id.group_123);
+    private void saveDB(){
+        final DatabaseReference RootRef;
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String date = formatter.format(calendar.getTime());
+        FirebaseUser cUser = mAuth.getCurrentUser();
+        String idtable = cUser.getUid();
+        RootRef = FirebaseDatabase.getInstance().getReference();
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                HashMap<String, Object> userDataMap = new HashMap<>();
+                userDataMap.put("Mood", smile_res);
+                userDataMap.put("SleepTime", sleep_res);
+                userDataMap.put("Headache", headache_res);
 
-        group_120.setBackground(Drawable.createFromPath("@drawable/group_122"));*/
-    }
+                RootRef.child("Condition").child(idtable).child(date).updateChildren(userDataMap);
+            }
 
-    public void onSecondSmile(View view) {
-
-    }
-
-    public void onThirdSmile(View view) {
-
-    }
-
-    public void onForthSmile(View view) {
-
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, "Ошибка", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void GoToCalendarActivity(View view) {
