@@ -25,4 +25,5 @@
     <string name="confirm_email">Подтвердить почту</string>
     <string name="new_pass">Введите новый пароль</string>
     <string name="reset_pass">Сбросить пароль</string>
+    <string name="headache">Головная боль</string>
 </resources>

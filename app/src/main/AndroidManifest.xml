@@ -69,13 +69,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ChartsActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ChangeWindowActivity"
             android:exported="false">
             <meta-data
