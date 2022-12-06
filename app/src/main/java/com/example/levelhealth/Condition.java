@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class Condition {
 
-    public String date;
     public int mood;
     public int sleep;
     public int headache;
@@ -14,33 +13,17 @@ public class Condition {
 
     public Condition() {}
 
-    public Condition(String date, int mood, int sleep, int headache) {
-        this.date = date;
+    public Condition(int mood, int sleep, int headache) {
         this.mood = mood;
         this.sleep = sleep;
         this.headache = headache;
     }
 
     public String unwrap() {
-        return "Condition{date="+date+
+        return "Condition{idx="+idx+
                 ", mood="+mood+
                 ", sleep="+sleep+
                 ", headache="+headache+"}";
-    }
-
-    public String day() {
-        SimpleDateFormat formatter = new SimpleDateFormat("E");
-        return formatter.format(date());
-    }
-
-    public Date date() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
-        try {
-            return formatter.parse(date);
-        }
-        catch (Exception e) {
-            return new Date();
-        }
     }
 
     public int getMood() {
@@ -67,11 +50,4 @@ public class Condition {
         this.headache = headache;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }

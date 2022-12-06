@@ -59,9 +59,22 @@ public class GraphicsActivity extends AppCompatActivity {
     List<String> days = Arrays.asList("пн", "вт", "ср", "чт", "пт", "сб", "вс");
 
     SimpleDateFormat dayOfWeekFormatter = new SimpleDateFormat("E");
-    SimpleDateFormat fullDateFormatter = new SimpleDateFormat("dd.MM.yyyy");
+    SimpleDateFormat fullDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
     ArrayList<String> weekDates = new ArrayList<>();
     String today = "";
+
+    public void init() {
+        sleep = findViewById(R.id.sleep);
+        mood = findViewById(R.id.mood);
+        back = findViewById(R.id.back);
+
+        Calendar calendar = Calendar.getInstance();
+        for (int i=0; i<7; i++) {
+            weekDates.add(fullDateFormatter.format(calendar.getTime()));
+            calendar.roll(Calendar.DATE, -1);
+        }
+        Collections.reverse(weekDates);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,31 +96,31 @@ public class GraphicsActivity extends AppCompatActivity {
 
         String user_id = cUser.getUid();
 
+//        dbCond.child(user_id).child("02-12-2022").setValue(new Condition(4, 5, 3));
+
         dbCond.child(user_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Condition> table = new ArrayList<>();
-                int ct = 0;
+                // проходим по бд, и смотрим текущую строку, есть ли ее дата в списке дат на неделю,
+                // и, если да, одновременно получаем индекс
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    ct += 1;
-                    if (ct > 7) break;
-                    table.add(ds.getValue(Condition.class));
-                }
-
-                ArrayList<Condition> week = new ArrayList<>();
-                for (int i=0; i<weekDates.size(); i++) {
-                    for (Condition el : table) {
-                        if (el.date.equals(weekDates.get(i))) {
+                    for (int i=0; i<weekDates.size(); i++) {
+                        if (ds.getKey().equals(weekDates.get(i))) {
+                            Condition el = ds.getValue(Condition.class);
                             el.idx = i;
-                            week.add(el);
+                            table.add(el);
+                            Log.d("EL", el.unwrap());
                             break;
                         }
                     }
                 }
 
+                Log.d("SIZE", table.size()+"");
+
                 // создаем графики
-                buildGraphics(week);
-                buildGraphicHeadHeart(week);
+                buildGraphics(table);
+                buildGraphicHeadHeart(table);
 
             }
 
@@ -117,20 +130,6 @@ public class GraphicsActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-
-    public void init() {
-        sleep = findViewById(R.id.sleep);
-        mood = findViewById(R.id.mood);
-        back = findViewById(R.id.back);
-
-        Calendar calendar = Calendar.getInstance();
-        for (int i=0; i<7; i++) {
-            weekDates.add(fullDateFormatter.format(calendar.getTime()));
-            calendar.roll(Calendar.DATE, -1);
-        }
-        Collections.reverse(weekDates);
     }
 
     public void buildGraphicHeadHeart(ArrayList<Condition> table) {
