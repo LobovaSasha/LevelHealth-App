@@ -13,7 +13,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="58dp"
-        android:background="@drawable/back"
+        android:background="@drawable/icon_back_arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:onClick="GoToMainActivity"/>
@@ -38,7 +38,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="358sp"
         android:layout_marginTop="52dp"
-        android:background="@drawable/menu_button"
+        android:background="@drawable/icon_menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:onClick="GoToMainActivity"/>

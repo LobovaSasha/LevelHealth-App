@@ -71,7 +71,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Регистрация не удалась, проверьте данные и попробуйте еще раз", Toast.LENGTH_SHORT).show();
                 }
             });
-            Intent intent = new Intent(this, RegistrationActivity.class);
+            Intent intent = new Intent(this, SignInActivity.class);
             startActivity(intent);
         }
         else Toast.makeText(this, "Заполните пустые поля", Toast.LENGTH_SHORT).show();
