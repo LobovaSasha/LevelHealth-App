@@ -252,8 +252,8 @@ public class GraphicsActivity extends AppCompatActivity {
         });
 
         YAxis yAxis = lineChart.getAxisLeft();
-        yAxis.setAxisMinimum(1);
-        yAxis.setAxisMaximum(5);
+        yAxis.setAxisMinimum(-1);
+        yAxis.setAxisMaximum(3);
         yAxis.setGranularity(1f);
     }
 
