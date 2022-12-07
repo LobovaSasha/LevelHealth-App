@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private RecyclerView daysRecycler;
     private DayAdapter dayAdapter;
-    private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13;
     private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10, iv11, iv12, iv13;
     private Integer smile_res = -1, sleep_res = -1, headache_res = 0;
     private DatabaseReference mDataBase;
@@ -73,21 +72,21 @@ public class MainActivity extends AppCompatActivity {
         iv12 = (ImageView) findViewById(R.id.image_view_headache4);
         iv13 = (ImageView) findViewById(R.id.image_view_headache5);
 
-        b1 = (Button) findViewById(R.id.button_smile1);
-        b2 = (Button) findViewById(R.id.button_smile2);
-        b3 = (Button) findViewById(R.id.button_smile3);
-        b4 = (Button) findViewById(R.id.button_smile4);
+        Button b1 = (Button) findViewById(R.id.button_smile1);
+        Button b2 = (Button) findViewById(R.id.button_smile2);
+        Button b3 = (Button) findViewById(R.id.button_smile3);
+        Button b4 = (Button) findViewById(R.id.button_smile4);
 
-        b5 = (Button) findViewById(R.id.button_sleep1);
-        b6 = (Button) findViewById(R.id.button_sleep2);
-        b7 = (Button) findViewById(R.id.button_sleep3);
-        b8 = (Button) findViewById(R.id.button_sleep4);
+        Button b5 = (Button) findViewById(R.id.button_sleep1);
+        Button b6 = (Button) findViewById(R.id.button_sleep2);
+        Button b7 = (Button) findViewById(R.id.button_sleep3);
+        Button b8 = (Button) findViewById(R.id.button_sleep4);
 
-        b9 = (Button) findViewById(R.id.button_headache1);
-        b10 = (Button) findViewById(R.id.button_headache2);
-        b11 = (Button) findViewById(R.id.button_headache3);
-        b12 = (Button) findViewById(R.id.button_headache4);
-        b13 = (Button) findViewById(R.id.button_headache5);
+        Button b9 = (Button) findViewById(R.id.button_headache1);
+        Button b10 = (Button) findViewById(R.id.button_headache2);
+        Button b11 = (Button) findViewById(R.id.button_headache3);
+        Button b12 = (Button) findViewById(R.id.button_headache4);
+        Button b13 = (Button) findViewById(R.id.button_headache5);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -164,7 +164,8 @@
                     android:id="@+id/hlvl1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/headache_lvl"
+                    android:paddingHorizontal="5dp"
+                    android:src="@drawable/headache_1"
                     />
 
 
@@ -188,7 +189,8 @@
                     android:id="@+id/hlvl2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/headache_lvl"
+                    android:src="@drawable/headache_1"
+                    android:paddingHorizontal="5dp"
                     />
             </LinearLayout>
 
@@ -210,7 +212,8 @@
                     android:id="@+id/hlvl3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/headache_lvl"
+                    android:src="@drawable/headache_1"
+                    android:paddingHorizontal="5dp"
                     />
             </LinearLayout>
 
@@ -232,7 +235,8 @@
                     android:id="@+id/hlvl4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/headache_lvl"
+                    android:src="@drawable/headache_1"
+                    android:paddingHorizontal="5dp"
                     />
             </LinearLayout>
 
@@ -254,7 +258,8 @@
                     android:id="@+id/hlvl5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/headache_lvl"
+                    android:src="@drawable/headache_1"
+                    android:paddingHorizontal="5dp"
                     />
             </LinearLayout>
 
@@ -276,7 +281,8 @@
                     android:id="@+id/hlvl6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/headache_lvl"
+                    android:src="@drawable/headache_1"
+                    android:paddingHorizontal="5dp"
                     />
             </LinearLayout>
 
@@ -298,7 +304,8 @@
                     android:id="@+id/hlvl7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/headache_lvl"
+                    android:src="@drawable/headache_1"
+                    android:paddingHorizontal="5dp"
                     />
             </LinearLayout>
         </LinearLayout>

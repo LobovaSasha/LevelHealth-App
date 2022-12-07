@@ -46,6 +46,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class GraphicsActivity extends AppCompatActivity {
 
@@ -69,7 +70,7 @@ public class GraphicsActivity extends AppCompatActivity {
         back = findViewById(R.id.back);
 
         Calendar calendar = Calendar.getInstance();
-        for (int i=0; i<7; i++) {
+        for (int i = 0; i < 7; i++) {
             weekDates.add(fullDateFormatter.format(calendar.getTime()));
             calendar.roll(Calendar.DATE, -1);
         }
@@ -94,6 +95,7 @@ public class GraphicsActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        assert cUser != null;
         String user_id = cUser.getUid();
 
 //        dbCond.child(user_id).child("02-12-2022").setValue(new Condition(4, 5, 3));
@@ -106,7 +108,7 @@ public class GraphicsActivity extends AppCompatActivity {
                 // и, если да, одновременно получаем индекс
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     for (int i = 0; i < weekDates.size(); i++) {
-                        if (ds.getKey().equals(weekDates.get(i))) {
+                        if (Objects.equals(ds.getKey(), weekDates.get(i))) {
                             Condition el = ds.getValue(Condition.class);
                             el.idx = i;
                             table.add(el);
@@ -116,7 +118,7 @@ public class GraphicsActivity extends AppCompatActivity {
                     }
                 }
 
-                Log.d("SIZE", table.size()+"");
+                Log.d("SIZE", table.size() + "");
 
                 // создаем графики
                 buildGraphics(table);
@@ -166,7 +168,7 @@ public class GraphicsActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
         for (int i = 0; i < 7; i++) {
-            daysView[6 - i].setText(""+calendar.get(Calendar.DATE));
+            daysView[6 - i].setText("" + calendar.get(Calendar.DATE));
             calendar.roll(Calendar.DATE, -1);
             GradientDrawable src = (GradientDrawable)hlvls[i].getDrawable();
             src.setColor(Color.parseColor(acheColor.get(0)));
@@ -252,8 +254,8 @@ public class GraphicsActivity extends AppCompatActivity {
         });
 
         YAxis yAxis = lineChart.getAxisLeft();
-        yAxis.setAxisMinimum(-1);
-        yAxis.setAxisMaximum(3);
+        yAxis.setAxisMinimum((float) -1.1);
+        yAxis.setAxisMaximum((float) 3.1);
         yAxis.setGranularity(1f);
     }
 
