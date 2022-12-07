@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private DayAdapter dayAdapter;
     private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13;
     private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10, iv11, iv12, iv13;
-    private Integer smile_res = -1, sleep_res = -1, headache_res = -1;
+    private Integer smile_res = -1, sleep_res = -1, headache_res = 0;
     private DatabaseReference mDataBase;
 
     @Override
@@ -291,9 +291,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("Condition").child(idtable).child(date).exists()){
-                    String mood = snapshot.child("Condition").child(idtable).child(date).child("Mood").getValue().toString();
-                    String sleep = snapshot.child("Condition").child(idtable).child(date).child("SleepTime").getValue().toString();
-                    String headache = snapshot.child("Condition").child(idtable).child(date).child("Headache").getValue().toString();
+                    String mood = snapshot.child("Condition").child(idtable).child(date).child("mood").getValue().toString();
+                    String sleep = snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue().toString();
+                    String headache = snapshot.child("Condition").child(idtable).child(date).child("headache").getValue().toString();
                     if (mood.equals("0")) {
                         iv1.setImageResource(R.drawable.smile1_0);
                     } else if (mood.equals("1")) {
@@ -345,9 +345,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 HashMap<String, Object> userDataMap = new HashMap<>();
-                userDataMap.put("Mood", smile_res);
-                userDataMap.put("SleepTime", sleep_res);
-                userDataMap.put("Headache", headache_res);
+                userDataMap.put("mood", smile_res);
+                userDataMap.put("sleep", sleep_res);
+                userDataMap.put("headache", headache_res);
 
                 RootRef.child("Condition").child(idtable).child(date).updateChildren(userDataMap);
             }

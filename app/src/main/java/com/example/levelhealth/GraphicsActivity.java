@@ -105,7 +105,7 @@ public class GraphicsActivity extends AppCompatActivity {
                 // проходим по бд, и смотрим текущую строку, есть ли ее дата в списке дат на неделю,
                 // и, если да, одновременно получаем индекс
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    for (int i=0; i<weekDates.size(); i++) {
+                    for (int i = 0; i < weekDates.size(); i++) {
                         if (ds.getKey().equals(weekDates.get(i))) {
                             Condition el = ds.getValue(Condition.class);
                             el.idx = i;
@@ -165,8 +165,8 @@ public class GraphicsActivity extends AppCompatActivity {
         acheColor.put(5, "#216563");
 
         Calendar calendar = Calendar.getInstance();
-        for (int i=0; i<7; i++) {
-            daysView[6-i].setText(""+calendar.get(Calendar.DATE));
+        for (int i = 0; i < 7; i++) {
+            daysView[6 - i].setText(""+calendar.get(Calendar.DATE));
             calendar.roll(Calendar.DATE, -1);
             GradientDrawable src = (GradientDrawable)hlvls[i].getDrawable();
             src.setColor(Color.parseColor(acheColor.get(0)));
@@ -187,7 +187,7 @@ public class GraphicsActivity extends AppCompatActivity {
 
         // заполняем датасет пустышек (для сохранения размера графика)
         ArrayList<BarEntry> empties = new ArrayList<>();
-        for (int i=0; i<7; i++) {
+        for (int i = 0; i < 7; i++) {
             empties.add(new BarEntry(i, 1));
         }
         BarDataSet barDataSet = new BarDataSet(empties, "");
@@ -231,8 +231,8 @@ public class GraphicsActivity extends AppCompatActivity {
     public void customizeGraphics(CombinedChart lineChart) {
         int idx = days.indexOf(today);
         String[] daysTxt = new String[7];
-        for (int i=0; i<7; i++) {
-            daysTxt[6-i] = days.get((idx+7-i)%7);
+        for (int i = 0; i < 7; i++) {
+            daysTxt[6 - i] = days.get((idx + 7 - i) % 7);
 
         }
         lineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(daysTxt)); // навесить дни вместо чисел на оси X
@@ -252,8 +252,8 @@ public class GraphicsActivity extends AppCompatActivity {
         });
 
         YAxis yAxis = lineChart.getAxisLeft();
-        yAxis.setAxisMinimum(1);
-        yAxis.setAxisMaximum(5);
+        yAxis.setAxisMinimum(-1);
+        yAxis.setAxisMaximum(3);
         yAxis.setGranularity(1f);
     }
 
