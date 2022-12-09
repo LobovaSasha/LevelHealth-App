@@ -29,7 +29,7 @@
         android:elevation="5dp"
         android:ems="10"
 
-        android:hint="Имя Фамилия"
+        android:hint="Имя"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -40,6 +40,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/surname"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/edit_number_style"
+        android:elevation="5dp"
+
+        android:ems="10"
+        android:hint="Фамилия"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:paddingStart="15dp"
+
+        android:textColor="@color/text_color_1"
+        android:textColorHint="@color/input_field"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
         android:id="@+id/birthday"
@@ -62,53 +85,32 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/surname" />
 
-    <EditText
-        android:id="@+id/address"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/edit_number_style"
-        android:elevation="5dp"
 
-        android:ems="10"
-        android:hint="E-mail"
-        android:inputType="textEmailAddress"
-        android:padding="10dp"
-        android:paddingStart="15dp"
 
-        android:textColor="@color/text_color_1"
-        android:textColorHint="@color/input_field"
+    <!--    <EditText-->
+    <!--        android:id="@+id/editTextPhone"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="55dp"-->
+    <!--        android:layout_marginStart="40dp"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:layout_marginEnd="40dp"-->
+    <!--        android:background="@drawable/edit_number_style"-->
+    <!--        android:elevation="5dp"-->
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthday" />
+    <!--        android:ems="10"-->
+    <!--        android:hint="+7 (***) *** ** **"-->
+    <!--        android:inputType="phone"-->
+    <!--        android:padding="10dp"-->
+    <!--        android:paddingStart="15dp"-->
 
-<!--    <EditText-->
-<!--        android:id="@+id/editTextPhone"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="55dp"-->
-<!--        android:layout_marginStart="40dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_marginEnd="40dp"-->
-<!--        android:background="@drawable/edit_number_style"-->
-<!--        android:elevation="5dp"-->
+    <!--        android:textColorHint="@color/input_field"-->
+    <!--        android:textColor="@color/text_color_1"-->
 
-<!--        android:ems="10"-->
-<!--        android:hint="+7 (***) *** ** **"-->
-<!--        android:inputType="phone"-->
-<!--        android:padding="10dp"-->
-<!--        android:paddingStart="15dp"-->
-
-<!--        android:textColorHint="@color/input_field"-->
-<!--        android:textColor="@color/text_color_1"-->
-
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/address" />-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/address" />-->
 
     <TextView
         android:id="@+id/textView"
@@ -124,7 +126,7 @@
 
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address"
+        app:layout_constraintTop_toBottomOf="@+id/birthday"
         tools:ignore="MissingConstraints" />
 
     <Switch
@@ -189,7 +191,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smoking"
-        android:onClick="GoToMainActivity"/>
+        android:onClick="saveDataChange"/>
 
     <Button
         android:id="@+id/back"
