@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.charts.LineChart;
@@ -235,8 +236,8 @@ public class GraphicsActivity extends AppCompatActivity {
         String[] daysTxt = new String[7];
         for (int i = 0; i < 7; i++) {
             daysTxt[6 - i] = days.get((idx + 7 - i) % 7);
-
         }
+        Log.d("IDX", idx + "");
         lineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(daysTxt)); // навесить дни вместо чисел на оси X
         lineChart.setTouchEnabled(false); // сделать график некликабельным
         lineChart.getAxisRight().setEnabled(false); // удалить правую ось Y
@@ -254,7 +255,7 @@ public class GraphicsActivity extends AppCompatActivity {
         });
 
         YAxis yAxis = lineChart.getAxisLeft();
-        yAxis.setAxisMinimum((float) -1.1);
+        yAxis.setAxisMinimum((float) -1);
         yAxis.setAxisMaximum((float) 3.1);
         yAxis.setGranularity(1f);
     }

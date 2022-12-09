@@ -295,32 +295,45 @@ public class MainActivity extends AppCompatActivity {
                     String headache = snapshot.child("Condition").child(idtable).child(date).child("headache").getValue().toString();
                     if (mood.equals("0")) {
                         iv1.setImageResource(R.drawable.smile1_0);
+                        smile_res = 0;
                     } else if (mood.equals("1")) {
                         iv2.setImageResource(R.drawable.smile1_1);
+                        smile_res = 1;
                     } else if (mood.equals("2")) {
                         iv3.setImageResource(R.drawable.smile1_2);
+                        smile_res = 2;
                     } else if (mood.equals("3")) {
                         iv4.setImageResource(R.drawable.smile1_3);
+                        smile_res = 3;
                     }
                     if (sleep.equals("0")) {
                         iv5.setImageResource(R.drawable.sleep1_0);
+                        sleep_res = 0;
                     } else if (sleep.equals("1")) {
                         iv6.setImageResource(R.drawable.sleep1_1);
+                        sleep_res = 1;
                     } else if (sleep.equals("2")) {
                         iv7.setImageResource(R.drawable.sleep1_2);
+                        sleep_res = 2;
                     } else if (sleep.equals("3")) {
                         iv8.setImageResource(R.drawable.sleep1_3);
+                        sleep_res = 3;
                     }
                     if (headache.equals("1")) {
                         iv9.setImageResource(R.drawable.headache1_1);
+                        headache_res = 1;
                     } else if (headache.equals("2")) {
                         iv10.setImageResource(R.drawable.headache1_2);
+                        headache_res = 2;
                     } else if (headache.equals("3")) {
                         iv11.setImageResource(R.drawable.headache1_3);
+                        headache_res = 3;
                     } else if (headache.equals("4")) {
                         iv12.setImageResource(R.drawable.headache1_4);
+                        headache_res = 4;
                     } else if (headache.equals("5")) {
                         iv13.setImageResource(R.drawable.headache1_5);
+                        headache_res = 5;
                     }
                 }
             }
@@ -347,7 +360,6 @@ public class MainActivity extends AppCompatActivity {
                 userDataMap.put("mood", smile_res);
                 userDataMap.put("sleep", sleep_res);
                 userDataMap.put("headache", headache_res);
-
                 RootRef.child("Condition").child(idtable).child(date).updateChildren(userDataMap);
             }
 

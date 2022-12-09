@@ -3,6 +3,7 @@ package com.example.levelhealth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class MenuActivity extends AppCompatActivity {
         final DatabaseReference ref;
         ref = FirebaseDatabase.getInstance().getReference("User").child(id);
         ref.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String fio = snapshot.child("Name").getValue().toString();
