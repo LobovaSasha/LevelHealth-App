@@ -1,29 +1,33 @@
 package com.example.levelhealth;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Condition {
 
+    public String day;
     public int mood;
     public int sleep;
     public int headache;
-
-    public int idx = -1;
+    public int user_id;
 
     public Condition() {}
 
-    public Condition(int mood, int sleep, int headache) {
+    public Condition(String date, int mood, int sleep, int headache, int user_id) {
+        this.day = date;
         this.mood = mood;
         this.sleep = sleep;
         this.headache = headache;
+        this.user_id = user_id;
     }
 
     public String unwrap() {
-        return "Condition{idx="+idx+
+        return "Condition{date="+day+
                 ", mood="+mood+
                 ", sleep="+sleep+
-                ", headache="+headache+"}";
+                ", headache="+headache+
+                ", user_id="+user_id+"}";
+    }
+
+    public String getDate() {
+        return day;
     }
 
     public int getMood() {
@@ -38,6 +42,14 @@ public class Condition {
         return headache;
     }
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setDate(String date) {
+        this.day = date;
+    }
+
     public void setMood(int mood) {
         this.mood = mood;
     }
@@ -50,4 +62,7 @@ public class Condition {
         this.headache = headache;
     }
 
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 }
