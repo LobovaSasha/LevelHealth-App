@@ -8,15 +8,14 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/BackButtonCalendar"
+        android:id="@+id/back"
         android:layout_width="20dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/icon_back_arrow"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="GoToMainActivity"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
     <CalendarView
@@ -31,8 +30,8 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BackButtonCalendar" />
-
+        app:layout_constraintTop_toBottomOf="@+id/back" />
+<!--
     <Button
         android:id="@+id/MenuButtonCalendar"
         android:layout_width="25dp"
@@ -40,10 +39,10 @@
         android:layout_marginTop="52dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/icon_menu"
-        android:onClick="GoToMainActivity"
+        android:onClick="GoToMenuActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+-->
 
     <LinearLayout
         android:layout_width="match_parent"

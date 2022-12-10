@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,11 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 public class MenuActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    Button back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_menu);
         FirebaseUser cUser = mAuth.getCurrentUser();
         String id = cUser.getUid();
@@ -75,13 +76,13 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void GoToMainActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void GoToGraphicsActivity(View view) {
+        Intent intent = new Intent(this, GraphicsActivity.class);
         startActivity(intent);
     }
 
-    public void GoToGraphicsActivity(View view) {
-        Intent intent = new Intent(this, GraphicsActivity.class);
+    public void GoToMainActivity(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

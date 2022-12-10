@@ -37,9 +37,6 @@ public class SignInActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-        else {
-            Toast.makeText(this, "Войдите или зарегистрируйтесь", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void GoToRegistrationActivity(View view) {
@@ -70,7 +67,6 @@ public class SignInActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     FirebaseUser user = mAuth.getCurrentUser();
                     if (task.isSuccessful() && user.isEmailVerified()) {
-                        Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                     } else {

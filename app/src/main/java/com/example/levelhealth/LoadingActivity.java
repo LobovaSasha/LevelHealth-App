@@ -21,9 +21,13 @@ public class LoadingActivity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
+        assert mAuth != null;
         FirebaseUser cUser = mAuth.getCurrentUser();
-        if(cUser==null) {
+        if(cUser != null && cUser.isEmailVerified()){
             Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, SignInActivity.class);
             startActivity(intent);
         }
     }

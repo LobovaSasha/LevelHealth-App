@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,12 +29,17 @@ public class CalendarActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     ImageView moodImg, sleepImg, headacheImg;
     String date, idtable;
+    Button back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         mAuth = FirebaseAuth.getInstance();
+        init();
+        back.setOnClickListener(v -> {
+            onBackPressed();
+        });
 
         CalendarView calendarView = findViewById(R.id.calendarView);
 
@@ -70,10 +76,10 @@ public class CalendarActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         date = formatter.format(calendar.getTime());
-        init();
     }
 
     public void init(){
+        back = findViewById(R.id.back);
         mAuth = FirebaseAuth.getInstance();
         DatabaseReference RootRef;
         FirebaseUser cUser = mAuth.getCurrentUser();
@@ -124,6 +130,10 @@ public class CalendarActivity extends AppCompatActivity {
                     } else {
                         headacheImg.setVisibility(View.VISIBLE);
                     }
+                } else {
+                    moodImg.setVisibility(View.INVISIBLE);
+                    sleepImg.setVisibility(View.INVISIBLE);
+                    headacheImg.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -132,11 +142,6 @@ public class CalendarActivity extends AppCompatActivity {
                 Toast.makeText(CalendarActivity.this, "Ошибка", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    public void GoToMainActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     public void GoToMenuActivity(View view) {
