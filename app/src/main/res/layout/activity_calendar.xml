@@ -21,12 +21,13 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="347sp"
-        android:layout_height="308sp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="38dp"
-        android:background="@drawable/calendarstyle"
-        android:elevation="10sp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_number_style"
+        android:elevation="3dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,79 +37,87 @@
         android:id="@+id/MenuButtonCalendar"
         android:layout_width="25dp"
         android:layout_height="20dp"
-        android:layout_marginStart="358sp"
         android:layout_marginTop="52dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/icon_menu"
+        android:onClick="GoToMainActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="GoToMainActivity"/>
+        app:layout_constraintTop_toBottomOf="@+id/calendarView">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginStart="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_number_style"
+            android:elevation="3dp">
 
-    <View
-        android:id="@+id/moodBg"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/calendar_btn_bg"
-        android:elevation="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+            <ImageView
+                android:id="@+id/moodImg"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/smile1_2"
+                android:translationZ="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/sleepBg"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/calendar_btn_bg"
-        android:elevation="5dp"
-        app:layout_constraintStart_toEndOf="@+id/moodBg"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_number_style"
+            android:elevation="3dp">
 
-    <View
-        android:id="@+id/headacheBg"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/calendar_btn_bg"
-        android:elevation="5dp"
-        app:layout_constraintStart_toEndOf="@+id/sleepBg"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+            <ImageView
+                android:id="@+id/sleepImg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/sleep1_1"
+                android:translationZ="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/moodImg"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/smile1_2"
-        android:translationZ="100dp"
-        app:layout_constraintStart_toStartOf="@+id/moodBg"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginEnd="32dp"
+            android:layout_weight="1"
+            android:background="@drawable/edit_number_style"
+            android:elevation="3dp">
 
-    <ImageView
-        android:id="@+id/sleepImg"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/sleep1_1"
-        android:translationZ="100dp"
-        app:layout_constraintStart_toStartOf="@+id/sleepBg"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
-
-    <ImageView
-        android:id="@+id/headacheImg"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/headache"
-        android:translationZ="100dp"
-        app:layout_constraintStart_toStartOf="@+id/headacheBg"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+            <ImageView
+                android:id="@+id/headacheImg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/headache"
+                android:translationZ="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <!--
         <View

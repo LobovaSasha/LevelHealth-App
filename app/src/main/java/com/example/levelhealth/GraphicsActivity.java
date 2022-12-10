@@ -47,6 +47,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class GraphicsActivity extends AppCompatActivity {
@@ -60,7 +61,7 @@ public class GraphicsActivity extends AppCompatActivity {
 
     List<String> days = Arrays.asList("пн", "вт", "ср", "чт", "пт", "сб", "вс");
 
-    SimpleDateFormat dayOfWeekFormatter = new SimpleDateFormat("E");
+    SimpleDateFormat dayOfWeekFormatter = new SimpleDateFormat("E", new Locale("ru"));
     SimpleDateFormat fullDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
     ArrayList<String> weekDates = new ArrayList<>();
     String today = "";
@@ -236,6 +237,9 @@ public class GraphicsActivity extends AppCompatActivity {
         String[] daysTxt = new String[7];
         for (int i = 0; i < 7; i++) {
             daysTxt[6 - i] = days.get((idx + 7 - i) % 7);
+        }
+        for (int i = 0; i < 7; i++) {
+            Log.d("day", daysTxt[i] + "");
         }
         Log.d("IDX", idx + "");
         lineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(daysTxt)); // навесить дни вместо чисел на оси X

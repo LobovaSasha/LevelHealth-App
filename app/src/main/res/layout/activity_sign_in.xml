@@ -116,6 +116,7 @@
         android:textColor="@color/stroke_text"
         android:textSize="10sp"
         android:text="Забыли пароль?"
+        android:onClick="GoToPasswordRecoveryActivity"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

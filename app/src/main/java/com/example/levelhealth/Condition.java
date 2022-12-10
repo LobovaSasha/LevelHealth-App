@@ -7,7 +7,7 @@ public class Condition {
     public int sleep;
     public int headache;
     public int user_id;
-    public int idx;
+    public int idx = -1;
 
     public Condition() {}
 

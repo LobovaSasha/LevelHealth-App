@@ -52,6 +52,11 @@ public class SignInActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void GoToPasswordRecoveryActivity(View view) {
+        Intent intent = new Intent(this, PasswordRecoveryActivity.class);
+        startActivity(intent);
+    }
+
     public void init(){
         EmailBDent = findViewById(R.id.EmailBDent);
         PasswordBDent = findViewById(R.id.PasswordBDent);
@@ -70,7 +75,7 @@ public class SignInActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Вход не произведен, подтвердите email и проверьте данные", Toast.LENGTH_SHORT).show();
-                        Log.d("USER", user!=null ? user.getEmail():"user == null");
+                        Log.d("USER", user != null ? user.getEmail():"user == null");
                     }
                 }
             });

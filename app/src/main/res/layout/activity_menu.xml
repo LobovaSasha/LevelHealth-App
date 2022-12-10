@@ -43,7 +43,7 @@
     <TextView
         android:id="@+id/NameSurname"
         android:textColor="@color/text_color_1"
-        android:layout_width="111sp"
+        android:layout_width="150sp"
         android:layout_height="19sp"
         android:layout_marginLeft="193.5sp"
         android:layout_marginTop="176.5sp"
@@ -98,15 +98,14 @@
     <Button
         android:id="@+id/ReportsButton"
         android:onClick="GoToGraphicsActivity"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_below="@+id/UserFrame"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginLeft="11sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="10dp"
         android:paddingVertical="10dp"
         android:background="@android:color/transparent"
         android:drawableRight="@drawable/icon_button_arrow"
@@ -114,7 +113,7 @@
         android:text="@string/menu_user_reports"
         android:textAlignment="textStart"
         android:textColorHint="#F3FEFA" />
-
+<!--
     <Button
         android:id="@+id/SettingsButton"
         android:layout_width="390sp"
@@ -131,5 +130,5 @@
         android:paddingRight="20dp"
         android:text="@string/menu_user_settings"
         android:textAlignment="textStart" />
-
+-->
 </RelativeLayout>
