@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF4FFFB"
@@ -12,10 +12,10 @@
         android:id="@+id/back"
         android:layout_width="15dp"
         android:layout_height="25dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:onClick="GoToMainActivity"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/icon_back_arrow"
+        android:onClick="GoToMainActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,110 +25,136 @@
         android:layout_height="184dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="32sp"
-        android:layout_marginTop="138sp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="114dp"
         android:background="@drawable/menu_view_bg"
-        android:fadingEdge="vertical" />
+        android:fadingEdge="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/UserAvatar"
         android:layout_width="64sp"
         android:layout_height="64sp"
-        android:layout_marginLeft="78.5sp"
-        android:layout_marginTop="174sp"
-        android:src="@drawable/user_avatar" />
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/user_avatar"
+        app:layout_constraintStart_toStartOf="@+id/UserFrame"
+        app:layout_constraintTop_toTopOf="@+id/UserFrame" />
 
     <TextView
         android:id="@+id/NameSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/menu_user_name"
         android:textColor="@color/text_color_1"
-        android:layout_width="150sp"
-        android:layout_height="19sp"
-        android:layout_marginLeft="193.5sp"
-        android:layout_marginTop="176.5sp"
-        android:text="@string/menu_user_name" />
+        app:layout_constraintStart_toEndOf="@+id/UserAvatar"
+        app:layout_constraintTop_toTopOf="@+id/UserFrame" />
 
     <TextView
         android:id="@+id/DateOfBirth"
-        android:layout_width="83dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="193.5sp"
-        android:layout_marginTop="200.5sp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="3dp"
         android:text="@string/menu_user_date"
-        android:textColor="@color/input_field" />
+        android:textColor="@color/input_field"
+        app:layout_constraintStart_toEndOf="@+id/UserAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/NameSurname" />
 
     <TextView
         android:id="@+id/Mail"
-        android:layout_width="138dp"
-        android:layout_height="31dp"
-        android:layout_marginLeft="193.5sp"
-        android:layout_marginTop="220.5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="3dp"
         android:text="@string/menu_user_mail"
-        android:textColor="@color/text_color_1" />
+        android:textColor="@color/text_color_1"
+        app:layout_constraintStart_toEndOf="@+id/UserAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/DateOfBirth" />
 
-    <Button
-        android:id="@+id/ChangeDataButton"
-        android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:layout_marginLeft="75.5sp"
-        android:layout_marginTop="285sp"
-        android:onClick="GoToChangeWindowActivity"
-        android:text="@string/menu_user_change"
-        android:fontFamily="@font/inter_regular"
-        android:textSize="12sp"
-        android:textColor="@color/input_field"
-        android:backgroundTint="#E6F4F4"
-        android:background="@android:color/transparent"/>
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="315dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/UserFrame"
+        app:layout_constraintEnd_toEndOf="@+id/UserFrame"
+        app:layout_constraintStart_toStartOf="@+id/UserFrame">
 
-    <Button
-        android:id="@+id/ExitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:layout_marginLeft="261.5sp"
-        android:layout_marginTop="285sp"
-        android:fontFamily="@font/inter_regular"
-        android:onClick="Exit"
-        android:text="@string/menu_user_logout"
-        android:textColor="@color/input_field"
-        android:textSize="12sp"
-        android:backgroundTint="#E6F4F4"
-        android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/ChangeDataButton"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="@android:color/transparent"
+            android:backgroundTint="#E6F4F4"
+            android:fontFamily="@font/inter_regular"
+            android:onClick="GoToChangeWindowActivity"
+            android:text="@string/menu_user_change"
+            android:textColor="@color/input_field"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/UserFrame"
+            app:layout_constraintEnd_toStartOf="@+id/ExitButton"
+            app:layout_constraintStart_toStartOf="@+id/UserFrame"
+            app:layout_constraintTop_toBottomOf="@+id/UserAvatar" />
+
+        <Button
+            android:id="@+id/ExitButton"
+            android:layout_width="88dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="219dp"
+            android:background="@android:color/transparent"
+            android:backgroundTint="#E6F4F4"
+            android:fontFamily="@font/inter_regular"
+            android:onClick="Exit"
+            android:text="@string/menu_user_logout"
+            android:textColor="@color/input_field"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/UserFrame"
+            tools:layout_editor_absoluteX="271dp" />
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/ReportsButton"
-        android:onClick="GoToGraphicsActivity"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_width="361dp"
+        android:layout_height="49dp"
         android:layout_below="@+id/UserFrame"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="64dp"
-        android:paddingVertical="10dp"
+        android:layout_marginTop="60dp"
         android:background="@android:color/transparent"
         android:drawableRight="@drawable/icon_button_arrow"
-        android:paddingRight="20dp"
+        android:onClick="GoToGraphicsActivity"
+        android:paddingVertical="10dp"
+        android:paddingRight="31dp"
         android:text="@string/menu_user_reports"
         android:textAlignment="textStart"
-        android:textColorHint="#F3FEFA" />
-<!--
-    <Button
-        android:id="@+id/SettingsButton"
-        android:layout_width="390sp"
-        android:layout_height="46sp"
-        android:layout_below="@+id/ReportsButton"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginLeft="11sp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="10dp"
-        android:background="@android:color/transparent"
-        android:drawableRight="@drawable/icon_button_arrow"
-        android:paddingRight="20dp"
-        android:text="@string/menu_user_settings"
-        android:textAlignment="textStart" />
--->
-</RelativeLayout>
+        android:textColorHint="#F3FEFA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserFrame" />
+    <!--
+        <Button
+            android:id="@+id/SettingsButton"
+            android:layout_width="390sp"
+            android:layout_height="46sp"
+            android:layout_below="@+id/ReportsButton"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginLeft="11sp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/icon_button_arrow"
+            android:paddingRight="20dp"
+            android:text="@string/menu_user_settings"
+            android:textAlignment="textStart" />
+    -->
+</androidx.constraintlayout.widget.ConstraintLayout>
