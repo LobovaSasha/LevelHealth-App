@@ -195,9 +195,9 @@
 
     <Button
         android:id="@+id/back"
-        android:layout_width="15dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="32dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/icon_back_arrow"
         app:layout_constraintStart_toStartOf="parent"

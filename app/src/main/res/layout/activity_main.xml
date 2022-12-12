@@ -19,16 +19,15 @@
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="16dp">
 
             <ImageButton
                 android:id="@+id/buttonMenu"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_marginStart="32sp"
-                android:layout_marginTop="2sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="40sp"
                 android:layout_marginBottom="2sp"
                 android:background="@android:color/transparent"
                 android:onClick="GoToMenuActivity"
@@ -38,11 +37,10 @@
 
             <ImageButton
                 android:id="@+id/buttonCalendar"
-                android:layout_width="26sp"
-                android:layout_height="26sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="end"
-                android:layout_marginTop="2sp"
-                android:layout_marginEnd="32sp"
+                android:layout_marginEnd="40sp"
                 android:layout_marginBottom="2sp"
                 android:background="@android:color/transparent"
                 android:onClick="GoToCalendarActivity"
@@ -57,35 +55,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/inter_semibolt"
             android:text="@string/notification_today"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/daysRecycler"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginTop="154dp"
+            android:layout_marginTop="20dp"
             android:paddingHorizontal="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/moodsRecycler"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="12dp"
-            android:paddingHorizontal="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/daysRecycler" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/moodsRecycler"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:paddingHorizontal="25sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/daysRecycler" />-->
 
         <TextView
             android:id="@+id/textView9"
@@ -98,7 +96,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/moodsRecycler" />
+            app:layout_constraintTop_toBottomOf="@+id/daysRecycler" />
 
         <FrameLayout
             android:id="@+id/frameLayout2"
