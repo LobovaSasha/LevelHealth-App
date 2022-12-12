@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
@@ -112,76 +112,76 @@
     <!--        app:layout_constraintStart_toStartOf="parent"-->
     <!--        app:layout_constraintTop_toBottomOf="@+id/address" />-->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="40dp"-->
 
 
-        android:layout_marginTop="95dp"
-        android:text="Привычки"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+<!--        android:layout_marginTop="95dp"-->
+<!--        android:text="Привычки"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="18sp"-->
 
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthday"
-        tools:ignore="MissingConstraints" />
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/birthday"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
-    <Switch
-        android:id="@+id/smoking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+<!--    <Switch-->
+<!--        android:id="@+id/smoking"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginTop="20dp"-->
 
-        android:thumb="@drawable/switch_thumb"
-        android:track="@drawable/switch_track"
+<!--        android:thumb="@drawable/switch_thumb"-->
+<!--        android:track="@drawable/switch_track"-->
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView" />-->
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Курение"
-        android:textColor="@color/text_color_1"
-        app:layout_constraintStart_toEndOf="@+id/smoking"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="Курение"-->
+<!--        android:textColor="@color/text_color_1"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/smoking"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView" />-->
 
-    <Switch
-        android:id="@+id/alcohol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
+<!--    <Switch-->
+<!--        android:id="@+id/alcohol"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="60dp"-->
+<!--        android:layout_marginTop="20dp"-->
 
-        android:thumb="@drawable/switch_thumb"
+<!--        android:thumb="@drawable/switch_thumb"-->
 
-        android:track="@drawable/switch_track"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+<!--        android:track="@drawable/switch_track"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textView2"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView" />-->
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Алкоголь"
-        android:textColor="@color/text_color_1"
-        app:layout_constraintStart_toEndOf="@+id/alcohol"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="Алкоголь"-->
+<!--        android:textColor="@color/text_color_1"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/alcohol"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView" />-->
 
     <Button
         android:id="@+id/save"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/style_button_stroke_text"
 
         android:paddingHorizontal="30dp"
@@ -190,7 +190,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/smoking"
+        app:layout_constraintTop_toBottomOf="@+id/birthday"
         android:onClick="saveDataChange"/>
 
     <Button
