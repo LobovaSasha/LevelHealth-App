@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/CircularPhoto"
-        app:srcCompat="@drawable/user_avatar" />
+        app:srcCompat="@drawable/avatar" />
 
     <EditText
         android:id="@+id/name"

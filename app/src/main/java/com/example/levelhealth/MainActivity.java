@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         List<Day> dayList = new ArrayList<>();
 
         String[] weekDays = new String[]{"Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"};
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 31; i++) {
             System.out.println(weekDays[i % 7]);
-            dayList.add(new Day(i+1, weekDays[i % 7], String.valueOf(i+1)));
+            dayList.add(new Day(i, weekDays[i % 7], String.valueOf((i + 11) % 31 + 1)));
 
         }
 

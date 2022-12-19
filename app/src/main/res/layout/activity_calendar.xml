@@ -65,8 +65,8 @@
 
             <ImageView
                 android:id="@+id/moodImg"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:src="@drawable/smile1_2"
                 android:translationZ="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -88,7 +88,7 @@
                 android:id="@+id/sleepImg"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/sleep1_1"
+                android:src="@drawable/sleep0"
                 android:translationZ="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -67,15 +67,19 @@ public class RegistrationActivity extends AppCompatActivity {
                         FirebaseUser cUser = mAuth.getCurrentUser();
                         idtable = cUser.getUid();
                         saveBD(id, idtable, user_name, user_surname, email, birth);
+                        GoToSignInActivity();
                     } else
                         Toast.makeText(getApplicationContext(), "Регистрация не удалась, проверьте данные и попробуйте еще раз", Toast.LENGTH_SHORT).show();
                 }
             });
-            Intent intent = new Intent(this, SignInActivity.class);
-            startActivity(intent);
         }
         else Toast.makeText(this, "Заполните пустые поля", Toast.LENGTH_SHORT).show();
 
+    }
+
+    private void GoToSignInActivity() {
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
     }
 
     private void saveBD(String id, String idtable, String username, String usersurname, String email, String birth){
