@@ -3,9 +3,11 @@ package com.example.levelhealth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +40,29 @@ public class ChangeWindowActivity extends AppCompatActivity {
         setContentView(R.layout.activity_change_window);
         init();
 
+        String id = cUser.getUid();
+
+        final DatabaseReference ref;
+        ref = FirebaseDatabase.getInstance().getReference("User").child(id);
+        ref.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String fio = snapshot.child("Name").getValue().toString();
+                String fio2 = snapshot.child("Surname").getValue().toString();
+
+                nameEdit.setText(fio);
+                surnameEdit.setText(fio2);
+                String birth = snapshot.child("Birth").getValue().toString();
+                birthEdit.setText(birth);
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
         back.setOnClickListener(v -> {
             onBackPressed();
         });
@@ -54,28 +79,33 @@ public class ChangeWindowActivity extends AppCompatActivity {
         birthEdit = findViewById(R.id.birthday);
     }
 
-    public void saveDataChange(View View){
+    public void saveDataChange(View View) {
         String idtable = cUser.getUid();
         mDataBase = FirebaseDatabase.getInstance().getReference("User");
-        mDataBase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                HashMap<String, Object> userDataMap = new HashMap<>();
-                userDataMap.put("Birth", birthEdit.getText().toString());
-                userDataMap.put("Name", nameEdit.getText().toString());
-                userDataMap.put("Surname", surnameEdit.getText().toString());
 
-                mDataBase.child(idtable).updateChildren(userDataMap);
-            }
+        if (!TextUtils.isEmpty(birthEdit.getText().toString()) && !TextUtils.isEmpty(nameEdit.getText().toString()) && !TextUtils.isEmpty(surnameEdit.getText().toString())) {
+            mDataBase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    HashMap<String, Object> userDataMap = new HashMap<>();
+                    userDataMap.put("Birth", birthEdit.getText().toString());
+                    userDataMap.put("Name", nameEdit.getText().toString());
+                    userDataMap.put("Surname", surnameEdit.getText().toString());
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ChangeWindowActivity.this, "Не удалось обновить данные.", Toast.LENGTH_SHORT).show();
-            }
-        });
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+                    mDataBase.child(idtable).updateChildren(userDataMap);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(ChangeWindowActivity.this, "Не удалось обновить данные.", Toast.LENGTH_SHORT).show();
+                }
+            });
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
+        }
+        else Toast.makeText(this, "Заполните пустые поля", Toast.LENGTH_SHORT).show();
     }
+
 
     public void GoToMainActivity(View view) {
         Intent intent = new Intent(this, MainActivity.class);
