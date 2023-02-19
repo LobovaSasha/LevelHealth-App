@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PatternMatcher;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +24,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class RegistrationActivity extends AppCompatActivity {
     private EditText NameBDreg, SurnameBDreg, BirthBDreg, EmailBDreg, PasswordBDreg, TypeBDreg;
@@ -51,27 +56,59 @@ public class RegistrationActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    public boolean isDateValid(String date) {
+        try {
+            DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+            df.setLenient(false);
+            df.parse(date);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public void onClickSaveBD(View view) {
         String id = mDataBase.getKey();
         String username = NameBDreg.getText().toString();
         String usersurname = SurnameBDreg.getText().toString();
         String email = EmailBDreg.getText().toString();
         String password = PasswordBDreg.getText().toString();
+<<<<<<< Updated upstream
 
         String birth = "Пока не заполнено";
         String doc = "Пока не заполнено";
         String gender = "Пока не заполнено";
         if(!TextUtils.isEmpty(EmailBDreg.getText().toString()) && !TextUtils.isEmpty(PasswordBDreg.getText().toString()) && checkBox.isChecked()) {
             mAuth.createUserWithEmailAndPassword(EmailBDreg.getText().toString(), PasswordBDreg.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+=======
+        String birth = BirthBDreg.getText().toString();
+
+        if ( !(isDateValid(birth) || birth.isEmpty())) {
+            Toast.makeText(getApplicationContext(), "Укажите корректную дату рождения", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(!TextUtils.isEmpty(EmailBDreg.getText().toString()) &&
+           !TextUtils.isEmpty(PasswordBDreg.getText().toString()) &&
+           checkBox.isChecked()) {
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+>>>>>>> Stashed changes
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    Log.d("REG_ERROR", task.getException() != null ? task.getException().toString() : "null");
                     if (task.isSuccessful()) {
                         sendEmailVer();
                         FirebaseUser cUser = mAuth.getCurrentUser();
                         idtable = cUser.getUid();
+<<<<<<< Updated upstream
                         saveBD(id, idtable, username, usersurname, email, birth);
                     } else
                         Toast.makeText(getApplicationContext(), "Регистрация не удалась, проверьте данные и попробуйте еще раз", Toast.LENGTH_SHORT).show();
+=======
+                        saveBD(id, idtable, user_name, user_surname, email, birth);
+                    }
+                    else Toast.makeText(getApplicationContext(), "Регистрация не удалась, проверьте данные и попробуйте еще раз", Toast.LENGTH_SHORT).show();
+>>>>>>> Stashed changes
                 }
             });
 
