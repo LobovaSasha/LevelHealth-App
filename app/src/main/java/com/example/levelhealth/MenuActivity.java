@@ -42,12 +42,15 @@ public class MenuActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String fio = snapshot.child("Name").getValue().toString();
-                String fio2 = snapshot.child("Surname").getValue().toString();
+                try {
+                    String fio = snapshot.child("Name").getValue().toString();
+                    String fio2 = snapshot.child("Surname").getValue().toString();
 
-                FioText.setText(fio + " " + fio2);
-                String birth = snapshot.child("Birth").getValue().toString();
-                BirthText.setText(birth);
+                    FioText.setText(fio + " " + fio2);
+                    String birth = snapshot.child("Birth").getValue().toString();
+                    BirthText.setText(birth);
+
+                } catch (Exception e) {}
 
             }
             @Override
