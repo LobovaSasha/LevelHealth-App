@@ -21,8 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -66,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
         iv7 = (ImageView) findViewById(R.id.image_view_sleep3);
         iv8 = (ImageView) findViewById(R.id.image_view_sleep4);
 
-        iv9 = (ImageView) findViewById(R.id.image_view_headache1);
-        iv10 = (ImageView) findViewById(R.id.image_view_headache2);
-        iv11 = (ImageView) findViewById(R.id.image_view_headache3);
-        iv12 = (ImageView) findViewById(R.id.image_view_headache4);
-        iv13 = (ImageView) findViewById(R.id.image_view_headache5);
+//        iv9 = (ImageView) findViewById(R.id.image_view_headache1);
+//        iv10 = (ImageView) findViewById(R.id.image_view_headache2);
+//        iv11 = (ImageView) findViewById(R.id.image_view_headache3);
+//        iv12 = (ImageView) findViewById(R.id.image_view_headache4);
+//        iv13 = (ImageView) findViewById(R.id.image_view_headache5);
 
         Button b1 = (Button) findViewById(R.id.button_smile1);
         Button b2 = (Button) findViewById(R.id.button_smile2);
@@ -82,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
         Button b7 = (Button) findViewById(R.id.button_sleep3);
         Button b8 = (Button) findViewById(R.id.button_sleep4);
 
-        Button b9 = (Button) findViewById(R.id.button_headache1);
-        Button b10 = (Button) findViewById(R.id.button_headache2);
-        Button b11 = (Button) findViewById(R.id.button_headache3);
-        Button b12 = (Button) findViewById(R.id.button_headache4);
-        Button b13 = (Button) findViewById(R.id.button_headache5);
+//        Button b9 = (Button) findViewById(R.id.button_headache1);
+//        Button b10 = (Button) findViewById(R.id.button_headache2);
+//        Button b11 = (Button) findViewById(R.id.button_headache3);
+//        Button b12 = (Button) findViewById(R.id.button_headache4);
+//        Button b13 = (Button) findViewById(R.id.button_headache5);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,70 +182,70 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        b9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv9.setImageResource(R.drawable.headache1_1);
-                iv10.setImageResource(R.drawable.headache0_2);
-                iv11.setImageResource(R.drawable.headache0_3);
-                iv12.setImageResource(R.drawable.headache0_4);
-                iv13.setImageResource(R.drawable.headache0_5);
-                headache_res = 1;
-                saveDB();
-            }
-        });
-
-        b10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv9.setImageResource(R.drawable.headache0_1);
-                iv10.setImageResource(R.drawable.headache1_2);
-                iv11.setImageResource(R.drawable.headache0_3);
-                iv12.setImageResource(R.drawable.headache0_4);
-                iv13.setImageResource(R.drawable.headache0_5);
-                headache_res = 2;
-                saveDB();
-            }
-        });
-
-        b11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv9.setImageResource(R.drawable.headache0_1);
-                iv10.setImageResource(R.drawable.headache0_2);
-                iv11.setImageResource(R.drawable.headache1_3);
-                iv12.setImageResource(R.drawable.headache0_4);
-                iv13.setImageResource(R.drawable.headache0_5);
-                headache_res = 3;
-                saveDB();
-            }
-        });
-
-        b12.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv9.setImageResource(R.drawable.headache0_1);
-                iv10.setImageResource(R.drawable.headache0_2);
-                iv11.setImageResource(R.drawable.headache0_3);
-                iv12.setImageResource(R.drawable.headache1_4);
-                iv13.setImageResource(R.drawable.headache0_5);
-                headache_res = 4;
-                saveDB();
-            }
-        });
-
-        b13.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv9.setImageResource(R.drawable.headache0_1);
-                iv10.setImageResource(R.drawable.headache0_2);
-                iv11.setImageResource(R.drawable.headache0_3);
-                iv12.setImageResource(R.drawable.headache0_4);
-                iv13.setImageResource(R.drawable.headache1_5);
-                headache_res = 5;
-                saveDB();
-            }
-        });
+//        b9.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                iv9.setImageResource(R.drawable.headache1_1);
+//                iv10.setImageResource(R.drawable.headache0_2);
+//                iv11.setImageResource(R.drawable.headache0_3);
+//                iv12.setImageResource(R.drawable.headache0_4);
+//                iv13.setImageResource(R.drawable.headache0_5);
+//                headache_res = 1;
+//                saveDB();
+//            }
+//        });
+//
+//        b10.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                iv9.setImageResource(R.drawable.headache0_1);
+//                iv10.setImageResource(R.drawable.headache1_2);
+//                iv11.setImageResource(R.drawable.headache0_3);
+//                iv12.setImageResource(R.drawable.headache0_4);
+//                iv13.setImageResource(R.drawable.headache0_5);
+//                headache_res = 2;
+//                saveDB();
+//            }
+//        });
+//
+//        b11.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                iv9.setImageResource(R.drawable.headache0_1);
+//                iv10.setImageResource(R.drawable.headache0_2);
+//                iv11.setImageResource(R.drawable.headache1_3);
+//                iv12.setImageResource(R.drawable.headache0_4);
+//                iv13.setImageResource(R.drawable.headache0_5);
+//                headache_res = 3;
+//                saveDB();
+//            }
+//        });
+//
+//        b12.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                iv9.setImageResource(R.drawable.headache0_1);
+//                iv10.setImageResource(R.drawable.headache0_2);
+//                iv11.setImageResource(R.drawable.headache0_3);
+//                iv12.setImageResource(R.drawable.headache1_4);
+//                iv13.setImageResource(R.drawable.headache0_5);
+//                headache_res = 4;
+//                saveDB();
+//            }
+//        });
+//
+//        b13.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                iv9.setImageResource(R.drawable.headache0_1);
+//                iv10.setImageResource(R.drawable.headache0_2);
+//                iv11.setImageResource(R.drawable.headache0_3);
+//                iv12.setImageResource(R.drawable.headache0_4);
+//                iv13.setImageResource(R.drawable.headache1_5);
+//                headache_res = 5;
+//                saveDB();
+//            }
+//        });
 
 
 
@@ -394,4 +392,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GraphicsActivity.class);
         startActivity(intent);
     }
+
 }

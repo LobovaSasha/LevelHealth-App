@@ -26,6 +26,7 @@
     <string name="new_pass">Введите новый пароль</string>
     <string name="reset_pass">Сбросить пароль</string>
     <string name="headache">Головная боль</string>
+    <string name="add_note">Добавить заметку</string>
     <string name="menu_user_name">Имя Фамилия</string>
     <string name="menu_user_date">дд.мм.гггг</string>
     <string name="menu_user_mail">pochta@gmail.com</string>
