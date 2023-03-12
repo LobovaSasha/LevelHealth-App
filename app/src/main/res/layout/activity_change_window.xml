@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +9,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profilePic"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginTop="80dp"
@@ -16,14 +17,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/CircularPhoto"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/user_avatar" />
+
+
+    <Button
+        android:id="@+id/button_choose_avatar"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+
+        android:background="@drawable/style_button_stroke_text"
+        android:paddingHorizontal="30dp"
+        android:text="Выбрать"
+
+        android:textColor="#018C8B"
+        app:layout_constraintEnd_toStartOf="@+id/button_upload_avatar"
+        app:layout_constraintHorizontal_bias="0.689"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
+
+    <Button
+        android:id="@+id/button_upload_avatar"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:background="@drawable/style_button_stroke_text"
+
+        android:paddingHorizontal="30dp"
+        android:text="Загрузить"
+        android:textColor="#018C8B"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_choose_avatar" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="115dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
@@ -39,7 +73,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@id/profilePic" />
 
     <EditText
         android:id="@+id/surname"
@@ -76,6 +110,7 @@
 
         android:ems="10"
         android:hint="ДД.ММ.ГГГГ"
+
         android:inputType="date"
         android:padding="10dp"
         android:paddingStart="15dp"
@@ -86,6 +121,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/surname" />
+
+
 
 
 
@@ -181,17 +218,18 @@
         android:id="@+id/save"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="58dp"
         android:background="@drawable/style_button_stroke_text"
 
+        android:onClick="saveDataChange"
         android:paddingHorizontal="30dp"
         android:text="Сохранить"
-        android:textColor="#018C8B"
 
+        android:textColor="#018C8B"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthday"
-        android:onClick="saveDataChange"/>
+        app:layout_constraintTop_toBottomOf="@+id/birthday" />
 
     <Button
         android:id="@+id/back"

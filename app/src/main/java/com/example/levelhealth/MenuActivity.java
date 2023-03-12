@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -33,6 +35,7 @@ public class MenuActivity extends AppCompatActivity {
         TextView FioText = findViewById(R.id.NameSurname);
         TextView BirthText = findViewById(R.id.DateOfBirth);
         TextView EmailText = findViewById(R.id.Mail);
+        ImageView UserAvatar = findViewById(R.id.UserAvatar);
         String email = cUser.getEmail();
         EmailText.setText(email);
 
@@ -48,6 +51,9 @@ public class MenuActivity extends AppCompatActivity {
                 FioText.setText(fio + " " + fio2);
                 String birth = snapshot.child("Birth").getValue().toString();
                 BirthText.setText(birth);
+
+                String link = snapshot.child("image").getValue().toString();
+                Picasso.get().load(link).into(UserAvatar);
 
             }
             @Override
