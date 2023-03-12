@@ -15,6 +15,7 @@
         android:fontFamily="@font/inter_semibolt"
         android:orientation="vertical">
 
+
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
@@ -37,7 +38,6 @@
 
             <ImageButton
                 android:id="@+id/buttonCalendar"
-                android:padding="3dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="end"
@@ -75,16 +75,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/moodsRecycler"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            android:paddingHorizontal="25sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/daysRecycler" />-->
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/moodsRecycler"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="30dp"-->
+        <!--            android:layout_marginTop="12dp"-->
+        <!--            android:paddingHorizontal="25sp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.0"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/daysRecycler" />-->
 
         <TextView
             android:id="@+id/textView9"
@@ -117,7 +117,7 @@
                 android:layout_marginEnd="25sp"
                 android:layout_marginBottom="5sp"
                 android:background="@drawable/some_id"
-                android:elevation="5sp" />
+                android:elevation="10sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -263,7 +263,7 @@
                 android:layout_marginEnd="25sp"
                 android:layout_marginBottom="5sp"
                 android:background="@drawable/some_id"
-                android:elevation="5sp" />
+                android:elevation="10sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -392,162 +392,99 @@
             app:layout_constraintTop_toBottomOf="@+id/frameLayout3" />
 
         <FrameLayout
+            android:id="@+id/frameLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
             app:layout_constraintTop_toBottomOf="@+id/textView11"
             tools:layout_editor_absoluteX="0dp">
 
-            <TextView
-                android:id="@+id/some_id3"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/some_id4"
                 android:layout_width="match_parent"
-                android:layout_height="100sp"
+                android:layout_height="64sp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="25sp"
                 android:layout_marginTop="5sp"
                 android:layout_marginEnd="25sp"
                 android:layout_marginBottom="5sp"
                 android:background="@drawable/some_id"
-                android:elevation="5sp" />
+                android:elevation="10sp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="70sp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="50sp"
-                android:layout_marginTop="20sp"
-                android:layout_marginEnd="50sp"
-                android:layout_marginBottom="20sp"
-                android:elevation="10sp"
-                android:orientation="horizontal">
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
+                <SeekBar
+                    android:id="@+id/seekBar2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center">
-
-                    <Button
-                        android:id="@+id/button_headache1"
-                        android:layout_width="60sp"
-                        android:layout_height="60sp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent" />
-
-                    <ImageView
-                        android:id="@+id/image_view_headache1"
-                        android:layout_width="55sp"
-                        android:layout_height="55sp"
-                        app:srcCompat="@drawable/headache0_1" />
-
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text=" " />
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
-
-                    <Button
-                        android:id="@+id/button_headache2"
-                        android:layout_width="55sp"
-                        android:layout_height="55sp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent" />
-
-                    <ImageView
-                        android:id="@+id/image_view_headache2"
-                        android:layout_width="55sp"
-                        android:layout_height="55sp"
-                        app:srcCompat="@drawable/headache0_2" />
-
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text=" " />
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
-
-                    <Button
-                        android:id="@+id/button_headache3"
-                        android:layout_width="55sp"
-                        android:layout_height="55sp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent" />
-
-                    <ImageView
-                        android:id="@+id/image_view_headache3"
-                        android:layout_width="55sp"
-                        android:layout_height="55sp"
-                        app:srcCompat="@drawable/headache0_3" />
-
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text=" " />
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
-
-                    <Button
-                        android:id="@+id/button_headache4"
-                        android:layout_width="55sp"
-                        android:layout_height="55sp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent" />
-
-                    <ImageView
-                        android:id="@+id/image_view_headache4"
-                        android:layout_width="55sp"
-                        android:layout_height="55sp"
-                        app:srcCompat="@drawable/headache0_4" />
-
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text=" " />
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center">
-
-                    <Button
-                        android:id="@+id/button_headache5"
-                        android:layout_width="55sp"
-                        android:layout_height="55sp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent" />
-
-                    <ImageView
-                        android:id="@+id/image_view_headache5"
-                        android:layout_width="55sp"
-                        android:layout_height="55sp"
-                        app:srcCompat="@drawable/headache0_5" />
-
-                </FrameLayout>
-
-            </LinearLayout>
+                    android:layout_marginStart="33dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="33dp"
+                    android:layout_marginBottom="26dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frameLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout4"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            android:paddingBottom="32dp">
+
+
+            <ImageButton
+                android:id="@+id/some_id5"
+                android:layout_width="match_parent"
+                android:layout_height="56sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/some_id"
+                android:drawableEnd="@drawable/icon_forward_arrow"
+                android:elevation="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="0dp">
+
+            </ImageButton>
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="17dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="24dp"
+                android:rotation="180"
+                app:layout_constraintEnd_toEndOf="@+id/some_id5"
+                app:layout_constraintTop_toTopOf="@+id/some_id5"
+                app:srcCompat="@drawable/icon_back_arrow" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="49dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="@string/add_note"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/frameLayout5" />
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
