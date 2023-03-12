@@ -38,26 +38,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_width="339dp"
+        android:layout_height="51dp"
         android:layout_marginTop="40dp"
-        android:text="Заголовок"
+        android:backgroundTint="@android:color/transparent"
+        android:hint="Заголовок"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back" />
 
-    <TextView
+    <EditText
         android:id="@+id/noteText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_width="341dp"
+        android:layout_height="498dp"
         android:layout_marginTop="20dp"
-        android:text="Текст заметки"
+        android:backgroundTint="@android:color/transparent"
+        android:gravity="top|left"
+        android:hint="Текст заметки"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
