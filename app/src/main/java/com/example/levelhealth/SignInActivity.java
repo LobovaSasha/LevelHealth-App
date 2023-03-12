@@ -61,7 +61,8 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void onClickEnterBD(View view) {
-        if(!TextUtils.isEmpty(EmailBDent.getText().toString()) && !TextUtils.isEmpty(PasswordBDent.getText().toString())) {
+        if(!TextUtils.isEmpty(EmailBDent.getText().toString()) &&
+           !TextUtils.isEmpty(PasswordBDent.getText().toString())) {
             mAuth.signInWithEmailAndPassword(EmailBDent.getText().toString(), PasswordBDent.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -76,5 +77,6 @@ public class SignInActivity extends AppCompatActivity {
                 }
             });
         }
+
     }
 }

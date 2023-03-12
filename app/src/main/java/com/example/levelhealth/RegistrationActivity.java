@@ -23,6 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -51,6 +54,16 @@ public class RegistrationActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    public boolean isDateValid(String date) {
+        try {
+            DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+            df.setLenient(false);
+            Date pd = df.parse(date);
+            return pd.getTime() < new Date().getTime();
+        } catch (Exception e) {
+            return false;
+        }
+    }
     public void onClickSaveBD(View view) {
         String id = mDataBase.getKey();
         String user_name = NameBDreg.getText().toString();
@@ -58,6 +71,11 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = EmailBDreg.getText().toString();
         String password = PasswordBDreg.getText().toString();
         String birth = BirthBDreg.getText().toString();
+
+        if ( !(isDateValid(birth) || birth.isEmpty())) {
+            Toast.makeText(getApplicationContext(), "Укажите корректную дату рождения", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String image = "https://firebasestorage.googleapis.com/v0/b/levelhealth-pd2022.appspot.com/o/profilepics%2Favatar.png?alt=media&token=6cba1e76-23ca-4c38-8976-f1499d01c34f";
         if(!TextUtils.isEmpty(EmailBDreg.getText().toString()) && !TextUtils.isEmpty(PasswordBDreg.getText().toString()) && checkBox.isChecked()) {
             mAuth.createUserWithEmailAndPassword(EmailBDreg.getText().toString(), PasswordBDreg.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
