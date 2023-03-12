@@ -58,6 +58,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = EmailBDreg.getText().toString();
         String password = PasswordBDreg.getText().toString();
         String birth = BirthBDreg.getText().toString();
+        String image = "https://firebasestorage.googleapis.com/v0/b/levelhealth-pd2022.appspot.com/o/profilepics%2Favatar.png?alt=media&token=6cba1e76-23ca-4c38-8976-f1499d01c34f";
         if(!TextUtils.isEmpty(EmailBDreg.getText().toString()) && !TextUtils.isEmpty(PasswordBDreg.getText().toString()) && checkBox.isChecked()) {
             mAuth.createUserWithEmailAndPassword(EmailBDreg.getText().toString(), PasswordBDreg.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -66,23 +67,19 @@ public class RegistrationActivity extends AppCompatActivity {
                         sendEmailVer();
                         FirebaseUser cUser = mAuth.getCurrentUser();
                         idtable = cUser.getUid();
-                        saveBD(id, idtable, user_name, user_surname, email, birth);
-                        GoToSignInActivity();
+                        saveBD(id, idtable, user_name, user_surname, email, birth, image);
                     } else
                         Toast.makeText(getApplicationContext(), "Регистрация не удалась, проверьте данные и попробуйте еще раз", Toast.LENGTH_SHORT).show();
                 }
             });
+            Intent intent = new Intent(this, SignInActivity.class);
+            startActivity(intent);
         }
         else Toast.makeText(this, "Заполните пустые поля", Toast.LENGTH_SHORT).show();
 
     }
 
-    private void GoToSignInActivity() {
-        Intent intent = new Intent(this, SignInActivity.class);
-        startActivity(intent);
-    }
-
-    private void saveBD(String id, String idtable, String username, String usersurname, String email, String birth){
+    private void saveBD(String id, String idtable, String username, String usersurname, String email, String birth, String image){
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -96,6 +93,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     userDataMap.put("Surname", usersurname);
                     userDataMap.put("Email", email);
                     userDataMap.put("Birth", birth);
+                    userDataMap.put("Image", image);
 
                     RootRef.child("User").child(idtable).updateChildren(userDataMap);
                 }
