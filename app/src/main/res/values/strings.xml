@@ -32,6 +32,6 @@
     <string name="menu_user_change">Изменить данные</string>
     <string name="menu_user_logout">Выйти</string>
     <string name="menu_user_reports">Отчеты</string>
-    <string name="menu_user_settings">Прием лекарств</string>
+    <string name="menu_user_settings">Настройки</string>
     <string name="calendar_comment">Ох уж этот день</string>
 </resources>
