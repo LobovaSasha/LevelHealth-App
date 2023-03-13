@@ -30,6 +30,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="40dp"
             android:background="@drawable/icon_home"
+            android:onClick="GoToMainActivity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
