@@ -51,14 +51,26 @@ public class CalendarActivity extends AppCompatActivity {
                 int mYear = year;
                 int mMonth = month;
                 int mDay = dayOfMonth;
-                if (mDay < 10) {
-                    date = new StringBuilder().append("0").append(mDay)
-                            .append("-").append(mMonth + 1)
-                            .append("-").append(mYear).toString();
+                if (mMonth > 9) {
+                    if (mDay < 10) {
+                        date = new StringBuilder().append("0").append(mDay)
+                                .append("-").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    } else {
+                        date = new StringBuilder().append(mDay)
+                                .append("-").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    }
                 } else {
-                    date = new StringBuilder().append(mDay)
-                            .append("-").append(mMonth + 1)
-                            .append("-").append(mYear).toString();
+                    if (mDay < 10) {
+                        date = new StringBuilder().append("0").append(mDay)
+                                .append("-").append("0").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    } else {
+                        date = new StringBuilder().append(mDay)
+                                .append("-").append("0").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    }
                 }
                 init();
             }
