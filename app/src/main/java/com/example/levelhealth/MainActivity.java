@@ -393,4 +393,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void GoToNoteActivity(View view) {
+        Intent intent = new Intent(this, NoteActivity.class);
+        startActivity(intent);
+    }
+
 }
