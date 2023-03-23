@@ -1,5 +1,6 @@
 package com.example.levelhealth;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setDaysRecycler(dayList);
-        //
 
         iv1 = (ImageView) findViewById(R.id.image_view_smile1);
         iv2 = (ImageView) findViewById(R.id.image_view_smile2);
@@ -64,12 +65,6 @@ public class MainActivity extends AppCompatActivity {
         iv7 = (ImageView) findViewById(R.id.image_view_sleep3);
         iv8 = (ImageView) findViewById(R.id.image_view_sleep4);
 
-//        iv9 = (ImageView) findViewById(R.id.image_view_headache1);
-//        iv10 = (ImageView) findViewById(R.id.image_view_headache2);
-//        iv11 = (ImageView) findViewById(R.id.image_view_headache3);
-//        iv12 = (ImageView) findViewById(R.id.image_view_headache4);
-//        iv13 = (ImageView) findViewById(R.id.image_view_headache5);
-
         Button b1 = (Button) findViewById(R.id.button_smile1);
         Button b2 = (Button) findViewById(R.id.button_smile2);
         Button b3 = (Button) findViewById(R.id.button_smile3);
@@ -79,12 +74,6 @@ public class MainActivity extends AppCompatActivity {
         Button b6 = (Button) findViewById(R.id.button_sleep2);
         Button b7 = (Button) findViewById(R.id.button_sleep3);
         Button b8 = (Button) findViewById(R.id.button_sleep4);
-
-//        Button b9 = (Button) findViewById(R.id.button_headache1);
-//        Button b10 = (Button) findViewById(R.id.button_headache2);
-//        Button b11 = (Button) findViewById(R.id.button_headache3);
-//        Button b12 = (Button) findViewById(R.id.button_headache4);
-//        Button b13 = (Button) findViewById(R.id.button_headache5);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,77 +170,8 @@ public class MainActivity extends AppCompatActivity {
                 saveDB();
             }
         });
-
-//        b9.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                iv9.setImageResource(R.drawable.headache1_1);
-//                iv10.setImageResource(R.drawable.headache0_2);
-//                iv11.setImageResource(R.drawable.headache0_3);
-//                iv12.setImageResource(R.drawable.headache0_4);
-//                iv13.setImageResource(R.drawable.headache0_5);
-//                headache_res = 1;
-//                saveDB();
-//            }
-//        });
-//
-//        b10.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                iv9.setImageResource(R.drawable.headache0_1);
-//                iv10.setImageResource(R.drawable.headache1_2);
-//                iv11.setImageResource(R.drawable.headache0_3);
-//                iv12.setImageResource(R.drawable.headache0_4);
-//                iv13.setImageResource(R.drawable.headache0_5);
-//                headache_res = 2;
-//                saveDB();
-//            }
-//        });
-//
-//        b11.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                iv9.setImageResource(R.drawable.headache0_1);
-//                iv10.setImageResource(R.drawable.headache0_2);
-//                iv11.setImageResource(R.drawable.headache1_3);
-//                iv12.setImageResource(R.drawable.headache0_4);
-//                iv13.setImageResource(R.drawable.headache0_5);
-//                headache_res = 3;
-//                saveDB();
-//            }
-//        });
-//
-//        b12.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                iv9.setImageResource(R.drawable.headache0_1);
-//                iv10.setImageResource(R.drawable.headache0_2);
-//                iv11.setImageResource(R.drawable.headache0_3);
-//                iv12.setImageResource(R.drawable.headache1_4);
-//                iv13.setImageResource(R.drawable.headache0_5);
-//                headache_res = 4;
-//                saveDB();
-//            }
-//        });
-//
-//        b13.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                iv9.setImageResource(R.drawable.headache0_1);
-//                iv10.setImageResource(R.drawable.headache0_2);
-//                iv11.setImageResource(R.drawable.headache0_3);
-//                iv12.setImageResource(R.drawable.headache0_4);
-//                iv13.setImageResource(R.drawable.headache1_5);
-//                headache_res = 5;
-//                saveDB();
-//            }
-//        });
-
-
-
     }
 
-    // вернула метод и классы day и dayAdapter
     private void setDaysRecycler(List<Day> dayList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
 
@@ -278,60 +198,75 @@ public class MainActivity extends AppCompatActivity {
         mDataBase = FirebaseDatabase.getInstance().getReference("Condition");
         mAuth = FirebaseAuth.getInstance();
         final DatabaseReference RootRef;
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        String date = formatter.format(calendar.getTime());
+        String date = getDate();
         FirebaseUser cUser = mAuth.getCurrentUser();
+        assert cUser != null;
         String idtable = cUser.getUid();
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("Condition").child(idtable).child(date).exists()){
-                    String mood = snapshot.child("Condition").child(idtable).child(date).child("mood").getValue().toString();
-                    String sleep = snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue().toString();
-                    String headache = snapshot.child("Condition").child(idtable).child(date).child("headache").getValue().toString();
-                    if (mood.equals("0")) {
-                        iv1.setImageResource(R.drawable.smile1_0);
-                        smile_res = 0;
-                    } else if (mood.equals("1")) {
-                        iv2.setImageResource(R.drawable.smile1_1);
-                        smile_res = 1;
-                    } else if (mood.equals("2")) {
-                        iv3.setImageResource(R.drawable.smile1_2);
-                        smile_res = 2;
-                    } else if (mood.equals("3")) {
-                        iv4.setImageResource(R.drawable.smile1_3);
-                        smile_res = 3;
+                    String mood = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("mood").getValue()).toString();
+                    String sleep = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue()).toString();
+                    String headache = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("headache").getValue()).toString();
+                    switch (mood) {
+                        case "0":
+                            iv1.setImageResource(R.drawable.smile1_0);
+                            smile_res = 0;
+                            break;
+                        case "1":
+                            iv2.setImageResource(R.drawable.smile1_1);
+                            smile_res = 1;
+                            break;
+                        case "2":
+                            iv3.setImageResource(R.drawable.smile1_2);
+                            smile_res = 2;
+                            break;
+                        case "3":
+                            iv4.setImageResource(R.drawable.smile1_3);
+                            smile_res = 3;
+                            break;
                     }
-                    if (sleep.equals("0")) {
-                        iv5.setImageResource(R.drawable.sleep1_0);
-                        sleep_res = 0;
-                    } else if (sleep.equals("1")) {
-                        iv6.setImageResource(R.drawable.sleep1_1);
-                        sleep_res = 1;
-                    } else if (sleep.equals("2")) {
-                        iv7.setImageResource(R.drawable.sleep1_2);
-                        sleep_res = 2;
-                    } else if (sleep.equals("3")) {
-                        iv8.setImageResource(R.drawable.sleep1_3);
-                        sleep_res = 3;
+                    switch (sleep) {
+                        case "0":
+                            iv5.setImageResource(R.drawable.sleep1_0);
+                            sleep_res = 0;
+                            break;
+                        case "1":
+                            iv6.setImageResource(R.drawable.sleep1_1);
+                            sleep_res = 1;
+                            break;
+                        case "2":
+                            iv7.setImageResource(R.drawable.sleep1_2);
+                            sleep_res = 2;
+                            break;
+                        case "3":
+                            iv8.setImageResource(R.drawable.sleep1_3);
+                            sleep_res = 3;
+                            break;
                     }
-                    if (headache.equals("1")) {
-                        iv9.setImageResource(R.drawable.headache1_1);
-                        headache_res = 1;
-                    } else if (headache.equals("2")) {
-                        iv10.setImageResource(R.drawable.headache1_2);
-                        headache_res = 2;
-                    } else if (headache.equals("3")) {
-                        iv11.setImageResource(R.drawable.headache1_3);
-                        headache_res = 3;
-                    } else if (headache.equals("4")) {
-                        iv12.setImageResource(R.drawable.headache1_4);
-                        headache_res = 4;
-                    } else if (headache.equals("5")) {
-                        iv13.setImageResource(R.drawable.headache1_5);
-                        headache_res = 5;
+                    switch (headache) {
+                        case "1":
+                            iv9.setImageResource(R.drawable.headache1_1);
+                            headache_res = 1;
+                            break;
+                        case "2":
+                            iv10.setImageResource(R.drawable.headache1_2);
+                            headache_res = 2;
+                            break;
+                        case "3":
+                            iv11.setImageResource(R.drawable.headache1_3);
+                            headache_res = 3;
+                            break;
+                        case "4":
+                            iv12.setImageResource(R.drawable.headache1_4);
+                            headache_res = 4;
+                            break;
+                        case "5":
+                            iv13.setImageResource(R.drawable.headache1_5);
+                            headache_res = 5;
+                            break;
                     }
                 }
             }
@@ -345,10 +280,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveDB(){
         final DatabaseReference RootRef;
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        String date = formatter.format(calendar.getTime());
+        String date = getDate();
         FirebaseUser cUser = mAuth.getCurrentUser();
+        assert cUser != null;
         String idtable = cUser.getUid();
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -395,7 +329,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void GoToNoteActivity(View view) {
         Intent intent = new Intent(this, NoteActivity.class);
+        intent.putExtra("date", getDate());
         startActivity(intent);
     }
 
+    public String getDate() {
+        try {
+            Bundle arguments = getIntent().getExtras();
+            return arguments.get("date").toString();
+        } catch (Exception e) {
+            Calendar calendar = Calendar.getInstance();
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            return formatter.format(calendar.getTime());
+        }
+    }
 }
