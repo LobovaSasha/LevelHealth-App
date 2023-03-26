@@ -30,7 +30,7 @@ public class SettingsActivity extends AppCompatActivity {
     Button back, home;
     SwitchCompat sw_sleep, sw_headache, sw_tablets, sw_notes;
 
-    boolean sleep = false, headache = false, tablets = false, notes = false;
+    boolean sleep=false, headache=false, tablets=false, notes=false;
 
     public void init() {
         back = findViewById(R.id.back);

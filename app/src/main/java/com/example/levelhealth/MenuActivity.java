@@ -52,10 +52,11 @@ public class MenuActivity extends AppCompatActivity {
                     FioText.setText(fio + " " + fio2);
                     String birth = snapshot.child("Birth").getValue().toString();
                     BirthText.setText(birth);
-                    String link = snapshot.child("image").getValue().toString();
-                    Picasso.get().load(link).into(UserAvatar);
 
                 } catch (Exception e) {}
+
+                String link = snapshot.child("image").getValue().toString();
+                Picasso.get().load(link).into(UserAvatar);
 
             }
             @Override

@@ -136,11 +136,26 @@ tools:context=".MainActivity">
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="550dp"
-        android:paddingTop="15dp"
         android:buttonTint="@color/stroke_text"
-        android:paddingBottom="15dp"
         android:paddingLeft="15dp"
-        android:text="Я даю согласие на хранение и обработку персональных данных" />
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="Я даю согласие на хранение и обработку персональных данных"
+        android:textColor="#222266"
+        />
+
+    <Button
+        android:id="@+id/button_Personal_Data_Consent"
+        android:layout_width="274dp"
+        android:layout_height="66dp"
+        android:layout_alignTop="@id/checkBox"
+        android:layout_alignRight="@id/checkBox"
+        android:layout_marginTop="0dp"
+        android:layout_weight="2"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:alpha="0"
+        android:onClick="GoToPersonalDataConsent" />
 
 
 </RelativeLayout>

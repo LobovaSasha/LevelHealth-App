@@ -87,18 +87,16 @@ public class ChangeWindowActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                try {
-                    String fio = snapshot.child("Name").getValue().toString();
-                    String fio2 = snapshot.child("Surname").getValue().toString();
+                String fio = snapshot.child("Name").getValue().toString();
+                String fio2 = snapshot.child("Surname").getValue().toString();
 
-                    nameEdit.setText(fio);
-                    surnameEdit.setText(fio2);
-                    String birth = snapshot.child("Birth").getValue().toString();
-                    birthEdit.setText(birth);
+                nameEdit.setText(fio);
+                surnameEdit.setText(fio2);
+                String birth = snapshot.child("Birth").getValue().toString();
+                birthEdit.setText(birth);
 
-                    String link = snapshot.child("image").getValue().toString();
-                    Picasso.get().load(link).into(profilePic);
-                } catch (Exception ignored) {}
+                String link = snapshot.child("image").getValue().toString();
+                Picasso.get().load(link).into(profilePic);
 
             }
             @Override

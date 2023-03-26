@@ -3,7 +3,6 @@ package com.example.levelhealth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,12 +22,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Random;
 
 public class CalendarActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     ImageView moodImg, sleepImg, headacheImg;
-    TextView commentText;
     String date, idtable;
     Button back;
     @Override
@@ -38,25 +37,43 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
         mAuth = FirebaseAuth.getInstance();
         init();
-        back.setOnClickListener(v -> onBackPressed());
+        back.setOnClickListener(v -> {
+            onBackPressed();
+        });
 
         CalendarView calendarView = findViewById(R.id.calendarView);
 
-        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            if (month > 9) {
-                if (dayOfMonth < 10) {
-                    date = "0" + dayOfMonth + "-" + (month + 1) + "-" + year;
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year,
+                                            int month, int dayOfMonth) {
+                int mYear = year;
+                int mMonth = month;
+                int mDay = dayOfMonth;
+                if (mMonth > 9) {
+                    if (mDay < 10) {
+                        date = new StringBuilder().append("0").append(mDay)
+                                .append("-").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    } else {
+                        date = new StringBuilder().append(mDay)
+                                .append("-").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    }
                 } else {
-                    date = dayOfMonth + "-" + (month + 1) + "-" + year;
+                    if (mDay < 10) {
+                        date = new StringBuilder().append("0").append(mDay)
+                                .append("-").append("0").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    } else {
+                        date = new StringBuilder().append(mDay)
+                                .append("-").append("0").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    }
                 }
-            } else {
-                if (dayOfMonth < 10) {
-                    date = "0" + dayOfMonth + "-" + "0" + (month + 1) + "-" + year;
-                } else {
-                    date = dayOfMonth + "-" + "0" + (month + 1) + "-" + year;
-                }
+                init();
             }
-            init();
         });
     }
 
@@ -69,7 +86,7 @@ public class CalendarActivity extends AppCompatActivity {
             startActivity(intent);
         }
         Calendar calendar = Calendar.getInstance();
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         date = formatter.format(calendar.getTime());
     }
 
@@ -78,68 +95,47 @@ public class CalendarActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         DatabaseReference RootRef;
         FirebaseUser cUser = mAuth.getCurrentUser();
-        assert cUser != null;
         idtable = cUser.getUid();
         moodImg = findViewById(R.id.moodImg);
         sleepImg = findViewById(R.id.sleepImg);
         headacheImg = findViewById(R.id.headacheImg);
-        commentText = findViewById(R.id.comment);
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("Condition").child(idtable).child(date).exists()){
-                    String mood = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("mood").getValue()).toString();
-                    String sleep = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue()).toString();
-                    String headache = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("headache").getValue()).toString();
-                    String comment;
-                    try {
-                        comment = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("comment").getValue()).toString();
-                    } catch (Exception e) {
-                        comment = "Нет записи за этот день";
+                    String mood = snapshot.child("Condition").child(idtable).child(date).child("mood").getValue().toString();
+                    String sleep = snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue().toString();
+                    String headache = snapshot.child("Condition").child(idtable).child(date).child("headache").getValue().toString();
+                    if (mood.equals("-1")) {
+                        moodImg.setVisibility(View.INVISIBLE);
+                    } else if (mood.equals("0")) {
+                        moodImg.setImageResource(R.drawable.smile1_0);
+                        moodImg.setVisibility(View.VISIBLE);
+                    } else if (mood.equals("1")) {
+                        moodImg.setImageResource(R.drawable.smile1_1);
+                        moodImg.setVisibility(View.VISIBLE);
+                    } else if (mood.equals("2")) {
+                        moodImg.setImageResource(R.drawable.smile1_2);
+                        moodImg.setVisibility(View.VISIBLE);
+                    } else if (mood.equals("3")) {
+                        moodImg.setImageResource(R.drawable.smile1_3);
+                        moodImg.setVisibility(View.VISIBLE);
                     }
-                    commentText.setText(comment);
-                    switch (mood) {
-                        case "-1":
-                            moodImg.setVisibility(View.INVISIBLE);
-                            break;
-                        case "0":
-                            moodImg.setImageResource(R.drawable.smile1_0);
-                            moodImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "1":
-                            moodImg.setImageResource(R.drawable.smile1_1);
-                            moodImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "2":
-                            moodImg.setImageResource(R.drawable.smile1_2);
-                            moodImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "3":
-                            moodImg.setImageResource(R.drawable.smile1_3);
-                            moodImg.setVisibility(View.VISIBLE);
-                            break;
-                    }
-                    switch (sleep) {
-                        case "-1":
-                            sleepImg.setVisibility(View.INVISIBLE);
-                            break;
-                        case "0":
-                            sleepImg.setImageResource(R.drawable.sleep0);
-                            sleepImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "1":
-                            sleepImg.setImageResource(R.drawable.sleep1);
-                            sleepImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "2":
-                            sleepImg.setImageResource(R.drawable.sleep2);
-                            sleepImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "3":
-                            sleepImg.setImageResource(R.drawable.sleep3);
-                            sleepImg.setVisibility(View.VISIBLE);
-                            break;
+                    if (sleep.equals("-1")) {
+                        sleepImg.setVisibility(View.INVISIBLE);
+                    } else if (sleep.equals("0")) {
+                        sleepImg.setImageResource(R.drawable.sleep0);
+                        sleepImg.setVisibility(View.VISIBLE);
+                    } else if (sleep.equals("1")) {
+                        sleepImg.setImageResource(R.drawable.sleep1);
+                        sleepImg.setVisibility(View.VISIBLE);
+                    } else if (sleep.equals("2")) {
+                        sleepImg.setImageResource(R.drawable.sleep2);
+                        sleepImg.setVisibility(View.VISIBLE);
+                    } else if (sleep.equals("3")) {
+                        sleepImg.setImageResource(R.drawable.sleep3);
+                        sleepImg.setVisibility(View.VISIBLE);
                     }
                     if (headache.equals("0")) {
                         headacheImg.setVisibility(View.INVISIBLE);
@@ -162,12 +158,6 @@ public class CalendarActivity extends AppCompatActivity {
 
     public void GoToMenuActivity(View view) {
         Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
-    }
-
-    public void ChangeData(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("date", date);
         startActivity(intent);
     }
 }
