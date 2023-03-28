@@ -98,12 +98,10 @@ public class NoteActivity extends AppCompatActivity {
         assert cUser != null;
         idtable = cUser.getUid();
         RootRef = FirebaseDatabase.getInstance().getReference();
-        Toast.makeText(getApplicationContext(), "2", Toast.LENGTH_SHORT).show();
         EditText headerText = findViewById(R.id.titleText);
         EditText commentText = findViewById(R.id.noteText);
         header = headerText.getText().toString();
         comment = commentText.getText().toString();
-        Toast.makeText(getApplicationContext(), "3", Toast.LENGTH_SHORT).show();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
