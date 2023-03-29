@@ -88,16 +88,11 @@ public class CalendarActivity extends AppCompatActivity {
         RootRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.child("Condition").child(idtable).child(date).exists()){
+                try {
                     String mood = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("mood").getValue()).toString();
                     String sleep = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue()).toString();
                     String headache = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("headache").getValue()).toString();
-                    String comment;
-                    try {
-                        comment = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("comment").getValue()).toString();
-                    } catch (Exception e) {
-                        comment = "Нет записи за этот день";
-                    }
+                    String comment = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("comment").getValue()).toString();
                     commentText.setText(comment);
                     switch (mood) {
                         case "-1":
@@ -146,10 +141,11 @@ public class CalendarActivity extends AppCompatActivity {
                     } else {
                         headacheImg.setVisibility(View.VISIBLE);
                     }
-                } else {
+                } catch (Exception e) {
                     moodImg.setVisibility(View.INVISIBLE);
                     sleepImg.setVisibility(View.INVISIBLE);
                     headacheImg.setVisibility(View.INVISIBLE);
+                    commentText.setText("Нет записи за этот день");
                 }
             }
 

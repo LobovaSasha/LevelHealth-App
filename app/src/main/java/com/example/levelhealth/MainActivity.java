@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.child("Condition").child(idtable).child(date).exists()){
+                try {
                     String mood = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("mood").getValue()).toString();
                     String sleep = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue()).toString();
                     String headache = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("headache").getValue()).toString();
@@ -268,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
                             headache_res = 5;
                             break;
                     }
-                }
+                } catch (Exception ignored) {}
             }
 
             @Override

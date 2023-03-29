@@ -48,7 +48,25 @@ public class NoteActivity extends AppCompatActivity {
         FirebaseUser cUser = mAuth.getCurrentUser();
         assert cUser != null;
         String idtable = cUser.getUid();
+        EditText headerText = findViewById(R.id.titleText);
+        EditText commentText = findViewById(R.id.noteText);
         RootRef = FirebaseDatabase.getInstance().getReference();
+        RootRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    String comment = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("comment").getValue()).toString();
+                    String header = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("header").getValue()).toString();
+                    commentText.setText(comment);
+                    headerText.setText(header);
+                } catch (Exception ignored) {}
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(NoteActivity.this, "Ошибка", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
