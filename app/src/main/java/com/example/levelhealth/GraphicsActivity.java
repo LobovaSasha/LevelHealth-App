@@ -3,6 +3,7 @@ package com.example.levelhealth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -54,7 +55,7 @@ public class GraphicsActivity extends AppCompatActivity {
 
     private final DatabaseReference dbCond =
             FirebaseDatabase.getInstance().getReference("Condition");
-    CombinedChart sleep, mood;
+    CombinedChart sleep, mood, headache;
     Button back;
 
     private FirebaseAuth mAuth;
@@ -62,6 +63,7 @@ public class GraphicsActivity extends AppCompatActivity {
     List<String> days = Arrays.asList("пн", "вт", "ср", "чт", "пт", "сб", "вс");
 
     SimpleDateFormat dayOfWeekFormatter = new SimpleDateFormat("E", new Locale("ru"));
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat fullDateFormatter = new SimpleDateFormat("dd-MM-yyyy");
     ArrayList<String> weekDates = new ArrayList<>();
     String today = "";
@@ -69,6 +71,7 @@ public class GraphicsActivity extends AppCompatActivity {
     public void init() {
         sleep = findViewById(R.id.sleep);
         mood = findViewById(R.id.mood);
+        headache = findViewById(R.id.headache);
         back = findViewById(R.id.back);
 
         Calendar calendar = Calendar.getInstance();
@@ -110,8 +113,9 @@ public class GraphicsActivity extends AppCompatActivity {
                 // и, если да, одновременно получаем индекс
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     for (int i = 0; i < weekDates.size(); i++) {
-                        if (ds.getKey().equals(weekDates.get(i))) {
+                        if (Objects.equals(ds.getKey(), weekDates.get(i))) {
                             Condition el = ds.getValue(Condition.class);
+                            assert el != null;
                             el.idx = i;
                             table.add(el);
                             Log.d("EL", el.unwrap());
@@ -136,6 +140,7 @@ public class GraphicsActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     public void buildGraphicHeadHeart(ArrayList<Condition> table) {
         TextView[] daysView;
         ImageView[] hlvls;
@@ -188,6 +193,7 @@ public class GraphicsActivity extends AppCompatActivity {
     public void buildGraphics(ArrayList<Condition> table) {
         CombinedData combinedDataSleep = new CombinedData();
         CombinedData combinedDataMood = new CombinedData();
+        CombinedData combinedDataHeadache = new CombinedData();
 
         // заполняем датасет пустышек (для сохранения размера графика)
         ArrayList<BarEntry> empties = new ArrayList<>();
@@ -200,36 +206,47 @@ public class GraphicsActivity extends AppCompatActivity {
         BarData barData = new BarData(barDataSet);
         combinedDataSleep.setData(barData);
         combinedDataMood.setData(barData);
+        combinedDataHeadache.setData(barData);
 
         // заполняем датасет данными из бд
         ArrayList<Entry> entriesSleep = new ArrayList<>();
         ArrayList<Entry> entriesMood = new ArrayList<>();
+        ArrayList<Entry> entriesHeadache = new ArrayList<>();
         for (int i=0; i<table.size(); i++) {
             entriesSleep.add(new Entry(table.get(i).idx, table.get(i).sleep));
             entriesMood.add(new Entry(table.get(i).idx, table.get(i).mood));
+            entriesHeadache.add(new Entry(table.get(i).idx, table.get(i).headache));
         }
 
         LineDataSet dataSetSleep = new LineDataSet(entriesSleep, "");
         LineDataSet dataSetMood = new LineDataSet(entriesMood, "");
+        LineDataSet dataSetHeadache = new LineDataSet(entriesHeadache, "");
         LineData lineDataSleep = new LineData(dataSetSleep);
         LineData lineDataMood = new LineData(dataSetMood);
+        LineData lineDataHeadache = new LineData(dataSetHeadache);
 
         combinedDataSleep.setData(lineDataSleep);
         combinedDataMood.setData(lineDataMood);
+        combinedDataHeadache.setData(lineDataHeadache);
         sleep.setData(combinedDataSleep);
         mood.setData(combinedDataMood);
+        headache.setData(combinedDataHeadache);
 
         // дизайн графиков
         customizeGraphics(sleep);
         customizeDataSet(dataSetSleep);
         customizeGraphics(mood);
         customizeDataSet(dataSetMood);
+        customizeGraphics(headache);
+        customizeDataSet(dataSetHeadache);
 
         // обновление данных на экране
         sleep.notifyDataSetChanged();
         sleep.invalidate();
         mood.notifyDataSetChanged();
         mood.invalidate();
+        headache.notifyDataSetChanged();
+        headache.invalidate();
     }
 
     public void customizeGraphics(CombinedChart lineChart) {
