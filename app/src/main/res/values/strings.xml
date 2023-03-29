@@ -37,4 +37,5 @@
     <string name="calendar_comment">Ох уж этот день</string>
     <string name="settings">Настройки</string>
     <string name="done">Готово</string>
+    <string name="terms_of_service">Я даю <font color='#018C8B'><u>согласие на храние и обработку персональных данных</u></font></string>
 </resources>

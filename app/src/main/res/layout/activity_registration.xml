@@ -140,7 +140,7 @@ tools:context=".MainActivity">
         android:buttonTint="@color/stroke_text"
         android:paddingBottom="15dp"
         android:paddingLeft="15dp"
-        android:text="Я даю согласие на хранение и обработку персональных данных" />
+        android:text="@string/terms_of_service" />
 
 
 </RelativeLayout>
