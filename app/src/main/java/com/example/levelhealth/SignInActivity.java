@@ -37,9 +37,6 @@ public class SignInActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-        else {
-            Toast.makeText(this, "Войдите или зарегистрируйтесь", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void GoToRegistrationActivity(View view) {
@@ -52,6 +49,11 @@ public class SignInActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void GoToPasswordRecoveryActivity(View view) {
+        Intent intent = new Intent(this, PasswordRecoveryActivity.class);
+        startActivity(intent);
+    }
+
     public void init(){
         EmailBDent = findViewById(R.id.EmailBDent);
         PasswordBDent = findViewById(R.id.PasswordBDent);
@@ -59,21 +61,24 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void onClickEnterBD(View view) {
-        if(!TextUtils.isEmpty(EmailBDent.getText().toString()) && !TextUtils.isEmpty(PasswordBDent.getText().toString())) {
+        if(!TextUtils.isEmpty(EmailBDent.getText().toString()) &&
+           !TextUtils.isEmpty(PasswordBDent.getText().toString())) {
             mAuth.signInWithEmailAndPassword(EmailBDent.getText().toString(), PasswordBDent.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     FirebaseUser user = mAuth.getCurrentUser();
                     if (task.isSuccessful() && user.isEmailVerified()) {
-                        Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Вход не произведен, подтвердите email и проверьте данные", Toast.LENGTH_SHORT).show();
-                        Log.d("USER", user!=null ? user.getEmail():"user == null");
+                        Log.d("USER", user != null ? user.getEmail():"user == null");
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
                     }
                 }
             });
         }
+
     }
 }
