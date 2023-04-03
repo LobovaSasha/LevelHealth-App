@@ -14,7 +14,7 @@
     <color name="clickable_text">#FF018C8B</color>
     <color name="input_field">#FF8D8D8D</color>
     <color name="error">#FFE36068</color>
-
+    <color name="transparent">#00000000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="stroke_text">#018C8B</color>

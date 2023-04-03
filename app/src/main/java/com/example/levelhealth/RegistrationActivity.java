@@ -137,5 +137,10 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
+    public void GoToPersonalDataConsent(View view) {
+        Intent intent = new Intent(this, PersonalDataConsent.class);
+        startActivity(intent);
+    }
+
 }
 
