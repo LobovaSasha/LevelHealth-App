@@ -1,6 +1,5 @@
 package com.example.levelhealth;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,12 +20,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10, iv11, iv12, iv13;
     private Integer smile_res = -1, sleep_res = -1, headache_res = 0;
     private DatabaseReference mDataBase;
+
+    private ArrayList<String> settingsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,6 +201,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         init();
+
+        // получение списка настроек
+        settingsList = getSettings();
+        HashMap<String, int[]> settingsItems = new HashMap<>();
+        settingsItems.put("sleep", new int[]{R.id.textView10,  R.id.frameLayout3});
+        settingsItems.put("headache", new int[]{R.id.textView11,  R.id.frameLayout4});
+        settingsItems.put("notes", new int[]{R.id.frameLayout4});
+        for (String s : settingsItems.keySet()) {
+            if (!settingsList.contains(s)) {
+                for (int id : settingsItems.get(s)) findViewById(id).setVisibility(View.GONE);
+            }
+        }
     }
 
     public void init(){
@@ -300,6 +321,31 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Ошибка", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public ArrayList<String> getSettings() {
+        ArrayList<String> res = new ArrayList<>();
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("settings.txt")));
+            String txt = br.readLine();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                res = (ArrayList<String>) Arrays.stream(txt.split(";"))
+                        .collect(Collectors.toList());
+            }
+        } catch (FileNotFoundException fe) {
+            try {
+                FileOutputStream file = openFileOutput("settings.txt", MODE_PRIVATE);
+                file.write("sleep;headache;tablets;notes".getBytes(StandardCharsets.UTF_8));
+                file.close();
+
+                res = getSettings();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 
     public void GoToCalendarActivity(View view) {

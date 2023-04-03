@@ -42,9 +42,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /*
-    * settings.txt:
-    * sleep;headache;tablets;notes
-    * */
+     * settings.txt:
+     * sleep;headache;tablets;notes
+     * */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,17 +99,18 @@ public class SettingsActivity extends AppCompatActivity {
         sw_notes.setChecked(notes);
     }
 
-    public void loadSettings() {
+    public ArrayList<String> loadSettings() {
+        ArrayList<String> res = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput(FILE_NAME)));
             String txt = br.readLine();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                ArrayList<String> settings = (ArrayList<String>) Arrays.stream(txt.split(";"))
+                res = (ArrayList<String>) Arrays.stream(txt.split(";"))
                         .collect(Collectors.toList());
-                sleep = settings.contains("sleep");
-                headache = settings.contains("headache");
-                tablets = settings.contains("tablets");
-                notes = settings.contains("notes");
+                sleep = res.contains("sleep");
+                headache = res.contains("headache");
+                tablets = res.contains("tablets");
+                notes = res.contains("notes");
                 setSwitches();
             }
         } catch (FileNotFoundException fe) {
@@ -118,13 +119,14 @@ public class SettingsActivity extends AppCompatActivity {
                 file.write("sleep;headache;tablets;notes".getBytes(StandardCharsets.UTF_8));
                 file.close();
 
-                loadSettings();
+                res = loadSettings();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return res;
     }
 
     public void GoToMainActivity(View view) {
