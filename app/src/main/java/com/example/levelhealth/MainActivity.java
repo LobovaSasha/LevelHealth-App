@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         settingsItems.put("notes", new int[]{R.id.frameLayout4});
         for (String s : settingsItems.keySet()) {
             if (!settingsList.contains(s)) {
-                for (int id : settingsItems.get(s)) findViewById(id).setVisibility(View.GONE);
+                for (int id : Objects.requireNonNull(settingsItems.get(s))) findViewById(id).setVisibility(View.GONE);
             }
         }
     }
@@ -267,28 +267,6 @@ public class MainActivity extends AppCompatActivity {
                         case "3":
                             iv8.setImageResource(R.drawable.sleep1_3);
                             sleep_res = 3;
-                            break;
-                    }
-                    switch (headache) {
-                        case "1":
-                            iv9.setImageResource(R.drawable.headache1_1);
-                            headache_res = 1;
-                            break;
-                        case "2":
-                            iv10.setImageResource(R.drawable.headache1_2);
-                            headache_res = 2;
-                            break;
-                        case "3":
-                            iv11.setImageResource(R.drawable.headache1_3);
-                            headache_res = 3;
-                            break;
-                        case "4":
-                            iv12.setImageResource(R.drawable.headache1_4);
-                            headache_res = 4;
-                            break;
-                        case "5":
-                            iv13.setImageResource(R.drawable.headache1_5);
-                            headache_res = 5;
                             break;
                     }
                 } catch (Exception ignored) {}
