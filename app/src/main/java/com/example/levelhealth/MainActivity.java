@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, int[]> settingsItems = new HashMap<>();
         settingsItems.put("sleep", new int[]{R.id.textView10,  R.id.frameLayout3});
         settingsItems.put("headache", new int[]{R.id.textView11,  R.id.frameLayout4});
-        settingsItems.put("notes", new int[]{R.id.frameLayout4});
+        settingsItems.put("notes", new int[]{R.id.frameLayout5, R.id.textView13});
         for (String s : settingsItems.keySet()) {
             if (!settingsList.contains(s)) {
                 for (int id : settingsItems.get(s)) findViewById(id).setVisibility(View.GONE);
