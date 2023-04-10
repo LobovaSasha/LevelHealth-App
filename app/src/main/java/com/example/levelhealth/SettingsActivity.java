@@ -80,7 +80,7 @@ public class SettingsActivity extends AppCompatActivity {
     // функция вызывается при изменении состояния любого Switch
     // и обновляет settings.txt
     public void setSettings() {
-        String data = "";
+        String data = ";";
         data += sleep ? "sleep;" : "";
         data += headache ? "headache;" : "";
         data += tablets ? "tablets;" : "";

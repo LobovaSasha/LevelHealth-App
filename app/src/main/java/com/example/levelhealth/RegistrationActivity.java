@@ -3,9 +3,12 @@ package com.example.levelhealth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -52,6 +55,30 @@ public class RegistrationActivity extends AppCompatActivity {
         checkBox = findViewById(R.id.checkBox);
         mDataBase = FirebaseDatabase.getInstance().getReference(USER_KEY);
         mAuth = FirebaseAuth.getInstance();
+        BirthBDreg.addTextChangedListener(new TextWatcher() {
+            Integer before, after;
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                before = BirthBDreg.getText().toString().length();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void afterTextChanged(Editable editable) {
+                after = BirthBDreg.getText().toString().length();
+                if (before < after) {
+                    if (after == 2 || after == 5) {
+                        BirthBDreg.setText(BirthBDreg.getText().toString() + ".");
+                        BirthBDreg.setSelection(after);
+                    }
+                }
+            }
+
+        });
     }
 
     public boolean isDateValid(String date) {
