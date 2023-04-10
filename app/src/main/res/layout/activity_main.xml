@@ -426,6 +426,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="28dp"
                     android:max="5"
+
                     android:progress="2"
                     android:progressTint="@color/main_color_2"
                     android:thumbTint="@color/main_color_2"
@@ -434,7 +435,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tickMark="@drawable/scroll_item" />
+                    app:tickMark="@drawable/seekbar_item" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </FrameLayout>
