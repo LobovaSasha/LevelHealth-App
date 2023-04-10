@@ -1,9 +1,12 @@
 package com.example.levelhealth;
 
+import static java.lang.Math.abs;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,11 +32,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -46,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
     private Integer smile_res = -1, sleep_res = -1, headache_res = 0;
     private DatabaseReference mDataBase;
 
+    Calendar calendar = Calendar.getInstance();
+    int calendarMonthDay = calendar.get(Calendar.DAY_OF_MONTH);
+    int calendarWeekDay = calendar.get(Calendar.DAY_OF_WEEK);
+
     private ArrayList<String> settingsList;
 
     @Override
@@ -57,10 +67,41 @@ public class MainActivity extends AppCompatActivity {
         // Создание вручную списка дней, в дальнейшем через бд
         List<Day> dayList = new ArrayList<>();
 
-        String[] weekDays = new String[]{"Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"};
-        for (int i = 0; i < 31; i++) {
-//            System.out.println(weekDays[i % 7]);
-            dayList.add(new Day(i, weekDays[i % 7], String.valueOf((i + 11) % 31 + 1)));
+//        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+//
+//        String[] parts = date.split("-");
+//        Integer currentDate = Integer.valueOf(parts[2]);
+
+        String[] weekDays = new String[]{"Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"};
+
+
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH)+1;
+
+
+        YearMonth yearMonthObject = YearMonth.of(currentYear, currentMonth);
+        int daysInMonth = yearMonthObject.lengthOfMonth();
+
+        YearMonth yearLastMonthObject = YearMonth.of(currentYear, currentMonth-1);
+        int daysInLastMonth = yearLastMonthObject.lengthOfMonth();
+
+        int i = calendarMonthDay - 25;
+
+        for (int j = 0; j < 29; j++) {
+
+            if (i <= 0){
+                i = i + daysInLastMonth - 1;
+
+            }
+            if (i > daysInMonth){
+                i = i - daysInMonth - 1;
+            }
+
+            i = i + 1;
+
+//            System.out.println(calendarWeekDay);
+
+            dayList.add(new Day(j, weekDays[(calendarWeekDay + j + 2) % 7], String.valueOf(i)));
 
         }
 

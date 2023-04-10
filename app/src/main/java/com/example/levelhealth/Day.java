@@ -3,12 +3,12 @@ package com.example.levelhealth;
 public class Day {
     private int id;
     private String weekDay;
-    private String mouthDay;
+    private String monthDay;
 
-    public Day(int id, String weekDay, String mouthDay) {
+    public Day(int id, String weekDay, String monthDay) {
         this.id = id;
         this.weekDay = weekDay;
-        this.mouthDay = mouthDay;
+        this.monthDay = monthDay;
     }
 
     public int getId() {
@@ -19,8 +19,8 @@ public class Day {
         return weekDay;
     }
 
-    public String getMouthDay() {
-        return mouthDay;
+    public String getMonthDay() {
+        return monthDay;
     }
 
     public void setId(int id) {
@@ -31,7 +31,7 @@ public class Day {
         this.weekDay = weekDay;
     }
 
-    public void setMouthDay(String mouthDay) {
-        this.mouthDay = mouthDay;
+    public void setMouthDay(String monthDay) {
+        this.monthDay = monthDay;
     }
 }
