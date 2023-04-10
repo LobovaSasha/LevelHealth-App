@@ -10,7 +10,9 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -126,7 +128,30 @@ public class ChangeWindowActivity extends AppCompatActivity {
 
         profilePic = findViewById(R.id.profilePic);
 
+        birthEdit.addTextChangedListener(new TextWatcher() {
+            Integer before, after;
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                before = birthEdit.getText().toString().length();
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void afterTextChanged(Editable editable) {
+                after = birthEdit.getText().toString().length();
+                if (before < after) {
+                    if (after == 2 || after == 5) {
+                        birthEdit.setText(birthEdit.getText().toString() + ".");
+                        birthEdit.setSelection(after);
+                    }
+                }
+            }
+
+        });
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();

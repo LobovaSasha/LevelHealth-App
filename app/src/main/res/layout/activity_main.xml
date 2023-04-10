@@ -465,6 +465,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
+                android:onClick="GoToNoteActivity"
                 tools:layout_editor_absoluteY="0dp">
 
             </ImageButton>
@@ -476,6 +477,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="24dp"
                 android:rotation="180"
+                android:elevation="10dp"
                 app:layout_constraintEnd_toEndOf="@+id/some_id5"
                 app:layout_constraintTop_toTopOf="@+id/some_id5"
                 app:srcCompat="@drawable/icon_back_arrow" />

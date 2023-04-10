@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,21 +22,27 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private RecyclerView daysRecycler;
-    private DayAdapter dayAdapter;
-    private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10, iv11, iv12, iv13;
+    private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8;
     private Integer smile_res = -1, sleep_res = -1, headache_res = 0;
-    private DatabaseReference mDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,10 +182,10 @@ public class MainActivity extends AppCompatActivity {
     private void setDaysRecycler(List<Day> dayList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
 
-        daysRecycler = findViewById(R.id.daysRecycler);
+        RecyclerView daysRecycler = findViewById(R.id.daysRecycler);
         daysRecycler.setLayoutManager(layoutManager);
 
-        dayAdapter = new DayAdapter(this, dayList);
+        DayAdapter dayAdapter = new DayAdapter(this, dayList);
         daysRecycler.setAdapter(dayAdapter);
     }
 
@@ -192,10 +199,22 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         init();
+
+        // получение списка настроек
+        ArrayList<String> settingsList = getSettings();
+        HashMap<String, int[]> settingsItems = new HashMap<>();
+        settingsItems.put("sleep", new int[]{R.id.textView10,  R.id.frameLayout3});
+        settingsItems.put("headache", new int[]{R.id.textView11,  R.id.frameLayout4});
+        settingsItems.put("notes", new int[]{R.id.frameLayout5, R.id.textView13});
+        for (String s : settingsItems.keySet()) {
+            if (!settingsList.contains(s)) {
+                for (int id : Objects.requireNonNull(settingsItems.get(s))) findViewById(id).setVisibility(View.GONE);
+            }
+        }
     }
 
     public void init(){
-        mDataBase = FirebaseDatabase.getInstance().getReference("Condition");
+        DatabaseReference mDataBase = FirebaseDatabase.getInstance().getReference("Condition");
         mAuth = FirebaseAuth.getInstance();
         final DatabaseReference RootRef;
         String date = getDate();
@@ -246,28 +265,6 @@ public class MainActivity extends AppCompatActivity {
                             sleep_res = 3;
                             break;
                     }
-                    switch (headache) {
-                        case "1":
-                            iv9.setImageResource(R.drawable.headache1_1);
-                            headache_res = 1;
-                            break;
-                        case "2":
-                            iv10.setImageResource(R.drawable.headache1_2);
-                            headache_res = 2;
-                            break;
-                        case "3":
-                            iv11.setImageResource(R.drawable.headache1_3);
-                            headache_res = 3;
-                            break;
-                        case "4":
-                            iv12.setImageResource(R.drawable.headache1_4);
-                            headache_res = 4;
-                            break;
-                        case "5":
-                            iv13.setImageResource(R.drawable.headache1_5);
-                            headache_res = 5;
-                            break;
-                    }
                 } catch (Exception ignored) {}
             }
 
@@ -302,6 +299,28 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public ArrayList<String> getSettings() {
+        ArrayList<String> res = new ArrayList<>();
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("settings.txt")));
+            String txt = br.readLine();
+            res = (ArrayList<String>) Arrays.stream(txt.split(";")).collect(Collectors.toList());
+        } catch (FileNotFoundException fe) {
+            try {
+                FileOutputStream file = openFileOutput("settings.txt", MODE_PRIVATE);
+                file.write("sleep;headache;tablets;notes".getBytes(StandardCharsets.UTF_8));
+                file.close();
+
+                res = getSettings();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
     public void GoToCalendarActivity(View view) {
         Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);
@@ -334,12 +353,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String getDate() {
+        TextView text_data = findViewById(R.id.textView8);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM", new Locale("ru"));
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         try {
             Bundle arguments = getIntent().getExtras();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(Objects.requireNonNull(formatter.parse(arguments.get("date").toString())));
+            text_data.setText(dateFormat.format(calendar.getTime()));
             return arguments.get("date").toString();
         } catch (Exception e) {
             Calendar calendar = Calendar.getInstance();
-            @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            text_data.setText("Сегодня");
             return formatter.format(calendar.getTime());
         }
     }

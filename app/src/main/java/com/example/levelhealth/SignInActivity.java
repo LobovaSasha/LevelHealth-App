@@ -73,7 +73,7 @@ public class SignInActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(getApplicationContext(), "Вход не произведен, подтвердите email и проверьте данные", Toast.LENGTH_SHORT).show();
                         Log.d("USER", user != null ? user.getEmail():"user == null");
-                        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                     }
                 }
