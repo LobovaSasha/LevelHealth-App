@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private SeekBar sb;
     private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8;
     private Integer smile_res = -1, sleep_res = -1, headache_res = 0;
     private DatabaseReference RootRef;
@@ -76,31 +78,33 @@ public class MainActivity extends AppCompatActivity {
 
             i = i + 1;
 
-            dayList.add(new Day(j, weekDays[(calendarWeekDay + j + 1) % 7], String.valueOf(i)));
+            dayList.add(new Day(j, weekDays[(calendarWeekDay + j + 3) % 7], String.valueOf(i)));
 
         }
 
         setDaysRecycler(dayList);
 
-        iv1 = (ImageView) findViewById(R.id.image_view_smile1);
-        iv2 = (ImageView) findViewById(R.id.image_view_smile2);
-        iv3 = (ImageView) findViewById(R.id.image_view_smile3);
-        iv4 = (ImageView) findViewById(R.id.image_view_smile4);
+        iv1 = findViewById(R.id.image_view_smile1);
+        iv2 = findViewById(R.id.image_view_smile2);
+        iv3 = findViewById(R.id.image_view_smile3);
+        iv4 = findViewById(R.id.image_view_smile4);
 
-        iv5 = (ImageView) findViewById(R.id.image_view_sleep1);
-        iv6 = (ImageView) findViewById(R.id.image_view_sleep2);
-        iv7 = (ImageView) findViewById(R.id.image_view_sleep3);
-        iv8 = (ImageView) findViewById(R.id.image_view_sleep4);
+        iv5 = findViewById(R.id.image_view_sleep1);
+        iv6 = findViewById(R.id.image_view_sleep2);
+        iv7 = findViewById(R.id.image_view_sleep3);
+        iv8 = findViewById(R.id.image_view_sleep4);
 
-        Button b1 = (Button) findViewById(R.id.button_smile1);
-        Button b2 = (Button) findViewById(R.id.button_smile2);
-        Button b3 = (Button) findViewById(R.id.button_smile3);
-        Button b4 = (Button) findViewById(R.id.button_smile4);
+        sb = findViewById(R.id.seekBar2);
 
-        Button b5 = (Button) findViewById(R.id.button_sleep1);
-        Button b6 = (Button) findViewById(R.id.button_sleep2);
-        Button b7 = (Button) findViewById(R.id.button_sleep3);
-        Button b8 = (Button) findViewById(R.id.button_sleep4);
+        Button b1 = findViewById(R.id.button_smile1);
+        Button b2 = findViewById(R.id.button_smile2);
+        Button b3 = findViewById(R.id.button_smile3);
+        Button b4 = findViewById(R.id.button_smile4);
+
+        Button b5 = findViewById(R.id.button_sleep1);
+        Button b6 = findViewById(R.id.button_sleep2);
+        Button b7 = findViewById(R.id.button_sleep3);
+        Button b8 = findViewById(R.id.button_sleep4);
 
         b1.setOnClickListener(v -> {
             iv1.setImageResource(R.drawable.smile1_0);
@@ -173,6 +177,9 @@ public class MainActivity extends AppCompatActivity {
             sleep_res = 3;
             saveDB();
         });
+
+        sb.setOnSeekBarChangeListener(seekBarChangeListener);
+
     }
 
     private void setDaysRecycler(List<Day> dayList) {
@@ -269,6 +276,8 @@ public class MainActivity extends AppCompatActivity {
                             sleep_res = 3;
                             break;
                     }
+                    headache_res = Integer.parseInt(headache);
+                    sb.setProgress(headache_res);
                 } catch (Exception ignored) {}
             }
 
@@ -297,6 +306,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private final SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener(){
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            headache_res = sb.getProgress();
+            saveDB();
+        }
+    };
     public void GoToCalendarActivity(View view) {
         Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);

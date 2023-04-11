@@ -6,18 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.CombinedChart;
-import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -38,14 +34,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -57,8 +51,6 @@ public class GraphicsActivity extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference("Condition");
     CombinedChart sleep, mood, headache;
     Button back;
-
-    private FirebaseAuth mAuth;
 
     List<String> days = Arrays.asList("пн", "вт", "ср", "чт", "пт", "сб", "вс");
 
@@ -86,7 +78,7 @@ public class GraphicsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphics);
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         init();
         back.setOnClickListener(v -> {
             onBackPressed();
@@ -237,7 +229,7 @@ public class GraphicsActivity extends AppCompatActivity {
         customizeDataSet(dataSetSleep);
         customizeGraphics(mood);
         customizeDataSet(dataSetMood);
-        customizeGraphics(headache);
+        customizeGraphicsForHeadache(headache);
         customizeDataSet(dataSetHeadache);
 
         // обновление данных на экране
@@ -272,8 +264,36 @@ public class GraphicsActivity extends AppCompatActivity {
         });
 
         YAxis yAxis = lineChart.getAxisLeft();
-        yAxis.setAxisMinimum((float) -1);
+        yAxis.setAxisMinimum((float) 0);
         yAxis.setAxisMaximum((float) 3.1);
+        yAxis.setGranularity(1f);
+    }
+
+    public void customizeGraphicsForHeadache(CombinedChart lineChart) {
+        int idx = days.indexOf(today);
+        String[] daysTxt = new String[7];
+        for (int i = 0; i < 7; i++) {
+            daysTxt[6 - i] = days.get((idx + 7 - i) % 7);
+        }
+        lineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(daysTxt)); // навесить дни вместо чисел на оси X
+        lineChart.setTouchEnabled(false); // сделать график некликабельным
+        lineChart.getAxisRight().setEnabled(false); // удалить правую ось Y
+        lineChart.getLegend().setEnabled(false); // удалить легенду
+        lineChart.getDescription().setEnabled(false); // удалить текст "description label"
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM); // опустить дни вниз графика
+        lineChart.getXAxis().setTextColor(Color.rgb(150, 150, 150));
+
+        // удаляет значения по Y слева (меняет цифры на пустые строки)
+        lineChart.getAxisLeft().setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return "";
+            }
+        });
+
+        YAxis yAxis = lineChart.getAxisLeft();
+        yAxis.setAxisMinimum((float) 0);
+        yAxis.setAxisMaximum((float) 5.1);
         yAxis.setGranularity(1f);
     }
 

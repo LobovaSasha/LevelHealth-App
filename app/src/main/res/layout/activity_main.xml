@@ -218,7 +218,6 @@
                         android:id="@+id/button_smile4"
                         android:layout_width="60sp"
                         android:layout_height="60sp"
-                        android:layout_weight="1"
                         android:background="@android:color/transparent" />
 
                     <ImageView
@@ -422,9 +421,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="28dp"
+                    android:layout_marginBottom="20dp"
                     android:max="5"
 
                     android:progress="2"
