@@ -138,22 +138,23 @@
             app:layout_constraintStart_toStartOf="@+id/commentBg"
             app:layout_constraintTop_toTopOf="@+id/commentBg" />
 
-    <Button
-        android:id="@+id/save"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/style_button_stroke_text"
+        <Button
+            android:id="@+id/save"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="88dp"
 
-        android:onClick="ChangeData"
-        android:paddingHorizontal="30dp"
-        android:text="Редактировать"
+            android:background="@drawable/style_button_stroke_text"
+            android:onClick="ChangeData"
+            android:paddingHorizontal="30dp"
 
-        android:textColor="#018C8B"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentBg" />
+            android:text="Редактировать"
+            android:textColor="#018C8B"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/commentBg" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
