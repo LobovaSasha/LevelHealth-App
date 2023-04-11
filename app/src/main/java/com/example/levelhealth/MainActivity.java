@@ -55,15 +55,14 @@ public class MainActivity extends AppCompatActivity {
 
         int currentYear = calendar.get(Calendar.YEAR);
         int currentMonth = calendar.get(Calendar.MONTH)+1;
+        int daysInMonth = 31, daysInLastMonth = 31;
 
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            daysInMonth = YearMonth.of(currentYear, currentMonth).lengthOfMonth();
+            daysInLastMonth = YearMonth.of(currentYear, (currentMonth + 11) % 12).lengthOfMonth();
+        }
 
-        YearMonth yearMonthObject = YearMonth.of(currentYear, currentMonth);
-        int daysInMonth = yearMonthObject.lengthOfMonth();
-
-        YearMonth yearLastMonthObject = YearMonth.of(currentYear, currentMonth-1);
-        int daysInLastMonth = yearLastMonthObject.lengthOfMonth();
-
-        int i = calendarMonthDay - 25;
+        int i = calendarMonthDay - 24;
 
         for (int j = 0; j < 29; j++) {
 
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
             i = i + 1;
 
-            dayList.add(new Day(j, weekDays[(calendarWeekDay + j + 2) % 7], String.valueOf(i)));
+            dayList.add(new Day(j, weekDays[(calendarWeekDay + j + 1) % 7], String.valueOf(i)));
 
         }
 
