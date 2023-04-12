@@ -74,17 +74,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:id="@+id/moodsRecycler"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="30dp"-->
-        <!--            android:layout_marginTop="12dp"-->
-        <!--            android:paddingHorizontal="25sp"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintHorizontal_bias="0.0"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/daysRecycler" />-->
-
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
@@ -426,7 +415,7 @@
                     android:layout_marginBottom="20dp"
                     android:max="5"
 
-                    android:progress="2"
+                    android:progress="0"
                     android:progressTint="@color/main_color_2"
                     android:thumbTint="@color/main_color_2"
                     app:layout_constraintBottom_toBottomOf="parent"
