@@ -30,7 +30,8 @@ public class CalendarActivity extends AppCompatActivity {
     ImageView moodImg, sleepImg, headacheImg;
     TextView commentText;
     String date, idtable;
-    Button back;
+    Button back, save;
+    Integer today_year = 9999, today_month = 99, today_day = 99;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -56,6 +57,23 @@ public class CalendarActivity extends AppCompatActivity {
                     date = dayOfMonth + "-" + "0" + (month + 1) + "-" + year;
                 }
             }
+            if (today_year > year) {
+                save.setVisibility(View.VISIBLE);
+            } else if (today_year == year) {
+                if (today_month > month + 1) {
+                    save.setVisibility(View.VISIBLE);
+                } else if (today_month == month + 1) {
+                    if (today_day >= dayOfMonth) {
+                        save.setVisibility(View.VISIBLE);
+                    } else {
+                        save.setVisibility(View.INVISIBLE);
+                    }
+                } else {
+                    save.setVisibility(View.INVISIBLE);
+                }
+            } else {
+                save.setVisibility(View.INVISIBLE);
+            }
             init();
         });
     }
@@ -71,10 +89,14 @@ public class CalendarActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         date = formatter.format(calendar.getTime());
+        today_day = Integer.parseInt(date.split("-")[0]);
+        today_month = Integer.parseInt(date.split("-")[1]);
+        today_year = Integer.parseInt(date.split("-")[2]);
     }
 
     public void init(){
         back = findViewById(R.id.back);
+        save = findViewById(R.id.save);
         mAuth = FirebaseAuth.getInstance();
         DatabaseReference RootRef;
         FirebaseUser cUser = mAuth.getCurrentUser();
@@ -88,64 +110,74 @@ public class CalendarActivity extends AppCompatActivity {
         RootRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String mood, sleep, headache, comment;
                 try {
-                    String mood = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("mood").getValue()).toString();
-                    String sleep = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue()).toString();
-                    String headache = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("headache").getValue()).toString();
-                    String comment = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("comment").getValue()).toString();
-                    commentText.setText(comment);
-                    switch (mood) {
-                        case "-1":
-                            moodImg.setVisibility(View.INVISIBLE);
-                            break;
-                        case "0":
-                            moodImg.setImageResource(R.drawable.smile1_0);
-                            moodImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "1":
-                            moodImg.setImageResource(R.drawable.smile1_1);
-                            moodImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "2":
-                            moodImg.setImageResource(R.drawable.smile1_2);
-                            moodImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "3":
-                            moodImg.setImageResource(R.drawable.smile1_3);
-                            moodImg.setVisibility(View.VISIBLE);
-                            break;
-                    }
-                    switch (sleep) {
-                        case "-1":
-                            sleepImg.setVisibility(View.INVISIBLE);
-                            break;
-                        case "0":
-                            sleepImg.setImageResource(R.drawable.sleep0);
-                            sleepImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "1":
-                            sleepImg.setImageResource(R.drawable.sleep1);
-                            sleepImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "2":
-                            sleepImg.setImageResource(R.drawable.sleep2);
-                            sleepImg.setVisibility(View.VISIBLE);
-                            break;
-                        case "3":
-                            sleepImg.setImageResource(R.drawable.sleep3);
-                            sleepImg.setVisibility(View.VISIBLE);
-                            break;
-                    }
-                    if (headache.equals("0")) {
-                        headacheImg.setVisibility(View.INVISIBLE);
-                    } else {
-                        headacheImg.setVisibility(View.VISIBLE);
-                    }
+                    mood = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("mood").getValue()).toString();
                 } catch (Exception e) {
-                    moodImg.setVisibility(View.INVISIBLE);
-                    sleepImg.setVisibility(View.INVISIBLE);
+                    mood = "-1";
+                }
+                try {
+                    sleep = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue()).toString();
+                } catch (Exception e) {
+                    sleep = "-1";
+                }
+                try {
+                    headache = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("headache").getValue()).toString();
+                } catch (Exception e) {
+                    headache = "0";
+                }
+                try {
+                    comment = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("comment").getValue()).toString();
+                } catch (Exception e) {
+                    comment = "Нет записи за этот день";
+                }
+                commentText.setText(comment);
+                switch (mood) {
+                    case "-1":
+                        moodImg.setVisibility(View.INVISIBLE);
+                        break;
+                    case "0":
+                        moodImg.setImageResource(R.drawable.smile1_0);
+                        moodImg.setVisibility(View.VISIBLE);
+                        break;
+                    case "1":
+                        moodImg.setImageResource(R.drawable.smile1_1);
+                        moodImg.setVisibility(View.VISIBLE);
+                        break;
+                    case "2":
+                        moodImg.setImageResource(R.drawable.smile1_2);
+                        moodImg.setVisibility(View.VISIBLE);
+                        break;
+                    case "3":
+                        moodImg.setImageResource(R.drawable.smile1_3);
+                        moodImg.setVisibility(View.VISIBLE);
+                        break;
+                }
+                switch (sleep) {
+                    case "-1":
+                        sleepImg.setVisibility(View.INVISIBLE);
+                        break;
+                    case "0":
+                        sleepImg.setImageResource(R.drawable.sleep0);
+                        sleepImg.setVisibility(View.VISIBLE);
+                        break;
+                    case "1":
+                        sleepImg.setImageResource(R.drawable.sleep1);
+                        sleepImg.setVisibility(View.VISIBLE);
+                        break;
+                    case "2":
+                        sleepImg.setImageResource(R.drawable.sleep2);
+                        sleepImg.setVisibility(View.VISIBLE);
+                        break;
+                    case "3":
+                        sleepImg.setImageResource(R.drawable.sleep3);
+                        sleepImg.setVisibility(View.VISIBLE);
+                        break;
+                }
+                if (headache.equals("0")) {
                     headacheImg.setVisibility(View.INVISIBLE);
-                    commentText.setText("Нет записи за этот день");
+                } else {
+                    headacheImg.setVisibility(View.VISIBLE);
                 }
             }
 
