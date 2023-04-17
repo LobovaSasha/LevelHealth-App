@@ -94,8 +94,14 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void GoToTakingPillsActivity(View view) {
+        Intent intent = new Intent(this, TakingPills.class);
+        startActivity(intent);
+    }
+
     public void GoToSettingsActivity(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
 }

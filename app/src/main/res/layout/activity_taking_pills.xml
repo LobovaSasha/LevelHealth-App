@@ -28,7 +28,7 @@
                 android:layout_marginStart="40sp"
                 android:layout_marginBottom="2sp"
                 android:background="@android:color/transparent"
-                android:onClick="GoToMainActivity"
+                android:onClick="GoToMenuActivity"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/icon_back_arrow"
                 app:tint="@color/turquoise" />
@@ -246,6 +246,7 @@
 
         <TextView
             android:id="@+id/change"
+            android:onClick="GoToTakingPillsChangeActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/change"

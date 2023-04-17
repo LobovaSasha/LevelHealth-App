@@ -49,6 +49,14 @@
     <string name="calendar_comment">Ох уж этот день</string>
     <string name="settings">Настройки</string>
     <string name="done">Готово</string>
+
+    <string-array name="taking_days_spinner">
+        <item>Выбрать день</item>
+        <item>Каждый день</item>
+        <item>По определенным дням</item>
+        <item>В течение дня</item>
+        <item>Курс</item>
+    </string-array>
     <string name="terms_of_service">Я даю <font color='#018C8B'><u>согласие на храние и обработку персональных данных</u></font></string>
 
     <!--Согласие на обработку данных-->
