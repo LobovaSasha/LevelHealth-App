@@ -73,7 +73,7 @@
         android:onClick="onClickEnterBD"
         android:text="@string/enter"
         android:textAllCaps="false"
-        android:textColor="@color/text_color_2"
+        android:textColor="@color/stroke_text"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
