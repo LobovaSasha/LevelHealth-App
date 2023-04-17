@@ -31,6 +31,7 @@ public class MenuActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_menu);
         FirebaseUser cUser = mAuth.getCurrentUser();
+        assert cUser != null;
         String id = cUser.getUid();
         TextView FioText = findViewById(R.id.NameSurname);
         TextView BirthText = findViewById(R.id.DateOfBirth);

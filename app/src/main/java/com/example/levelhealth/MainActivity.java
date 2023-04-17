@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,27 +23,26 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.time.YearMonth;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private SeekBar sb;
     private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8;
     private Integer smile_res = -1, sleep_res = -1, headache_res = 0;
+    private DatabaseReference RootRef;
+    private String date, idtable;
+    Calendar calendar = Calendar.getInstance();
+    int calendarMonthDay = calendar.get(Calendar.DAY_OF_MONTH);
+    int calendarWeekDay = calendar.get(Calendar.DAY_OF_WEEK);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,133 +50,136 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
 
-        // Создание вручную списка дней, в дальнейшем через бд
         List<Day> dayList = new ArrayList<>();
 
-        String[] weekDays = new String[]{"Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"};
-        for (int i = 0; i < 31; i++) {
-//            System.out.println(weekDays[i % 7]);
-            dayList.add(new Day(i, weekDays[i % 7], String.valueOf((i + 11) % 31 + 1)));
+        String[] weekDays = new String[]{"Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"};
+
+
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH)+1;
+        int daysInMonth = 31, daysInLastMonth = 31;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            daysInMonth = YearMonth.of(currentYear, currentMonth).lengthOfMonth();
+            daysInLastMonth = YearMonth.of(currentYear, (currentMonth + 11) % 12).lengthOfMonth();
+        }
+
+        int i = calendarMonthDay - 24;
+
+        for (int j = 0; j < 29; j++) {
+
+            if (i <= 0){
+                i = i + daysInLastMonth - 1;
+
+            }
+            if (i > daysInMonth){
+                i = i - daysInMonth - 1;
+            }
+
+            i = i + 1;
+
+            dayList.add(new Day(j, weekDays[(calendarWeekDay + j + 3) % 7], String.valueOf(i)));
 
         }
 
         setDaysRecycler(dayList);
 
-        iv1 = (ImageView) findViewById(R.id.image_view_smile1);
-        iv2 = (ImageView) findViewById(R.id.image_view_smile2);
-        iv3 = (ImageView) findViewById(R.id.image_view_smile3);
-        iv4 = (ImageView) findViewById(R.id.image_view_smile4);
+        iv1 = findViewById(R.id.image_view_smile1);
+        iv2 = findViewById(R.id.image_view_smile2);
+        iv3 = findViewById(R.id.image_view_smile3);
+        iv4 = findViewById(R.id.image_view_smile4);
 
-        iv5 = (ImageView) findViewById(R.id.image_view_sleep1);
-        iv6 = (ImageView) findViewById(R.id.image_view_sleep2);
-        iv7 = (ImageView) findViewById(R.id.image_view_sleep3);
-        iv8 = (ImageView) findViewById(R.id.image_view_sleep4);
+        iv5 = findViewById(R.id.image_view_sleep1);
+        iv6 = findViewById(R.id.image_view_sleep2);
+        iv7 = findViewById(R.id.image_view_sleep3);
+        iv8 = findViewById(R.id.image_view_sleep4);
 
-        Button b1 = (Button) findViewById(R.id.button_smile1);
-        Button b2 = (Button) findViewById(R.id.button_smile2);
-        Button b3 = (Button) findViewById(R.id.button_smile3);
-        Button b4 = (Button) findViewById(R.id.button_smile4);
+        sb = findViewById(R.id.seekBar2);
 
-        Button b5 = (Button) findViewById(R.id.button_sleep1);
-        Button b6 = (Button) findViewById(R.id.button_sleep2);
-        Button b7 = (Button) findViewById(R.id.button_sleep3);
-        Button b8 = (Button) findViewById(R.id.button_sleep4);
+        Button b1 = findViewById(R.id.button_smile1);
+        Button b2 = findViewById(R.id.button_smile2);
+        Button b3 = findViewById(R.id.button_smile3);
+        Button b4 = findViewById(R.id.button_smile4);
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv1.setImageResource(R.drawable.smile1_0);
-                iv2.setImageResource(R.drawable.smile0_1);
-                iv3.setImageResource(R.drawable.smile0_2);
-                iv4.setImageResource(R.drawable.smile0_3);
-                smile_res = 0;
-                saveDB();
-            }
+        Button b5 = findViewById(R.id.button_sleep1);
+        Button b6 = findViewById(R.id.button_sleep2);
+        Button b7 = findViewById(R.id.button_sleep3);
+        Button b8 = findViewById(R.id.button_sleep4);
+
+        b1.setOnClickListener(v -> {
+            iv1.setImageResource(R.drawable.smile1_0);
+            iv2.setImageResource(R.drawable.smile0_1);
+            iv3.setImageResource(R.drawable.smile0_2);
+            iv4.setImageResource(R.drawable.smile0_3);
+            smile_res = 0;
+            saveDB();
         });
 
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv1.setImageResource(R.drawable.smile0_0);
-                iv2.setImageResource(R.drawable.smile1_1);
-                iv3.setImageResource(R.drawable.smile0_2);
-                iv4.setImageResource(R.drawable.smile0_3);
-                smile_res = 1;
-                saveDB();
-            }
+        b2.setOnClickListener(v -> {
+            iv1.setImageResource(R.drawable.smile0_0);
+            iv2.setImageResource(R.drawable.smile1_1);
+            iv3.setImageResource(R.drawable.smile0_2);
+            iv4.setImageResource(R.drawable.smile0_3);
+            smile_res = 1;
+            saveDB();
         });
 
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv1.setImageResource(R.drawable.smile0_0);
-                iv2.setImageResource(R.drawable.smile0_1);
-                iv3.setImageResource(R.drawable.smile1_2);
-                iv4.setImageResource(R.drawable.smile0_3);
-                smile_res = 2;
-                saveDB();
-            }
+        b3.setOnClickListener(v -> {
+            iv1.setImageResource(R.drawable.smile0_0);
+            iv2.setImageResource(R.drawable.smile0_1);
+            iv3.setImageResource(R.drawable.smile1_2);
+            iv4.setImageResource(R.drawable.smile0_3);
+            smile_res = 2;
+            saveDB();
         });
 
-        b4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv1.setImageResource(R.drawable.smile0_0);
-                iv2.setImageResource(R.drawable.smile0_1);
-                iv3.setImageResource(R.drawable.smile0_2);
-                iv4.setImageResource(R.drawable.smile1_3);
-                smile_res = 3;
-                saveDB();
-            }
+        b4.setOnClickListener(v -> {
+            iv1.setImageResource(R.drawable.smile0_0);
+            iv2.setImageResource(R.drawable.smile0_1);
+            iv3.setImageResource(R.drawable.smile0_2);
+            iv4.setImageResource(R.drawable.smile1_3);
+            smile_res = 3;
+            saveDB();
         });
 
-        b5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv5.setImageResource(R.drawable.sleep1_0);
-                iv6.setImageResource(R.drawable.sleep0_1);
-                iv7.setImageResource(R.drawable.sleep0_2);
-                iv8.setImageResource(R.drawable.sleep0_3);
-                sleep_res = 0;
-                saveDB();
-            }
+        b5.setOnClickListener(v -> {
+            iv5.setImageResource(R.drawable.sleep1_0);
+            iv6.setImageResource(R.drawable.sleep0_1);
+            iv7.setImageResource(R.drawable.sleep0_2);
+            iv8.setImageResource(R.drawable.sleep0_3);
+            sleep_res = 0;
+            saveDB();
         });
 
-        b6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv5.setImageResource(R.drawable.sleep0_0);
-                iv6.setImageResource(R.drawable.sleep1_1);
-                iv7.setImageResource(R.drawable.sleep0_2);
-                iv8.setImageResource(R.drawable.sleep0_3);
-                sleep_res = 1;
-                saveDB();
-            }
+        b6.setOnClickListener(v -> {
+            iv5.setImageResource(R.drawable.sleep0_0);
+            iv6.setImageResource(R.drawable.sleep1_1);
+            iv7.setImageResource(R.drawable.sleep0_2);
+            iv8.setImageResource(R.drawable.sleep0_3);
+            sleep_res = 1;
+            saveDB();
         });
 
-        b7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv5.setImageResource(R.drawable.sleep0_0);
-                iv6.setImageResource(R.drawable.sleep0_1);
-                iv7.setImageResource(R.drawable.sleep1_2);
-                iv8.setImageResource(R.drawable.sleep0_3);
-                sleep_res = 2;
-                saveDB();
-            }
+        b7.setOnClickListener(v -> {
+            iv5.setImageResource(R.drawable.sleep0_0);
+            iv6.setImageResource(R.drawable.sleep0_1);
+            iv7.setImageResource(R.drawable.sleep1_2);
+            iv8.setImageResource(R.drawable.sleep0_3);
+            sleep_res = 2;
+            saveDB();
         });
 
-        b8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iv5.setImageResource(R.drawable.sleep0_0);
-                iv6.setImageResource(R.drawable.sleep0_1);
-                iv7.setImageResource(R.drawable.sleep0_2);
-                iv8.setImageResource(R.drawable.sleep1_3);
-                sleep_res = 3;
-                saveDB();
-            }
+        b8.setOnClickListener(v -> {
+            iv5.setImageResource(R.drawable.sleep0_0);
+            iv6.setImageResource(R.drawable.sleep0_1);
+            iv7.setImageResource(R.drawable.sleep0_2);
+            iv8.setImageResource(R.drawable.sleep1_3);
+            sleep_res = 3;
+            saveDB();
         });
+
+        sb.setOnSeekBarChangeListener(seekBarChangeListener);
+
     }
 
     private void setDaysRecycler(List<Day> dayList) {
@@ -194,37 +197,45 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser cUser = mAuth.getCurrentUser();
-        if(cUser==null) {
+        if(cUser ==null) {
             Intent intent = new Intent(this, SignInActivity.class);
             startActivity(intent);
         }
+        date = getDate();
+        assert cUser != null;
+        idtable = cUser.getUid();
+        RootRef = FirebaseDatabase.getInstance().getReference();
         init();
-
-        // получение списка настроек
-        ArrayList<String> settingsList = getSettings();
-        HashMap<String, int[]> settingsItems = new HashMap<>();
-        settingsItems.put("sleep", new int[]{R.id.textView10,  R.id.frameLayout3});
-        settingsItems.put("headache", new int[]{R.id.textView11,  R.id.frameLayout4});
-        settingsItems.put("notes", new int[]{R.id.frameLayout5, R.id.textView13});
-        for (String s : settingsItems.keySet()) {
-            if (!settingsList.contains(s)) {
-                for (int id : Objects.requireNonNull(settingsItems.get(s))) findViewById(id).setVisibility(View.GONE);
-            }
-        }
     }
 
     public void init(){
-        DatabaseReference mDataBase = FirebaseDatabase.getInstance().getReference("Condition");
-        mAuth = FirebaseAuth.getInstance();
-        final DatabaseReference RootRef;
-        String date = getDate();
-        FirebaseUser cUser = mAuth.getCurrentUser();
-        assert cUser != null;
-        String idtable = cUser.getUid();
-        RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    boolean sleep = Boolean.parseBoolean(Objects.requireNonNull(snapshot.child("User").child(idtable).child("Settings").child("sleep").getValue()).toString());
+                    boolean headache = Boolean.parseBoolean(Objects.requireNonNull(snapshot.child("User").child(idtable).child("Settings").child("headache").getValue()).toString());
+                    boolean notes = Boolean.parseBoolean(Objects.requireNonNull(snapshot.child("User").child(idtable).child("Settings").child("notes").getValue()).toString());
+                    if (!sleep) {
+                            findViewById(R.id.textView10).setVisibility(View.GONE);
+                            findViewById(R.id.frameLayout3).setVisibility(View.GONE);
+                    }
+                    if (!headache) {
+                        findViewById(R.id.textView11).setVisibility(View.GONE);
+                        findViewById(R.id.frameLayout4).setVisibility(View.GONE);
+                    }
+                    if (!notes) {
+                        findViewById(R.id.textView13).setVisibility(View.GONE);
+                        findViewById(R.id.frameLayout5).setVisibility(View.GONE);
+                    }
+                } catch (Exception ignored) {
+                    HashMap<String, Object> userDataMap = new HashMap<>();
+                    userDataMap.put("sleep", "true");
+                    userDataMap.put("headache", "true");
+                    userDataMap.put("tablets", "true");
+                    userDataMap.put("notes", "true");
+                    RootRef.child("User").child(idtable).child("Settings").updateChildren(userDataMap);
+                }
                 try {
                     String mood = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("mood").getValue()).toString();
                     String sleep = Objects.requireNonNull(snapshot.child("Condition").child(idtable).child(date).child("sleep").getValue()).toString();
@@ -265,6 +276,8 @@ public class MainActivity extends AppCompatActivity {
                             sleep_res = 3;
                             break;
                     }
+                    headache_res = Integer.parseInt(headache);
+                    sb.setProgress(headache_res);
                 } catch (Exception ignored) {}
             }
 
@@ -276,12 +289,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveDB(){
-        final DatabaseReference RootRef;
-        String date = getDate();
-        FirebaseUser cUser = mAuth.getCurrentUser();
-        assert cUser != null;
-        String idtable = cUser.getUid();
-        RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -299,28 +306,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public ArrayList<String> getSettings() {
-        ArrayList<String> res = new ArrayList<>();
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("settings.txt")));
-            String txt = br.readLine();
-            res = (ArrayList<String>) Arrays.stream(txt.split(";")).collect(Collectors.toList());
-        } catch (FileNotFoundException fe) {
-            try {
-                FileOutputStream file = openFileOutput("settings.txt", MODE_PRIVATE);
-                file.write("sleep;headache;tablets;notes".getBytes(StandardCharsets.UTF_8));
-                file.close();
-
-                res = getSettings();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    private final SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener(){
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         }
-        return res;
-    }
 
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            headache_res = sb.getProgress();
+            saveDB();
+        }
+    };
     public void GoToCalendarActivity(View view) {
         Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);

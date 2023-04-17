@@ -31,7 +31,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayAdapterViewHo
     @Override
     public void onBindViewHolder(@NonNull DayAdapterViewHolder holder, int position) {
         holder.weekDay.setText(days.get(position).getWeekDay());
-        holder.mouthDay.setText(days.get(position).getMouthDay());
+        holder.mouthDay.setText(days.get(position).getMonthDay());
 
     }
 
