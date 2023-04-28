@@ -417,16 +417,23 @@
                 android:background="@drawable/some_id"
                 android:elevation="7dp">
 
-                <SeekBar
+                <com.example.levelhealth.CustomSeekBar
                     android:id="@+id/seekBar2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="33dp"
-                    android:layout_marginTop="26dp"
-                    android:layout_marginEnd="33dp"
-                    android:layout_marginBottom="26dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="20dp"
+
+                    android:max="5"
+                    android:progress="0"
+                    android:progressTint="@color/main_color_2"
+                    android:thumbTint="@color/main_color_2"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
