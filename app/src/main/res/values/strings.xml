@@ -33,6 +33,7 @@
     <string name="pill_dose">Дозировка</string>
     <string name="hidden_pills">Скрытые лекарства</string>
     <string name="change">Изменить</string>
+    <string name="save">Сохранить</string>
     <string name="comment">Комментарий</string>
     <string name="taking_pills">Приём лекарств</string>
     <string name="taking_start">Начало приёма</string>

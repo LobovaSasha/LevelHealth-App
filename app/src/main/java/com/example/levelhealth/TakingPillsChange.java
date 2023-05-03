@@ -17,9 +17,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.TextView;
@@ -35,9 +37,13 @@ public class TakingPillsChange extends AppCompatActivity {
 
     String[] takingPillsSpinner;
 
-    /*private BottomSheetBehavior sheetBehavior;
-    private LinearLayout bottom_calendar;
-    TextView calendarButton;*/
+    private BottomSheetBehavior sheetBehavior;
+    private LinearLayout bottomСalendar;
+    RelativeLayout calendarButton;
+    TextView dateText;
+
+    String date;
+    Integer today_year = 0, today_month = 0, today_day = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,15 +67,19 @@ public class TakingPillsChange extends AppCompatActivity {
 
             }
         });
-        /*bottom_calendar = findViewById(R.id.bottom_sheet);
-        sheetBehavior = BottomSheetBehavior.from(bottom_calendar);
-        calendarButton = findViewById(R.id.calendar_button);*/
+        bottomСalendar = findViewById(R.id.bottom_calendar);
+        sheetBehavior = BottomSheetBehavior.from(bottomСalendar);
+        calendarButton = findViewById(R.id.taking_start1);
+
+        dateText = findViewById(R.id.calendar_text);
+        CalendarView calendarView = findViewById(R.id.calendarView);
 
         editTextTime = findViewById(R.id.time1);
         editTextTime.setText("8:00");
 
         editTextDose = findViewById(R.id.dose1);
         editTextDose.setText(Double.toString(dose));
+
         editTextDose.addTextChangedListener(new TextWatcher(){
             @Override
             public void afterTextChanged(Editable s) {
@@ -87,30 +97,28 @@ public class TakingPillsChange extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
-        /*calendarButton.setOnClickListener(new View.OnClickListener() {
+
+        calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
                     sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                     //btn_bottom_calendar.setText("Close sheet");
-                } else {
-                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    //btn_bottom_calendar.setText("Expand sheet");
                 }
             }
         });
-        sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+
+        sheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View view, int newState) {
                 switch (newState) {
                     case BottomSheetBehavior.STATE_HIDDEN:
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED: {
-                        calendarButton.setText("Close Sheet");
                     }
                     break;
                     case BottomSheetBehavior.STATE_COLLAPSED: {
-                        calendarButton.setText("Expand Sheet");
+                        dateText.setText(date);
                     }
                     break;
                     case BottomSheetBehavior.STATE_DRAGGING:
@@ -122,9 +130,35 @@ public class TakingPillsChange extends AppCompatActivity {
 
             @Override
             public void onSlide(@NonNull View view, float v) {
-
             }
-        });*/
+        });
+
+        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+            if (month > 9) {
+                if (dayOfMonth < 10) {
+                    date = "0" + dayOfMonth + "." + (month + 1) + "." + year;
+                } else {
+                    date = dayOfMonth + "." + (month + 1) + "." + year;
+                }
+            } else {
+                if (dayOfMonth < 10) {
+                    date = "0" + dayOfMonth + "." + "0" + (month + 1) + "." + year;
+                } else {
+                    date = dayOfMonth + "." + "0" + (month + 1) + "." + year;
+                }
+            }
+            if (today_year > year) {
+            } else if (today_year == year) {
+                if (today_month > month + 1) {
+                } else if (today_month == month + 1) {
+                    if (today_day >= dayOfMonth) {
+                    } else {
+                    }
+                } else {
+                }
+            } else {
+            }
+        });
     }
 
     public void PlusAction(View view) {
