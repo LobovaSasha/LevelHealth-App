@@ -1,4 +1,5 @@
 package com.example.levelhealth;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -57,6 +58,7 @@ public class NoteAllActivity extends AppCompatActivity {
         RootRef = FirebaseDatabase.getInstance().getReference();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +67,7 @@ public class NoteAllActivity extends AppCompatActivity {
         may();
         april();
         march();
-    }
+}
 
     public void may() {
         RootRef.addValueEventListener(new ValueEventListener() {
