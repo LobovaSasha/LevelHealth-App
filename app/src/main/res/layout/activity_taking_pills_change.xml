@@ -79,7 +79,7 @@
             <EditText
                 android:id="@+id/pill_name"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="32dp"
@@ -89,6 +89,9 @@
                 android:gravity="center_vertical"
                 android:hint="@string/pill_name"
                 android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
                 android:textColor="@color/text_color_1"
                 android:textColorHint="@color/black_new"
                 android:textSize="16dp" />
@@ -374,10 +377,13 @@
             <EditText
                 android:id="@+id/comment_text"
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="32dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:paddingRight="24dp"
                 android:background="@drawable/some_id"
                 android:elevation="7dp"
                 android:fontFamily="@font/inter_regular"

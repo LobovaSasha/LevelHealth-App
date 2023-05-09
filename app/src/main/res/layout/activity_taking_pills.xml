@@ -249,7 +249,7 @@
             android:onClick="GoToTakingPillsChangeActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/change"
+            android:text="@string/add"
             android:textSize="14dp"
             android:fontFamily="@font/inter_semibolt"
             android:alpha="0.5"
@@ -316,12 +316,12 @@
 
                 <Button
                     android:id="@+id/pill_add1"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:layout_marginRight="15dp"
                     android:alpha="0.5"
-                    android:text="Добавить"
+                    android:text="@string/change"
                     android:fontFamily="@font/inter_semibolt"
                     android:textAllCaps="false"
                     android:letterSpacing="0"
@@ -376,12 +376,12 @@
 
                 <Button
                     android:id="@+id/pill_add2"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:layout_marginRight="15dp"
                     android:alpha="0.5"
-                    android:text="Добавить"
+                    android:text="@string/change"
                     android:fontFamily="@font/inter_semibolt"
                     android:textAllCaps="false"
                     android:letterSpacing="0"

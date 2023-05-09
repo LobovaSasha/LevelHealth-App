@@ -26,13 +26,25 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
 
+    <Button
+        android:id="@+id/edit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:onClick="ChangeData"
+        android:background="@drawable/edit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="38dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/edit_number_style"
         android:elevation="3dp"
 
@@ -117,12 +129,14 @@
 
         <View
             android:id="@+id/commentBg"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="146dp"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="36dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/calendar_btn_bg"
             android:elevation="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/data" />
 
@@ -138,23 +152,23 @@
             app:layout_constraintStart_toStartOf="@+id/commentBg"
             app:layout_constraintTop_toTopOf="@+id/commentBg" />
 
-        <Button
-            android:id="@+id/save"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="88dp"
+<!--        <Button-->
+<!--            android:id="@+id/save"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:layout_marginBottom="88dp"-->
 
-            android:background="@drawable/style_button_stroke_text"
-            android:onClick="ChangeData"
-            android:paddingHorizontal="30dp"
+<!--            android:background="@drawable/style_button_stroke_text"-->
+<!--            android:onClick="ChangeData"-->
+<!--            android:paddingHorizontal="30dp"-->
 
-            android:text="Редактировать"
-            android:textColor="#018C8B"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/commentBg" />
+<!--            android:text="Редактировать"-->
+<!--            android:textColor="#018C8B"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.501"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/commentBg" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
