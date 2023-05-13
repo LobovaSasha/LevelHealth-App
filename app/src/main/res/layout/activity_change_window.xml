@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,11 +8,17 @@
     android:background="@drawable/change_window_background"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semibolt"
+        android:orientation="vertical">
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profilePic"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="122dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,12 +31,13 @@
         android:id="@+id/button_choose_avatar"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="33dp"
 
         android:background="@drawable/style_button_stroke_text"
         android:paddingHorizontal="30dp"
         android:text="Выбрать"
-
+        android:textAllCaps="false"
+        android:textSize="16sp"
         android:textColor="#018C8B"
         app:layout_constraintEnd_toStartOf="@+id/button_upload_avatar"
         app:layout_constraintHorizontal_bias="0.689"
@@ -46,7 +53,8 @@
         android:paddingHorizontal="30dp"
         android:text="Загрузить"
         android:textColor="#018C8B"
-
+        android:textAllCaps="false"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
@@ -80,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
@@ -103,7 +111,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/edit_number_style"
         android:elevation="5dp"
@@ -218,13 +226,14 @@
         android:id="@+id/save"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/style_button_stroke_text"
 
         android:onClick="saveDataChange"
         android:paddingHorizontal="30dp"
         android:text="Сохранить"
-
+        android:textAllCaps="false"
+        android:textSize="16sp"
         android:textColor="#018C8B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -235,11 +244,12 @@
         android:id="@+id/back"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="34dp"
         android:background="@drawable/icon_back_arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

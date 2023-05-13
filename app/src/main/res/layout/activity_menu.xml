@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -7,13 +8,17 @@
     android:background="#FFF4FFFB"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <Button
         android:id="@+id/back"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="34dp"
         android:background="@drawable/icon_back_arrow"
         android:onClick="GoToMainActivity"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +159,7 @@
         android:layout_below="@+id/ReportsButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@android:color/transparent"
         android:drawableRight="@drawable/icon_button_arrow"
         android:onClick="GoToTakingPillsActivity"
@@ -177,7 +182,7 @@
         android:layout_below="@+id/ReportsButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@android:color/transparent"
         android:drawableRight="@drawable/icon_button_arrow"
         android:onClick="GoToSettingsActivity"
@@ -212,3 +217,4 @@
             android:textAlignment="textStart" />
     -->
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
