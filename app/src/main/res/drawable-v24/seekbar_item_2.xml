@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/progress">
+        <vector android:width="7.5dp"
+            android:height="12.5dp"
+            android:viewportHeight="12.5"
+            android:viewportWidth="7.5">
+            <path
+                android:fillColor="@color/black"
+                android:pathData="M 1.25,8.75
+A 1 1 0 0 0 6.25,8.75
+L 6.25,3.75
+A 1 1 0 0 0 1.25,3.75
+Z "/>
+        </vector>
+    </item>
+</selector>
