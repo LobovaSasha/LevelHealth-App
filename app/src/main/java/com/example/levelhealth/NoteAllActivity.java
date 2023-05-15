@@ -137,7 +137,7 @@ public class NoteAllActivity extends AppCompatActivity {
                     else p = Integer.toString(i);
                     iddate = p + "-03-2023";
                     if (snapshot.child("Condition").child(idtable).child(iddate).child("header").exists()) {
-                        listData2.add(snapshot.child("Condition").child(idtable).child(iddate).child("header").getValue().toString() + "\n" + snapshot.child("Condition").child(idtable).child(iddate).child("comment").getValue().toString());
+                        listData3.add(snapshot.child("Condition").child(idtable).child(iddate).child("header").getValue().toString() + "\n" + snapshot.child("Condition").child(idtable).child(iddate).child("comment").getValue().toString());
                         //header.setText(snapshot.child("Condition").child(idtable).child(iddate).child("header").getValue().toString());
                         //text.setText(snapshot.child("Condition").child(idtable).child(iddate).child("comment").getValue().toString());
                     }
