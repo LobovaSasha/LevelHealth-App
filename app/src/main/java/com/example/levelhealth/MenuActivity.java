@@ -105,4 +105,8 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void GoToNoteAllActivity(View view) {
+        Intent intent = new Intent(this, NoteAllActivity.class);
+        startActivity(intent);
+    }
 }
