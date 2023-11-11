@@ -26,12 +26,18 @@
     <string name="new_pass">Введите новый пароль</string>
     <string name="reset_pass">Сбросить пароль</string>
     <string name="headache">Головная боль</string>
+    <string name="add_note">Добавить заметку</string>
     <string name="menu_user_name">Имя Фамилия</string>
     <string name="menu_user_date">дд.мм.гггг</string>
     <string name="menu_user_mail">pochta@gmail.com</string>
     <string name="menu_user_change">Изменить данные</string>
     <string name="menu_user_logout">Выйти</string>
     <string name="menu_user_reports">Отчеты</string>
-    <string name="menu_user_settings">Прием лекарств</string>
+    <string name="menu_user_settings">Настройки</string>
     <string name="calendar_comment">Ох уж этот день</string>
+    <string name="settings">Настройки</string>
+    <string name="done">Готово</string>
+    <string name="terms_of_service">Я даю <font color='#018C8B'><u>согласие на храние и обработку персональных данных</u></font></string>
+    <string name="consentText1">Пользовательское соглашение</string>
+    <string name="first_general_terms"><b>1. Общие положения</b></string>
 </resources>

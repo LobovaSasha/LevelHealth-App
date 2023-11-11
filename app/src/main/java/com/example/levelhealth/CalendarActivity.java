@@ -51,14 +51,26 @@ public class CalendarActivity extends AppCompatActivity {
                 int mYear = year;
                 int mMonth = month;
                 int mDay = dayOfMonth;
-                if (mDay < 10) {
-                    date = new StringBuilder().append("0").append(mDay)
-                            .append("-").append(mMonth + 1)
-                            .append("-").append(mYear).toString();
+                if (mMonth > 9) {
+                    if (mDay < 10) {
+                        date = new StringBuilder().append("0").append(mDay)
+                                .append("-").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    } else {
+                        date = new StringBuilder().append(mDay)
+                                .append("-").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    }
                 } else {
-                    date = new StringBuilder().append(mDay)
-                            .append("-").append(mMonth + 1)
-                            .append("-").append(mYear).toString();
+                    if (mDay < 10) {
+                        date = new StringBuilder().append("0").append(mDay)
+                                .append("-").append("0").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    } else {
+                        date = new StringBuilder().append(mDay)
+                                .append("-").append("0").append(mMonth + 1)
+                                .append("-").append(mYear).toString();
+                    }
                 }
                 init();
             }
@@ -113,16 +125,16 @@ public class CalendarActivity extends AppCompatActivity {
                     if (sleep.equals("-1")) {
                         sleepImg.setVisibility(View.INVISIBLE);
                     } else if (sleep.equals("0")) {
-                        sleepImg.setImageResource(R.drawable.sleep1_0);
+                        sleepImg.setImageResource(R.drawable.sleep0);
                         sleepImg.setVisibility(View.VISIBLE);
                     } else if (sleep.equals("1")) {
-                        sleepImg.setImageResource(R.drawable.sleep1_1);
+                        sleepImg.setImageResource(R.drawable.sleep1);
                         sleepImg.setVisibility(View.VISIBLE);
                     } else if (sleep.equals("2")) {
-                        sleepImg.setImageResource(R.drawable.sleep1_2);
+                        sleepImg.setImageResource(R.drawable.sleep2);
                         sleepImg.setVisibility(View.VISIBLE);
                     } else if (sleep.equals("3")) {
-                        sleepImg.setImageResource(R.drawable.sleep1_3);
+                        sleepImg.setImageResource(R.drawable.sleep3);
                         sleepImg.setVisibility(View.VISIBLE);
                     }
                     if (headache.equals("0")) {

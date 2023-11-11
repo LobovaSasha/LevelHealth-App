@@ -110,7 +110,7 @@ public class GraphicsActivity extends AppCompatActivity {
                 // и, если да, одновременно получаем индекс
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     for (int i = 0; i < weekDates.size(); i++) {
-                        if (Objects.equals(ds.getKey(), weekDates.get(i))) {
+                        if (ds.getKey().equals(weekDates.get(i))) {
                             Condition el = ds.getValue(Condition.class);
                             el.idx = i;
                             table.add(el);
@@ -238,10 +238,6 @@ public class GraphicsActivity extends AppCompatActivity {
         for (int i = 0; i < 7; i++) {
             daysTxt[6 - i] = days.get((idx + 7 - i) % 7);
         }
-        for (int i = 0; i < 7; i++) {
-            Log.d("day", daysTxt[i] + "");
-        }
-        Log.d("IDX", idx + "");
         lineChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(daysTxt)); // навесить дни вместо чисел на оси X
         lineChart.setTouchEnabled(false); // сделать график некликабельным
         lineChart.getAxisRight().setEnabled(false); // удалить правую ось Y
